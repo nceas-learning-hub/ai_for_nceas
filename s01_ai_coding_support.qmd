@@ -1,0 +1,149 @@
+---
+title: AI for Coding Support
+---
+
+:::{.callout-tip}
+## Learning objectives
+
+* Active coding support with GitHub Copilot:
+    * Configure RStudio to work with GitHub Copilot
+    * Practice techniques to use Copilot to assist with coding tasks
+* Iterative coding support with ChatGPT:
+    * Comment existing code
+    * Translate pseudocode into functional code
+    * Translate code from one dialect to another (base R vs. tidyverse)
+    * Translate code from one language to another (R vs. Python)
+:::
+
+## Active coding support with GitHub Copilot
+
+GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is available as a plugin for Visual Studio Code, and it can also be used in RStudio. In this portion of the lesson, you will learn how to configure RStudio to work with GitHub Copilot and practice techniques to use Copilot to assist with coding tasks.
+
+If you have an education GitHub account (e.g., an .edu email address that is associated with your GitHub account), you should have free access to Copilot.  Otherwise you may need to pay for a subscription.  See [more Copilot requirements here](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html).
+
+### Configure RStudio to work with GitHub Copilot
+
+In RStudio, open the "Tools" menu and scroll down to the "Global Options" menu item. In the dialog box, at the bottom of the left hand sidebar, you should see "Copilot" as an option (if not, perhaps you have an old version of RStudio, requires 2023.09.0 or later!).
+
+![](images/ai_coding_support/copilot_options.png){width=400 fig-align="center"}
+
+Click on the checkbox for "Enable GitHub Copilot."  You may wish to change some of the other options: setting Copilot to auto-suggest completions or only show completions when asked using `ctrl-\`, or changing the delay time before Copilot starts giving suggestions.
+
+Next, click the "sign in" button under the "Enable GitHub Copilot" checkbox. This will open dialog box with a link and an eight-digit verification code:
+
+![](images/ai_coding_support/copilot_login_code.png){width=400 fig-align="center"}
+
+Click on the link, enter the verification code, and sign in with your GitHub account.
+
+![](images/ai_coding_support/copilot_login_code2.png){width=400 fig-align="center"}
+
+Once you've entered the authorization code, you will need to authorize RStudio to use Copilot:
+
+![](images/ai_coding_support/copilot_login_code3.png){width=400 fig-align="center"}
+
+Now you should be good to go!  Open up a new Quarto document and start typing, see if it starts autocompleting your sentences or code.
+
+### Practice techniques to use Copilot to assist with coding tasks
+
+You need a fundamental understanding of coding to be able to use Copilot effectively.  It can make intelligent guesses as to your intentions, but doesn't necessarily know where your files are, or what you want to do with the data.  So it is helpful to guide Copilot in the right direction using comments, sentences, and pseudocode.  The more information you provide through your Markdown text and code-chunk comments, the better Copilot will be able to help you.
+
+::: {.callout-exercise}
+
+Create a code chunk, read in some data, do some data wrangling, and then make a plot with the resulting data.  Use comments in your code chunk to signal to Copilot what you'd like to do at each step.  Here are the steps we will do:
+
+* load the `palmerpenguins` package and load the `penguins` data
+* filter to just keep the Chinstrap and Adelie species
+* generate a scatter plot of flipper length vs. bill depth for each species
+* then, for the two species, run a t-test to determine the degree to which the flipper lengths are statistically different between the two species.  Print a summary of the t test results.
+
+::::{.callout-answer}
+
+Here's what it looked like when I let Copilot help me write the code - I accepted each line by pressing "tab".  This might change entirely if I ran the exercise again.  How different does it look from the code you wrote?
+
+```r
+### Load the tidyverse and palmer penguins packages
+library(tidyverse)
+library(palmerpenguins)
+
+### Load the penguins data
+data("penguins")
+
+### Filter to just keep the Chinstrap and Adelie species
+penguins_filtered <- penguins %>%
+  filter(species %in% c("Chinstrap", "Adelie"))
+
+### Generate a scatter plot of flipper length vs. bill depth for each species
+ggplot(penguins_filtered, aes(x = flipper_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point() +
+  labs(title = "Flipper length vs. bill depth for Chinstrap and Adelie penguins",
+       x = "Flipper length (mm)",
+       y = "Bill depth (mm)") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+### Run a t-test to determine the degree to which the flipper lengths are statistically different between the two species
+t.test(flipper_length_mm ~ species, data = penguins_filtered)
+
+### Print a summary of the t test results as a dataframe
+t.test(flipper_length_mm ~ species, data = penguins_filtered) %>%
+  broom::tidy() %>%
+  knitr::kable()
+```
+
+::::
+:::
+
+::: {.callout-tip}
+## Pseudocode
+
+Pseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points, just as we did above.  Some tips:
+
+* Specify if you want to use the `tidyverse` metapackage or base R functions.
+* If you know the names of certain functions, it is helpful to use those in your pseudocode, to help Copilot incorporate those into its code completions.
+* Use comments to signal to Copilot what you'd like to do at each step.
+
+:::
+
+::: {.callout-exercise}
+Let's try the same exercise but this let's only use base R functions:
+
+* load the `palmerpenguins` package and load the `penguins` data
+* filter to just keep the Chinstrap and Adelie species
+* generate a scatter plot of flipper length vs. bill depth for each species
+* then, for the two species, run a t-test to determine the degree to which the flipper lengths are statistically different between the two species.  Print a summary of the t test results.
+
+:::: {.callout-answer}
+
+Here is what Copilot came up with for me.  Note, it knew from above that I wanted to use base R functions this time instead of `tidyverse` functions!
+```r
+### Load the palmer penguins package and load the penguins data
+library(palmerpenguins)
+data("penguins")
+
+### Filter to just keep the Chinstrap and Adelie species
+penguins_filtered <- penguins[penguins$species %in% c("Chinstrap", "Adelie"), ]
+
+### Generate a scatter plot of flipper length vs. bill depth for each species
+plot(penguins_filtered$flipper_length_mm, penguins_filtered$bill_depth_mm, col = penguins_filtered$species)
+
+### Print a summary of the t test results
+summary(t.test(penguins_filtered$flipper_length_mm ~ penguins_filtered$species))
+```
+
+::::
+:::
+
+::: {.callout-note Copilot limitations!}
+
+Copilot cannot read your mind, and it may make incorrect assumptions about what you want to do with your data and analysis.  It is important to understand the code that Copilot is generating for you, and to check it for errors!  You get the last word (no matter how hard Copilot tries!).
+
+Keep in mind that you can always reject Copilot's suggestions and write your own code, or accept its suggestions as a starting point then edit them as you see fit.
+
+:::
+
+### Using Copilot to help write functions and loops
+
+Copilot can also help you write functions and loops.
+
+
+ 

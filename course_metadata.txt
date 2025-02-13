@@ -1,0 +1,6 @@
+course_proj = ai_for_nceas
+course_org = nceas-learning-hub
+title = AI for NCEAS
+description = AI for NCEAS
+start_date = 2024-01-01
+end_date = 2024-12-31

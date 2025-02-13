@@ -1,0 +1,102 @@
+[
+  {
+    "objectID": "s03_ai_and_apis.html",
+    "href": "s03_ai_and_apis.html",
+    "title": "Git and GitHub",
+    "section": "",
+    "text": "Learning Objectives\n\n\n\n\nApply the principles of Git to track and manage changes of a project\nUtilize the Git workflow including pulling changes, staging modified files, committing changes, pulling again to incorporate remote changes, and pushing changes to a remote repository\nCreate and configure Git repositories using different workflows",
+    "crumbs": [
+      "Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "s03_ai_and_apis.html#introduction-to-version-control",
+    "href": "s03_ai_and_apis.html#introduction-to-version-control",
+    "title": "Git and GitHub",
+    "section": "1 Introduction to Version Control",
+    "text": "1 Introduction to Version Control",
+    "crumbs": [
+      "Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "s01_ai_coding_support.html",
+    "href": "s01_ai_coding_support.html",
+    "title": "AI for Coding Support",
+    "section": "",
+    "text": "Learning objectives\n\n\n\n\nActive coding support with GitHub Copilot:\n\nConfigure RStudio to work with GitHub Copilot\nPractice techniques to use Copilot to assist with coding tasks\n\nIterative coding support with ChatGPT:\n\nComment existing code\nTranslate pseudocode into functional code\nTranslate code from one dialect to another (base R vs. tidyverse)\nTranslate code from one language to another (R vs. Python)",
+    "crumbs": [
+      "AI for Coding Support"
+    ]
+  },
+  {
+    "objectID": "s01_ai_coding_support.html#active-coding-support-with-github-copilot",
+    "href": "s01_ai_coding_support.html#active-coding-support-with-github-copilot",
+    "title": "AI for Coding Support",
+    "section": "1 Active coding support with GitHub Copilot",
+    "text": "1 Active coding support with GitHub Copilot\nGitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is available as a plugin for Visual Studio Code, and it can also be used in RStudio. In this portion of the lesson, you will learn how to configure RStudio to work with GitHub Copilot and practice techniques to use Copilot to assist with coding tasks.\nIf you have an education GitHub account (e.g., an .edu email address that is associated with your GitHub account), you should have free access to Copilot. Otherwise you may need to pay for a subscription. See more Copilot requirements here.\n\n1.1 Configure RStudio to work with GitHub Copilot\nIn RStudio, open the “Tools” menu and scroll down to the “Global Options” menu item. In the dialog box, at the bottom of the left hand sidebar, you should see “Copilot” as an option (if not, perhaps you have an old version of RStudio, requires 2023.09.0 or later!).\n\n\n\n\n\nClick on the checkbox for “Enable GitHub Copilot.” You may wish to change some of the other options: setting Copilot to auto-suggest completions or only show completions when asked using ctrl-\\, or changing the delay time before Copilot starts giving suggestions.\nNext, click the “sign in” button under the “Enable GitHub Copilot” checkbox. This will open dialog box with a link and an eight-digit verification code:\n\n\n\n\n\nClick on the link, enter the verification code, and sign in with your GitHub account.\n\n\n\n\n\nOnce you’ve entered the authorization code, you will need to authorize RStudio to use Copilot:\n\n\n\n\n\nNow you should be good to go! Open up a new Quarto document and start typing, see if it starts autocompleting your sentences or code.\n\n\n1.2 Practice techniques to use Copilot to assist with coding tasks\nYou need a fundamental understanding of coding to be able to use Copilot effectively. It can make intelligent guesses as to your intentions, but doesn’t necessarily know where your files are, or what you want to do with the data. So it is helpful to guide Copilot in the right direction using comments or sentences.\n\n\n\n\n\n\nExercise 1\n\n\n\n\n\n\nCreate a code chunk, read in some data, do some data wrangling, and then make a plot with the resulting data. Use comments in your code chunk to signal to Copilot what you’d like to do at each step. Here are the steps we will do:\n\nload the palmerpenguins package and load the penguins data\nfilter to just keep the Chinstrap and Adelie species\ngenerate a scatter plot of flipper length vs. bill depth for each species\nthen, for the two species, run a t-test to determine the degree to which the flipper lengths are statistically different between the two species.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n2 Here’s what it looked like when I let Copilot help me write the code:\n### Load the tidyverse and palmer penguins packages\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\n### Load the penguins data\ndata(\"penguins\")\n\n### Filter to just keep the Chinstrap and Adelie species\npenguins_filtered &lt;- penguins %&gt;%\n  filter(species %in% c(\"Chinstrap\", \"Adelie\"))\n\n### Generate a scatter plot of flipper length vs. bill depth for each species\nggplot(penguins_filtered, aes(x = flipper_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point() +\n  labs(title = \"Flipper length vs. bill depth for Chinstrap and Adelie penguins\",\n       x = \"Flipper length (mm)\",\n       y = \"Bill depth (mm)\") +\n  theme_minimal() +\n  theme(legend.position = \"bottom\")\n\n### Run a t-test to determine the degree to which the flipper lengths are statistically different between the two species\nt.test(flipper_length_mm ~ species, data = penguins_filtered)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPseudocode\n\n\n\nPseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points. If you know the names of certain functions, it is helpful to use those in your pseudocode, to help Copilot incorporate those into its code completions.\n\n\n\n\n\n\n\n\nExercise 2 - Write some pseudocode!\n\n\n\n\n\n\nWrite the following pseudocode, or something similar, in a Markdown portion of your Quarto document:\n\nIn the following code chunk, using the Tidyverse package, I want to:\n\nload the palmerpenguins package and load the Penguins data\njust keep the Chinstrap and Adelie species\ngenerate a scatter plot of flipper length vs. bill depth for each species\nthen, for the two species, calculate the mean and standard deviation of flipper length\n\n\nThen, below your pseudocode, create a code chunk (ctrl-alt-I or cmd-option-I) and put your cursor inside on a blank line… see if Copilot can help you fill in the code!",
+    "crumbs": [
+      "AI for Coding Support"
+    ]
+  },
+  {
+    "objectID": "s01_ai_coding_support.html#heres-what-it-looked-like-when-i-let-copilot-help-me-write-the-code",
+    "href": "s01_ai_coding_support.html#heres-what-it-looked-like-when-i-let-copilot-help-me-write-the-code",
+    "title": "AI for Coding Support",
+    "section": "2 Here’s what it looked like when I let Copilot help me write the code:",
+    "text": "2 Here’s what it looked like when I let Copilot help me write the code:\n### Load the tidyverse and palmer penguins packages\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\n### Load the penguins data\ndata(\"penguins\")\n\n### Filter to just keep the Chinstrap and Adelie species\npenguins_filtered &lt;- penguins %&gt;%\n  filter(species %in% c(\"Chinstrap\", \"Adelie\"))\n\n### Generate a scatter plot of flipper length vs. bill depth for each species\nggplot(penguins_filtered, aes(x = flipper_length_mm, y = bill_depth_mm, color = species)) +\n  geom_point() +\n  labs(title = \"Flipper length vs. bill depth for Chinstrap and Adelie penguins\",\n       x = \"Flipper length (mm)\",\n       y = \"Bill depth (mm)\") +\n  theme_minimal() +\n  theme(legend.position = \"bottom\")\n\n### Run a t-test to determine the degree to which the flipper lengths are statistically different between the two species\nt.test(flipper_length_mm ~ species, data = penguins_filtered)",
+    "crumbs": [
+      "AI for Coding Support"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About the course",
+    "section": "",
+    "text": "AI for NCEAS",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "index.html#nceas-expertise",
+    "href": "index.html#nceas-expertise",
+    "title": "About the course",
+    "section": "1 NCEAS Expertise",
+    "text": "1 NCEAS Expertise\nThe National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is a leading expert on interdisciplinary data science and works collaboratively to answer the world’s largest and most complex questions. The NCEAS approach leverages existing data and employs a team science philosophy to squeeze out all potential insights and solutions efficiently - this is called synthesis science.\nNCEAS has over 25 years of success with this model among working groups and environmental professionals. Together with the Delta Science Program and the Delta Stewardship Council we are excited to pass along skills, workflows, mindsets learn throughout the years.\n\n\n\n\n\n\n\nLearning Objectives\n\n\n\n\nEffectively manage data using tidy data practices\nImplement reproducible scientific workflows throughout all aspects of a project\nEstablish best practices and utilize tools like Git & GitHub to optimize your collaboration\nBetter communicate scientific analyses and results using Markdown, GitHub webpages, and R packages like ggplot2 and Shiny\nIncrease your familiarity and confidence with data science tools\n\n\n\n\n1.1 Week’s Schedule",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "index.html#code-of-conduct",
+    "href": "index.html#code-of-conduct",
+    "title": "About the course",
+    "section": "2 Code of Conduct",
+    "text": "2 Code of Conduct\nBy participating in this activity you agree to abide by the NCEAS Code of Conduct.",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "index.html#about-this-book",
+    "href": "index.html#about-this-book",
+    "title": "About the course",
+    "section": "3 About this book",
+    "text": "3 About this book\nThese written materials are the result of a continuous and collaborative effort at NCEAS to help researchers make their work more transparent and reproducible. This work began in the early 2000’s, and reflects the expertise and diligence of many, many individuals. The primary authors are listed in the citation below, with additional contributors recognized for their role in developing previous iterations of these or similar materials.\nThis work is licensed under a Creative Commons Attribution 4.0 International License.\nCitation: Camila Vargas Poulsen & Angel Chen (2024), NCEAS coreR for Delta Science Program, June 2024, NCEAS Learning Hub. URL https://learning.nceas.ucsb.edu/2024-06-delta.\nAdditional contributors: Ben Bolker, Amber E. Budden, Julien Brun, Samantha Csik, Halina Do-Linh, Natasha Haycock-Chavez, S. Jeanette Clark, Julie Lowndes, Stephanie Hampton, Matt Jone, Samanta Katz, Erin McLean, Bryce Mecum, Deanna Pennington, Karthik Ram, Jim Regetz, Tracy Teal, Daphne Virlar-Knight, Leah Wasser.\nThis is a Quarto book. To learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "About the course"
+    ]
+  },
+  {
+    "objectID": "s02_ai_lit_review.html",
+    "href": "s02_ai_lit_review.html",
+    "title": "Collaborating with Git and GitHub",
+    "section": "",
+    "text": "Learning Objectives\n\n\n\n\nApply the principles, features, and collaboration tools of Git and GitHub to effectively collaborate with colleagues on code\nAnalyze and evaluate common causes of conflicts that arise when collaborating on repositories\nDemonstrate the ability to resolve conflicts using Git conflict resolution techniques\nApply workflows and best practices that minimize conflicts on collaborative repositories",
+    "crumbs": [
+      "Collaborating with Git and GitHub"
+    ]
+  }
+]
