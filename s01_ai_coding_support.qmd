@@ -5,21 +5,27 @@ title: AI for Coding Support
 :::{.callout-tip}
 ## Learning objectives
 
-* Active coding support with GitHub Copilot:
-    * Configure RStudio to work with GitHub Copilot
-    * Practice techniques to use Copilot to assist with coding tasks
+* Active coding support in RStudio with GitHub Copilot:
+    * Configuring RStudio to work with GitHub Copilot
+    * Exploring techniques to use Copilot to assist with coding tasks
 * Iterative coding support with ChatGPT:
-    * Comment existing code
-    * Translate pseudocode into functional code
-    * Translate code from one dialect to another (base R vs. tidyverse)
-    * Translate code from one language to another (R vs. Python)
+    * Translating pseudocode into functional code
+    * Commenting existing code
+    * Suggesting improvements to code for performance or readability
+    * Translating code from one language to another (e.g., R vs. Python)
 :::
 
 ## Active coding support with GitHub Copilot
 
-GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is available as a plugin for Visual Studio Code, and it can also be used in RStudio. In this portion of the lesson, you will learn how to configure RStudio to work with GitHub Copilot and practice techniques to use Copilot to assist with coding tasks.
+GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is available as a plugin for Visual Studio Code, and it can also be used in RStudio.  Copilot is a large language model, related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions based on the context of your code.  In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot to assist with coding tasks.
 
-If you have an education GitHub account (e.g., an .edu email address that is associated with your GitHub account), you should have free access to Copilot.  Otherwise you may need to pay for a subscription.  See [more Copilot requirements here](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html).
+If you have an [education GitHub account](https://github.com/education) (e.g., an .edu email address that is associated with your GitHub account), you should be able to get free access to Copilot.  Otherwise you may need to pay for a subscription.  See [more Copilot requirements here](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html).
+
+::: {.callout-note}
+
+Here we will focus on using AI code completion tools in R and RStudio, since it is a popular language and IDE for ecologists, but the same methods work for other languages and IDEs.  VS Code is a Microsoft product, as is Copilot (and GitHub for that matter), so its integration is even better than RStudio.
+
+:::
 
 ### Configure RStudio to work with GitHub Copilot
 
@@ -43,24 +49,26 @@ Once you've entered the authorization code, you will need to authorize RStudio t
 
 Now you should be good to go!  Open up a new Quarto document and start typing, see if it starts autocompleting your sentences or code.
 
-### Practice techniques to use Copilot to assist with coding tasks
+### Using Copilot to assist with coding tasks
 
-You need a fundamental understanding of coding to be able to use Copilot effectively.  It can make intelligent guesses as to your intentions, but doesn't necessarily know where your files are, or what you want to do with the data.  So it is helpful to guide Copilot in the right direction using comments, sentences, and pseudocode.  The more information you provide through your Markdown text and code-chunk comments, the better Copilot will be able to help you.
+You need a fundamental understanding of coding to be able to use Copilot effectively.  It can make intelligent guesses as to your intentions, but doesn't necessarily know where your files are, or what you intend to do with the data.  So it is helpful to guide Copilot in the right direction using comments, sentences, and pseudocode before you start any actual coding.  The more information you provide through your Markdown text and code-chunk comments, the better Copilot will be able to help you.
 
 ::: {.callout-exercise}
 
-Create a code chunk, read in some data, do some data wrangling, and then make a plot with the resulting data.  Use comments in your code chunk to signal to Copilot what you'd like to do at each step.  Here are the steps we will do:
+Create a code chunk, read in some data, do some data wrangling, and then make a plot with the resulting data.  Use comments in your code chunk to signal to Copilot what you'd like to do at each step.  Here are the steps we will do, using a `tidyverse` workflow:
 
 * load the `palmerpenguins` package and load the `penguins` data
+* drop any incomplete observations (any NA values)
 * filter to just keep the Chinstrap and Adelie species
-* generate a scatter plot of flipper length vs. bill depth for each species
-* then, for the two species, run a t-test to determine the degree to which the flipper lengths are statistically different between the two species.  Print a summary of the t test results.
+* generate a scatter plot of bill length vs. bill depth for each species
+* then, for the two species, run a t-test to determine the degree to which the bill lengths are statistically different between the two species.  Print a summary of the t test results.
 
 ::::{.callout-answer}
 
 Here's what it looked like when I let Copilot help me write the code - I accepted each line by pressing "tab".  This might change entirely if I ran the exercise again.  How different does it look from the code you wrote?
 
-```r
+```{r}
+#| code-fold: true
 ### Load the tidyverse and palmer penguins packages
 library(tidyverse)
 library(palmerpenguins)
@@ -70,22 +78,23 @@ data("penguins")
 
 ### Filter to just keep the Chinstrap and Adelie species
 penguins_filtered <- penguins %>%
+  drop_na() %>%
   filter(species %in% c("Chinstrap", "Adelie"))
 
-### Generate a scatter plot of flipper length vs. bill depth for each species
-ggplot(penguins_filtered, aes(x = flipper_length_mm, y = bill_depth_mm, color = species)) +
+### Generate a scatter plot of bill length vs. bill depth for each species
+ggplot(penguins_filtered, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
   geom_point() +
-  labs(title = "Flipper length vs. bill depth for Chinstrap and Adelie penguins",
-       x = "Flipper length (mm)",
+  labs(title = "Bill length vs. bill depth for Chinstrap and Adelie penguins",
+       x = "Bill length (mm)",
        y = "Bill depth (mm)") +
   theme_minimal() +
   theme(legend.position = "bottom")
 
-### Run a t-test to determine the degree to which the flipper lengths are statistically different between the two species
-t.test(flipper_length_mm ~ species, data = penguins_filtered)
+### Run a t-test to determine the degree to which the bill lengths are statistically different between the two species
+t.test(bill_length_mm ~ species, data = penguins_filtered)
 
 ### Print a summary of the t test results as a dataframe
-t.test(flipper_length_mm ~ species, data = penguins_filtered) %>%
+t.test(bill_length_mm ~ species, data = penguins_filtered) %>%
   broom::tidy() %>%
   knitr::kable()
 ```
@@ -105,45 +114,544 @@ Pseudocode is a way of planning out an analysis by writing out the sequence of s
 :::
 
 ::: {.callout-exercise}
-Let's try the same exercise but this let's only use base R functions:
+Let's try the same exercise but this time let's only use base R functions:
 
 * load the `palmerpenguins` package and load the `penguins` data
+* drop incomplete observations
 * filter to just keep the Chinstrap and Adelie species
-* generate a scatter plot of flipper length vs. bill depth for each species
-* then, for the two species, run a t-test to determine the degree to which the flipper lengths are statistically different between the two species.  Print a summary of the t test results.
+* generate a scatter plot of bill length vs. bill depth for each species
+* then, for the two species, run a t-test to determine the degree to which the bill lengths are statistically different between the two species.  Print a summary of the t test results.
 
 :::: {.callout-answer}
 
 Here is what Copilot came up with for me.  Note, it knew from above that I wanted to use base R functions this time instead of `tidyverse` functions!
-```r
+```{r}
 ### Load the palmer penguins package and load the penguins data
 library(palmerpenguins)
 data("penguins")
 
+### Drop incomplete observations
+penguins <- na.omit(penguins)
+
 ### Filter to just keep the Chinstrap and Adelie species
 penguins_filtered <- penguins[penguins$species %in% c("Chinstrap", "Adelie"), ]
 
-### Generate a scatter plot of flipper length vs. bill depth for each species
-plot(penguins_filtered$flipper_length_mm, penguins_filtered$bill_depth_mm, col = penguins_filtered$species)
+### Generate a scatter plot of bill length vs. bill depth for each species
+plot(penguins_filtered$bill_length_mm, penguins_filtered$bill_depth_mm, col = penguins_filtered$species)
 
 ### Print a summary of the t test results
-summary(t.test(penguins_filtered$flipper_length_mm ~ penguins_filtered$species))
+summary(t.test(penguins_filtered$bill_length_mm ~ penguins_filtered$species))
 ```
 
 ::::
 :::
 
-::: {.callout-note Copilot limitations!}
+::: {.callout-warning title="Copilot limitations!"}
 
-Copilot cannot read your mind, and it may make incorrect assumptions about what you want to do with your data and analysis.  It is important to understand the code that Copilot is generating for you, and to check it for errors!  You get the last word (no matter how hard Copilot tries!).
+Copilot cannot read your mind, and it may make incorrect assumptions about what you want to do with your data and analysis.  It is important to understand the code that Copilot is generating for you, and to check it for errors!  You get the last word (no matter how hard Copilot tries!), and you as the coder are responsible for the final product.
 
 Keep in mind that you can always reject Copilot's suggestions and write your own code, or accept its suggestions as a starting point then edit them as you see fit.
 
 :::
 
-### Using Copilot to help write functions and loops
+### Using Copilot for more complex coding tasks
 
-Copilot can also help you write functions and loops.
+Copilot can also help you write functions and loops, among other things.
 
+#### Copilot to write a function
 
+::: {.callout-exercise}
+Let's write a function that takes a dataframe of data and for two given columns, calculates the slope, intercept, and p value for a linear regression model.  Let's call it `calc_lm()`.  Some pseudocode to get you started:
+
+* identify and pull out the y (outcome) and x (predictor) variables as columns in the data frame
+* perform a linear regression on `y ~ x`
+* return the slope, intercept, and p value in a dataframe.
+
+:::: {.callout-answer}
+
+Here's what Copilot suggested for me writing this lesson.  Note that it recognized data in previous code chunks, and when I started writing a comment to test, it assumed I wanted to use that data.
+
+```{r}
+# function to calculate slope, intercept, and p value for a linear regression model
+calc_lm <- function(data, y, x) {
+  # identify and pull out the y (outcome) and x (predictor) variables as columns in the data frame
+  y <- data[[y]]
+  x <- data[[x]]
+  
+  # perform a linear regression on y ~ x
+  lm_model <- lm(y ~ x, data = data)
+  
+  # return the slope, intercept, and p value in a dataframe
+  data.frame(slope = coef(lm_model)[2],
+             intercept = coef(lm_model)[1],
+             p_value = summary(lm_model)$coefficients[2, 4])
+}
+### test on the penguins data
+calc_lm(penguins_filtered, "bill_length_mm", "bill_depth_mm")
+```
+
+Does Copilot's suggestion work for you?  If not take a moment to fix it and make it work.  Some observations on the code presented here:
+
+* I would probably avoid overwriting the local value of `x` and `y` in the function, as it could be confusing.
+* Note that the p value it selects from the linear model is that of the slope, not the intercept.  That is probably what we wanted, but would be a good idea to make sure that meets our expectations!
+* I might also prefer to have the output in a different format, perhaps using `broom::tidy()`.
+
+::::
+:::
+
+#### Copilot to write a loop
+
+::: {.callout-exercise}
+Now let's get Copilot to help use the previous function to iterate over the various species by sex.  Using for-loops, this will involve nested loops (one for species, one for sex), so let's see if Copilot can figure that out!  Pseudocode:
+
+* For each species, and each sex, apply the function above to the penguins data, and add the species and sex to the resulting dataframe.
+* Store the results in a list of dataframes
+* Then combine the results into a single dataframe.
+
+:::: {.callout-warning}
+I almost certainly wouldn't have actually used a `for` loop here in the first place - better options would be a `group_by() %>% summarize()` workflow or `purrr::map2` - but we're just trying to see what Copilot can do with a more complex coding task!
+::::
+
+:::: {.callout-answer}
+
+Here's what Copilot suggested, based on the pseudocode and previous code chunks.  However, this was a little more complex and required some guidance, hand holding, and bug-fixing.
+
+```{r}
+# create an empty list to store the results
+results <- list()                                                 # <1>
+i <- 1                                                            # <2>
+
+# iterate over the species
+for (species in unique(penguins_filtered$species)) {
+  # iterate over the sex
+  for(sex in unique(penguins_filtered$sex)) {                     # <3>
+    # apply the function above to the penguins data
+    result <- calc_lm(penguins_filtered[penguins_filtered$species == species & penguins_filtered$sex == sex, ], "bill_length_mm", "bill_depth_mm")                                                  # <4>
+    # add the species and sex to the resulting dataframe
+    result$species <- species
+    result$sex <- sex                                             # <5>
+    # store the results in the list
+    results[[i]] <- result                                        # <6>
+    i <- i + 1                                                    # <7>
+  }
+}
+
+# combine the results into a single dataframe
+results_df <- do.call(rbind, results)
+  
+```
+1. Copilot didn't pre-allocate space for the list based on the number of expected entries.  Not a dealbreaker for a small project, but generally a good idea.
+2. After Copilot started the loop, it didn't include an indexing variable, and hadn't considered that the "species" index would be character, not numeric, so would be challenging to use as an indexing variable after the fact.  I manually added in an index `i` to keep track of the list index.
+3. Copilot struggled with this nested loop format - so I had to manually start typing this line; but then Copilot was able to finish.
+4. Again, Copilot struggled here - it wrote the function call halfway through the filtered step; when I wrote the `penguins_filtered$sex == sex` part, it was able to finish the line.  However, it made some errors finishing the line as well!
+5. Once again, Copilot wasn't sure how to add the sex info to the resulting dataframe, so I had to manually start writing.
+6. Here, Copilot used a single bracket for indexing, which is incorrect for a list in R.  I had to manually change this to double brackets.
+7. Copilot didn't include an incrementing index variable, so I had to manually add this.
+
+In summary, Copilot was helpful in getting the ball rolling here, but needed lots of manual help.  Additionally, it made some choices I probably would have made differently - e.g., I probably would have filtered the `penguins_filtered` dataframe *before* the `calc_lm` call, and probably would have used `dplyr::mutate` to add the species and sex columns to the result.  Finally, I probably would have used `bind_rows()` instead of `do.call(rbind, results)` to combine the results, but that's just what I'm used to.
  
+::::
+:::
+
+### Copilot for coding: summary
+
+Copilot can be very helpful at speeding up your coding, especially for simple or well-defined tasks.  One potential pitfall is that using Copilot in this way has a certain amount of path dependency.  Once a bit of code is written in the script, Copilot takes that as given - it can't modify or erase code, it can only keep going forward.  So it is important to monitor your progress and make sure Copilot is not leading you astray.  For example, if you prefer `tidyverse` workflow but Copilot is suggesting base R functions, you may need to intervene and guide Copilot in the right direction.
+
+In the next section, we'll look at how to use ChatGPT to help with coding in a more interactive/iterative fashion, which can avoid path dependency but may introduce other complexities.
+
+::: {.callout-tip title="Summary: Copilot tips"}
+
+* Before starting your analysis, prime Copilot by writing out an overview of your analysis, including packages, functions, and statistical tests you want to do.
+* While writing code, if Copilot gets stuck, or treads down an unproductive path, you have several options:
+    * write out a comment or additional pseudocode to guide Copilot in the right direction.
+    * accept Copilot's suggestion (if it's on the right track) and manually fix it before continuing.
+    * reject Copilot's suggestion (if it's way off base) and write your own code, to signal what you really want
+* Run the code to make sure it works as expected, and check for errors.  You are responsible for the final result.
+* Remember, you can turn Copilot off entirely, or set it to autocomplete only when requested:
+    * Tools --> Global Options --> Copilot --> Show Copilot code suggestions: Manually (Ctrl-Backslash)).
+    
+:::
+
+## Iterative coding support with ChatGPT
+
+In this section we'll look at using ChatGPT outside of RStudio.  Here we can take existing code and feed it into ChatGPT and ask it to help us with various tasks, or feed pseudocode into ChatGPT and ask it to generate code for us.
+
+### Pseudocode into code
+
+Just as Copilot can generate code from pseudocode, ChatGPT can do the same.  You can then copy/paste the results into RStudio.
+
+::: {.callout-exercise} 
+
+Let's give ChatGPT the same sequence of steps we used above.  We will copy and paste the pseudocode from above (repeated here) into ChatGPT and ask it to generate code for us.
+ 
+* load the `palmerpenguins` package and load the `penguins` data
+* drop any incomplete observations (any NA values)
+* filter to just keep the Chinstrap and Adelie species
+* generate a scatter plot of bill length vs. bill depth for each species
+* then, for the two species, run a t-test to determine the degree to which the bill lengths are statistically different between the two species.  Print a summary of the t test results.
+
+![](images/ai_coding_support/chatgpt_pseudocode1.png){width=600 fig-align="center"}
+
+:::: {.callout-answer}
+
+Here is the code it generated for me: 
+
+```{r}
+#| eval: false
+
+# Load necessary packages
+library(palmerpenguins)
+library(ggplot2)
+library(dplyr)
+
+# Load the penguins dataset and remove incomplete observations
+penguins_clean <- penguins %>%
+  na.omit() %>%
+  filter(species %in% c("Chinstrap", "Adelie"))
+
+# Generate scatter plot of bill length vs. bill depth
+ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point() +
+  labs(title = "Bill Length vs. Bill Depth",
+       x = "Bill Length (mm)",
+       y = "Bill Depth (mm)") +
+  theme_minimal()
+
+# Perform a t-test on bill length between Chinstrap and Adelie species
+t_test_result <- t.test(bill_length_mm ~ species, data = penguins_clean)
+
+# Print summary of t-test results
+print(t_test_result)
+
+```
+
+This code works exactly as desired, though we set it to not evaluate here in the script, for sake of space.
+
+::::
+:::
+
+::: {.callout-exercise}
+I could follow up with a request to not use any `tidyverse` packages...
+
+![](images/ai_coding_support/chatgpt_pseudocode2.png){width=600 fig-align="center"}
+
+:::: {.callout-answer}
+And this is what it came up with:
+
+```{r}
+#| eval: false
+
+# Load the palmerpenguins package
+library(palmerpenguins)
+
+# Load the dataset and remove incomplete observations
+penguins_clean <- na.omit(penguins)
+
+# Keep only Chinstrap and Adelie species
+penguins_clean <- penguins_clean[penguins_clean$species %in% c("Chinstrap", "Adelie"), ]
+
+# Generate scatter plot of flipper length vs. bill depth
+plot(penguins_clean$bill_length_mm, penguins_clean$bill_depth_mm,
+     col = ifelse(penguins_clean$species == "Chinstrap", "blue", "red"),
+     pch = 19,
+     xlab = "Bill Length (mm)",
+     ylab = "Bill Depth (mm)",
+     main = "Bill Length vs. Bill Depth")
+legend("topright", legend = c("Chinstrap", "Adelie"), col = c("blue", "red"), pch = 19)
+
+# Perform a t-test on flipper length between Chinstrap and Adelie species
+t_test_result <- t.test(bill_length_mm ~ species, data = penguins_clean)
+
+# Print summary of t-test results
+print(t_test_result)
+
+```
+
+This code works exactly as desired, though we set it to not evaluate here in the script, for sake of space.
+
+::::
+:::
+
+### Commenting existing code
+
+Often when we are trying to code, we Google to find a solution online (e.g., Stack Overflow), but the code is not familiar to us or difficult to understand.  ChatGPT can automatically take that code and insert helpful comments to explain what each line is doing.  
+
+::: {.callout-exercise}
+
+Here is a complex Python script that would be challenging to understand for someone not proficient in Python:
+
+https://raw.githubusercontent.com/convei-wwf/NLParty/refs/heads/main/abstract_classifier.py
+
+![](images/ai_coding_support/chatgpt_comment.png){width=600 fig-align="center"}
+
+:::: {.callout-answer}
+Here's what it came up with! (This is a long script, so code folding is enabled)
+
+```{python}
+#| eval: false
+#| code-fold: true
+
+import argparse  # For parsing command-line arguments
+import glob  # For file pattern matching
+import logging  # For logging messages
+import os  # For operating system interactions
+import time  # For measuring execution time
+import re  # For regular expressions
+import warnings  # For handling warnings
+from transformers import pipeline  # For using Hugging Face's transformers pipeline
+import torch  # For PyTorch operations
+
+# Suppress specific UserWarnings from torch.utils.data
+warnings.filterwarnings("ignore", category=UserWarning, module="torch.utils.data")
+
+# Configure logging settings
+logging.basicConfig(
+    level=logging.DEBUG,
+    format=(
+        '%(asctime)s (%(relativeCreated)d) %(levelname)s %(name)s'
+        ' [%(funcName)s:%(lineno)d] %(message)s'
+    )
+)
+logging.getLogger('taskgraph').setLevel(logging.INFO)
+LOGGER = logging.getLogger(__name__)
+
+def main():
+    # Check if CUDA (GPU support) is available and print the result
+    print(torch.cuda.is_available())
+
+    # Set up argument parser for command-line inputs
+    parser = argparse.ArgumentParser(description='Affiliation classifier')
+    parser.add_argument('bib_file_pattern', help='path to bibliography list')
+    parser.add_argument('abstract_tag_file', help='path to abstract tags')
+    parser.add_argument('--target_path', help='target classified table')
+    args = parser.parse_args()
+
+    # Load bibliography files matching the given pattern
+    print('load bib_file')
+    affiliation_set = set()
+    article_count = 0
+    for bib_file in glob.glob(args.bib_file_pattern):
+        with open(bib_file, 'r', encoding='utf-8') as file:
+            affiliation_str = None
+            abstract_str = None
+            article_id = None
+            for line in file:
+                try:
+                    # Extract article ID using regex
+                    article_id = re.search('@[^{]+{(.*),', line).group(1)
+                    if article_id is None:
+                        print(f'ERROR: {line}')
+                        affiliation_str = None
+                        abstract_str = None
+                        continue
+                except:
+                    pass
+                # Extract abstract content
+                if 'abstract =' in line:
+                    abstract_str = re.search('{(.*)}', line).group(1)
+                # Extract affiliations content
+                elif 'affiliations =' in line:
+                    affiliation_str = re.search('{(.*)}', line).group(1)
+                # If both abstract and affiliation are found, add to the set
+                if abstract_str and affiliation_str:
+                    if article_id is None:
+                        print(f'ERROR: {abstract_str}')
+                    affiliation_set.add((article_id, affiliation_str, abstract_str))
+                    article_count += 1
+                    # Reset variables for the next article
+                    article_id = None
+                    affiliation_str = None
+                    abstract_str = None
+
+    # Load candidate labels from the abstract tag file
+    print('load candidate_labels')
+    print(f'article count: {article_count} vs {len(affiliation_set)}')
+    with open(args.abstract_tag_file, 'r') as file:
+        candidate_labels = ', '.join([v for v in file.read().split('\n') if len(v) > 0])
+    print(candidate_labels)
+
+    # Initialize the zero-shot classification pipeline
+    batch_size = 10
+    classifier = pipeline(
+        "zero-shot-classification",
+        model="MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+        device=0,  # Use GPU if available
+        batch_size=batch_size,
+        truncation=True
+    )
+    print(classifier.model.device)
+
+    # Determine the target path for the output
+    target_path = args.target_path
+    if target_path is None:
+        target_path = '%s_classified%s' % os.path.splitext(args.affiliation_pickle_list)
+
+    total_time = 0
+    events = 0
+
+    # Open the target file for writing the classification results
+    with open(target_path, 'w', encoding='utf-8') as file:
+        print(f'opening {target_path} for writing {len(affiliation_set)} affiliations')
+        start_time = time.time()
+
+        # Generator function to yield affiliation strings
+        def affiliation_generator():
+            for _, affiliation_str, _ in affiliation_set:
+                yield affiliation_str
+
+        index = 1
+        # Perform classification and write results
+        for (article_id, affiliation_str, abstract_str), result in zip(
+            affiliation_set,
+            classifier(affiliation_generator(), candidate_labels, multi_label=True)
+        ):
+            file.write(f'{article_id}\n{affiliation_str}\n{abstract_str}\n')
+            for label, score in zip(result['labels'], result['scores']):
+                file.write(f'{label}: {score}\n')
+            file.write('\n')
+            file.flush()
+            current_time = (time.time() - start_time)
+            events += 1
+            total_time += current_time
+            print(f'({index}/{len(affiliation_set)}) took {current_time}s to tag {article_id} '
+                  f'(time left: {total_time/events*(len(affiliation_set)-index)})')
+            start_time = time.time()
+            index += 1
+
+if __name__ == '__main__':
+    main()
+
+```
+ 
+Not only does ChatGPT comment the code for me, it also gives an overview of the script at the end.  I did not notice any changes to the code, except for the removal of some lines of code that had been commented out in the original (and were thus not functional).  But it would be important to verify functionality of the updated code!
+
+::::
+:::
+ 
+### Suggesting improvements to code (refactoring)
+
+Often we have a piece of code we've written, or borrowed from somewhere else, but it is slow or hard to read, and we want to improve it (refactoring).  Perhaps we want to take a repeated process and streamline it or parallelize it across multiple processors.  ChatGPT can help with this as well.
+
+::: {.callout-exercise}
+Let's ask ChatGPT to take the nested for-loop above (a functional but not particularly elegant piece of code) and ask ChatGPT to recommend improvements.
+
+![](images/ai_coding_support/chatgpt_refactor.png){width=600 fig-align="center"}
+
+:::: {.callout-answer}
+Before offering refactored code, it offered some tips, quoted here:
+
+> Your code is functional, but it can be improved for efficiency and elegance. Here are some suggested improvements:
+> 
+> Key Enhancements:
+> 
+> * Avoid explicit indexing (`i <- 1`): Instead of manually managing an index for the list, you can use `append()` or `lapply()`.
+> * Use `split()` + `lapply()`: This avoids explicit for loops and makes the code more concise and efficient.
+> * Use `bind_rows()` from `dplyr`: Instead of `do.call(rbind, results)`, `dplyr::bind_rows()` is faster and more readable.
+
+Note that ChatGPT can't see the rest of my script, including the part where I suggested `bind_rows()`... 
+
+Here's the refactored code it suggested:
+
+```{r}
+library(dplyr)
+
+# Function to apply calc_lm across groups
+results_df <- penguins_filtered %>%
+  split(list(.$species, .$sex), drop = TRUE) %>%  # Split by species and sex
+  lapply(function(df) {
+    result <- calc_lm(df, "bill_length_mm", "bill_depth_mm")  # Apply function
+    result$species <- unique(df$species)  # Add species info
+    result$sex <- unique(df$sex)          # Add sex info
+    return(result)
+  }) %>%
+  bind_rows()  # Combine into a single dataframe
+
+```
+
+The results are functionally identical (though some unimportant differences in format - e.g., the order of rows, or the row names).
+
+::::
+:::
+
+### Translating code from one language to another
+
+If you are proficient in one language but not another, ChatGPT can help you translate code from one language to another.  This can be especially helpful as you are learning a new language, or if some functionality available in an unfamiliar language is not available in your preferred language.
+
+::: {.callout-exercise}
+
+Let's try giving ChatGPT the nested loop code again, but this time ask to translate to Python.
+
+![](images/ai_coding_support/chatgpt_translate.png){width=600 fig-align="center"}
+
+:::: {.callout-answer}
+
+Here's what it returned for me, nearly a line-by-line translation with a note: "Here's the equivalent Python code using **pandas** and **list comprehensions** for efficiency."
+
+However, note that the code is not stand-alone, since it calls the function `calc_lm()` that we defined previously but in R, and calls for the `penguins_filtered` object which has not yet been loaded and filter in Python.  But those can be fixed pretty easily!  (e.g., ask ChatGPT to rewrite `calc_lm` in Python, and suggest code for loading/filtering the penguins data in Python).
+
+```{python}
+#| eval: false
+
+import pandas as pd
+
+# Create an empty list to store results
+results = []
+
+# Iterate over species
+for species in penguins_filtered['species'].unique():
+    # Iterate over sex
+    for sex in penguins_filtered['sex'].unique():
+        # Filter the DataFrame for the specific species and sex
+        subset = penguins_filtered[(penguins_filtered['species'] == species) & 
+                                   (penguins_filtered['sex'] == sex)]
+        
+        # Apply the function to the filtered data
+        result = calc_lm(subset, "bill_length_mm", "bill_depth_mm")
+        
+        # Add species and sex information
+        result['species'] = species
+        result['sex'] = sex
+        
+        # Append the result to the list
+        results.append(result)
+
+# Combine the results into a single DataFrame
+results_df = pd.concat(results, ignore_index=True)
+
+```
+
+After the code, it listed some changes/improvements it made, as well, which is helpful.
+
+::::
+
+And as long as we're here, let's ask it to refactor this code in Python instead of R:
+
+![](images/ai_coding_support/chatgpt_translate_refactor.png){width=600 fig-align="center"}
+
+:::: {.callout-answer}
+
+And again, it provided a little context, and some nice tidy code (with the same limitations noted above).  Note this refactored version in Python looks pretty different from the refactored version in R, but shares some functional similarities.
+
+```{python}
+#| eval: false
+
+import pandas as pd
+
+# Define a function to process each group
+def process_group(group):
+    result = calc_lm(group, "bill_length_mm", "bill_depth_mm")  # Apply function
+    result["species"] = group["species"].iloc[0]  # Assign species
+    result["sex"] = group["sex"].iloc[0]  # Assign sex
+    return result
+
+# Apply function across groups and combine results
+results_df = pd.concat(
+    [process_group(group) for _, group in penguins_filtered.groupby(["species", "sex"])],
+    ignore_index=True
+)
+
+```
+
+::::
+:::
+
