@@ -1,13 +1,10 @@
 ---
-title: Collaborating with Git and GitHub
+title: AI-assisted Lit Review
 ---
 
 :::{.callout-tip}
 ## Learning Objectives
 
-- Apply the principles, features, and collaboration tools of Git and GitHub to effectively collaborate with colleagues on code
-- Analyze and evaluate common causes of conflicts that arise when collaborating on repositories 
-- Demonstrate the ability to resolve conflicts using Git conflict resolution techniques
-- Apply workflows and best practices that minimize conflicts on collaborative repositories
+- things
 :::
 

@@ -2,11 +2,11 @@
   {
     "objectID": "s03_ai_lit_review.html",
     "href": "s03_ai_lit_review.html",
-    "title": "Collaborating with Git and GitHub",
+    "title": "AI-assisted Lit Review",
     "section": "",
-    "text": "Learning Objectives\n\n\n\n\nApply the principles, features, and collaboration tools of Git and GitHub to effectively collaborate with colleagues on code\nAnalyze and evaluate common causes of conflicts that arise when collaborating on repositories\nDemonstrate the ability to resolve conflicts using Git conflict resolution techniques\nApply workflows and best practices that minimize conflicts on collaborative repositories",
+    "text": "Learning Objectives\n\n\n\n\nthings",
     "crumbs": [
-      "Collaborating with Git and GitHub"
+      "AI-assisted Lit Review"
     ]
   },
   {
@@ -92,21 +92,21 @@
   {
     "objectID": "s02_ai_and_apis.html",
     "href": "s02_ai_and_apis.html",
-    "title": "Git and GitHub",
+    "title": "ChatGPT API",
     "section": "",
-    "text": "Learning Objectives\n\n\n\n\nApply the principles of Git to track and manage changes of a project\nUtilize the Git workflow including pulling changes, staging modified files, committing changes, pulling again to incorporate remote changes, and pushing changes to a remote repository\nCreate and configure Git repositories using different workflows",
+    "text": "Learning Objectives\n\n\n\n\nimportant stuff",
     "crumbs": [
-      "Git and GitHub"
+      "ChatGPT API"
     ]
   },
   {
     "objectID": "s02_ai_and_apis.html#introduction-to-version-control",
     "href": "s02_ai_and_apis.html#introduction-to-version-control",
-    "title": "Git and GitHub",
+    "title": "ChatGPT API",
     "section": "1 Introduction to Version Control",
     "text": "1 Introduction to Version Control",
     "crumbs": [
-      "Git and GitHub"
+      "ChatGPT API"
     ]
   }
 ]
