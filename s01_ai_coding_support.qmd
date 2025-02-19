@@ -12,12 +12,13 @@ title: AI for Coding Support
     * Translating pseudocode into functional code
     * Commenting existing code
     * Suggesting improvements to code for performance or readability
+    * Writing unit tests for functions
     * Translating code from one language to another (e.g., R vs. Python)
 :::
 
 ## Active coding support with GitHub Copilot
 
-GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is available as a plugin for Visual Studio Code, and it can also be used in RStudio.  Copilot is a large language model, related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions based on the context of your code.  In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot to assist with coding tasks.
+GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is available as a plugin for IDEs such as Visual Studio Code and RStudio.  Copilot is a large language model (LLM) related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions in real time based on the context of your coding task.  In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot to assist with coding tasks.
 
 If you have an [education GitHub account](https://github.com/education) (e.g., an .edu email address that is associated with your GitHub account), you should be able to get free access to Copilot.  Otherwise you may need to pay for a subscription.  See [more Copilot requirements here](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html).
 
@@ -169,7 +170,7 @@ Let's write a function that takes a dataframe of data and for two given columns,
 
 :::: {.callout-answer}
 
-Here's what Copilot suggested for me writing this lesson.  Note that it recognized data in previous code chunks, and when I started writing a comment to test, it assumed I wanted to use that data.
+Here's what Copilot suggested for me, line by line, as I was writing this lesson.  After finishing the function, I started writing a comment to test, it assumed I wanted to use data that I had mentioned earlier in the script, i.e., `penguins_filtered`.
 
 ```{r}
 # function to calculate slope, intercept, and p value for a linear regression model
@@ -190,9 +191,9 @@ calc_lm <- function(data, y, x) {
 calc_lm(penguins_filtered, "bill_length_mm", "bill_depth_mm")
 ```
 
-Does Copilot's suggestion work for you?  If not take a moment to fix it and make it work.  Some observations on the code presented here:
+Does Copilot's suggestion work for you?  If not take a moment to fix it and make it work.  For me, it created a perfectly good function the first time.  Some observations on the code presented here:
 
-* I would probably avoid overwriting the local value of `x` and `y` in the function, as it could be confusing.
+* I would have avoided overwriting the local value of `x` and `y` in the function, as it could be confusing.
 * Note that the p value it selects from the linear model is that of the slope, not the intercept.  That is probably what we wanted, but would be a good idea to make sure that meets our expectations!
 * I might also prefer to have the output in a different format, perhaps using `broom::tidy()`.
 
@@ -573,6 +574,94 @@ The results are functionally identical (though some unimportant differences in f
 ::::
 :::
 
+### Writing unit tests
+
+When writing functions, it is good practice to write unit tests to ensure that the function works as expected.  A unit test is a bit of code that verifies the accuracy of a small, isolated block of application code (i.e., a small function).  Typically they run a function with known inputs and test to make sure the outputs match expectations.  ChatGPT can help you write unit tests for your functions, which can be especially helpful if you are not familiar with them.
+
+::: {.callout-exercise}
+Let's ask ChatGPT to write a unit test for our `calc_lm()` function.  This is a simple function that takes two vectors of data, runs a linear regression, and reports the slope, intercept, and p value.  
+
+![](images/ai_coding_support/chatgpt_unittest1.png){width=600 fig-align="center"}
+
+:::: {.callout-answer}
+Here is what ChatGPT suggested:
+
+```{r}
+#| eval: false
+#| code-fold: true
+
+library(testthat)
+
+# Load the function (if not already sourced)
+# source("your_script.R")
+
+# Create a test dataset
+test_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),
+  y = c(2, 4, 6, 8, 10)  # Perfect linear relationship (y = 2x)
+)
+
+test_that("calc_lm computes correct slope, intercept, and p-value", {
+  result <- calc_lm(test_data, "y", "x")
+  
+  # Expected values
+  expected_slope <- 2  # Since y = 2x
+  expected_intercept <- 0  # No intercept
+  expected_p_value <- 2.2e-16  # Should be very close to zero due to perfect correlation
+  
+  # Check if slope and intercept are as expected
+  expect_equal(result$slope, expected_slope, tolerance = 1e-6)
+  expect_equal(result$intercept, expected_intercept, tolerance = 1e-6)
+  
+  # Check if p-value is very small (indicating strong statistical significance)
+  expect_lt(result$p_value, 0.05)
+})
+```
+
+This uses the `testthat` package, designed specifically for unit testing.  It creates a test dataset with a perfect linear relationship, feeds it into the function, and compares the output values to our expectations.  It is a good start, but when running it, there is an unexpected snag.  The test doesn't take into account that `summary()` on a perfectly linear relationship throws a warning, causing the unit test to fail.  We could easily adjust the test to account for this, e.g., by adding a little noise into the test data to make it not perfectly linear, but the important thing is that we as the coder must verify that the code works as expected.  
+
+Just to see what would happen, I told ChatGPT about the warning:
+
+![](images/ai_coding_support/chatgpt_unittest2.png){width=600 fig-align="center}
+
+And it adjusted the unit test to incorporate a small amount of noise, just as I would have done!
+
+```{r}
+#| eval: false
+#| code-fold: true
+library(testthat)
+
+# Load the function (if not already sourced)
+# source("your_script.R")
+
+# Create a test dataset with slight randomness to avoid perfect collinearity
+set.seed(123)  # For reproducibility
+test_data <- data.frame(
+  x = c(1, 2, 3, 4, 5),
+  y = c(2, 4, 6, 8, 10) + rnorm(5, mean = 0, sd = 0.1)  # Adding slight noise
+)
+
+test_that("calc_lm computes correct slope, intercept, and p-value", {
+  result <- calc_lm(test_data, "y", "x")
+  
+  # Expected values (approximately)
+  expected_slope <- 2
+  expected_intercept <- 0
+  
+  # Check if slope and intercept are close to expected values
+  expect_equal(result$slope, expected_slope, tolerance = 0.1)
+  expect_equal(result$intercept, expected_intercept, tolerance = 0.1)
+  
+  # Check if p-value indicates strong statistical significance
+  expect_lt(result$p_value, 0.05)
+})
+
+```
+
+
+::::
+:::
+
 ### Translating code from one language to another
 
 If you are proficient in one language but not another, ChatGPT can help you translate code from one language to another.  This can be especially helpful as you are learning a new language, or if some functionality available in an unfamiliar language is not available in your preferred language.
@@ -654,4 +743,34 @@ results_df = pd.concat(
 
 ::::
 :::
+
+### Summary: ChatGPT for coding
+
+::: {.callout-tip title="Summary: ChatGPT tips"}
+
+* ChatGPT can provide coding support by:
+    * generating code from pseudocode
+    * commenting existing code
+    * suggesting improvements to code (refactoring)
+    * translating code from one language to another
+* As with Copilot, when you provide more context to ChatGPT (as pseudocode, example code, desired packages, etc), you will get better results
+* As with Copilot, you are responsible for the final product.  Test the code, check for errors, and make sure it works as expected!
+
+:::
+
+## Further considerations
+
+What about hallucinations and errors?  
+
+* LLMs and generative AI are known to "hallucinate" and make up incorrect information from time to time.  In coding, this may be less of an issue, since you can run the code to test it and verify that the results match expectations.  
+* However, if you are asking an LLM to code something that you don't fully understand, you may not recognize errors or incorrect results.  It might be risky to ask an LLM to write code for you that you wouldn't be able to write yourself if given the time.
+* LLMs are essentially trying to provide the most likely completion to a given prompt, i.e., the least surprising answer.  For creative writing tasks, this can result in pretty mediocre and predictable prose.  But for a highly structured task like coding, surprise is not the goal!  An LLM trained on a massive code base will have a pretty good idea of the most common - and least surprising - ways to approach a typical coding problem.
+
+What about ethics?  
+
+* LLMs and generative AI are trained on large datasets, often including content scraped from artists and writers (and coders) without their consent.  This raises ethical concerns about the use of generative AI for creative tasks, for plagiarism and exploitation of writers' work and for the potential for putting artists out of work.  For coding tasks this may be less of an issue, as much of the codebase is open source, e.g., public repos on Github or Q&A on Stack Overflow, though even open source material is often licensed with rules for attribution that may be violated by AI-generated code.
+* While an LLM doesn't ingest the data or information you put into your prompts (once it is trained, it can't learn new things), it is still important to consider security and privacy risks.  Including sensitive or private information in a prompt may result in some of that sensitive information being exposed in the resulting code.  If you are coding an analysis that requires privacy or security, the LLM may not properly understand those privacy or security concerns and could generate code with security liabilities.
+
+
+
 

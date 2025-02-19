@@ -53,8 +53,8 @@ website:
     contents:
       - index.qmd # preface
       - s01_ai_coding_support.qmd  ###  (coreRlessons version NA)
-      - s02_ai_lit_review.qmd  ###  (coreRlessons version NA)
-      - s03_ai_and_apis.qmd  ###  (coreRlessons version NA)
+      - s02_ai_and_apis.qmd  ###  (coreRlessons version NA)
+      - s03_ai_lit_review.qmd  ###  (coreRlessons version NA)
 
   page-footer:
     center: "Copyright \u00a9 2024, NCEAS"
