@@ -16,11 +16,13 @@ title: AI for Coding Support
     * Translating code from one language to another (e.g., R vs. Python)
 :::
 
+![](images/ai_coding_support/english.png){width=600 fig-align="center"}
+
 ## Active coding support with GitHub Copilot
 
 GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is available as a plugin for IDEs such as Visual Studio Code and RStudio.  Copilot is a large language model (LLM) related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions in real time based on the context of your coding task.  In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot to assist with coding tasks.
 
-If you have an [education GitHub account](https://github.com/education) (e.g., an .edu email address that is associated with your GitHub account), you should be able to get free access to Copilot.  Otherwise you may need to pay for a subscription.  See [more Copilot requirements here](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html).
+If you have an [education GitHub account](https://github.com/education) (e.g., an .edu email address that is associated with your GitHub account), you should be able to get free access to Copilot Pro.  Otherwise you can access a free but limited version of Copilot, which should be adequate for this session.  See [more Copilot requirements here](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html).
 
 ::: {.callout-note}
 
@@ -52,7 +54,18 @@ Now you should be good to go!  Open up a new Quarto document and start typing, s
 
 ### Using Copilot to assist with coding tasks
 
-You need a fundamental understanding of coding to be able to use Copilot effectively.  It can make intelligent guesses as to your intentions, but doesn't necessarily know where your files are, or what you intend to do with the data.  So it is helpful to guide Copilot in the right direction using comments, sentences, and pseudocode before you start any actual coding.  The more information you provide through your Markdown text and code-chunk comments, the better Copilot will be able to help you.
+You need a fundamental understanding of coding to be able to use Copilot effectively.  It can make intelligent guesses as to your intentions, but doesn't necessarily know where your files are, or what you intend to do with the data.  So it is helpful to guide Copilot in the right direction using comments, sentences, and "pseudocode" before you start any actual coding.  The more information you provide through your Markdown text and code-chunk comments, the better Copilot will be able to help you.
+
+::: {.callout-tip}
+## Pseudocode
+
+Pseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points.  There are more formalized versions of pseudocode, but here we will stick with just plain English sentences to communicate our intentions.  Some tips:
+
+* Specify whether you want to use the `tidyverse` metapackage or base R functions (or another language, e.g., Python!).
+* If you know the names of certain functions, it is helpful to use those in your pseudocode, to help Copilot incorporate those into its code completions.
+* Use comments to signal to Copilot what you'd like to do at each step.
+
+:::
 
 ::: {.callout-exercise}
 
@@ -62,7 +75,7 @@ Create a code chunk, read in some data, do some data wrangling, and then make a 
 * drop any incomplete observations (any NA values)
 * filter to just keep the Chinstrap and Adelie species
 * generate a scatter plot of bill length vs. bill depth for each species
-* then, for the two species, run a t-test to determine the degree to which the bill lengths are statistically different between the two species.  Print a summary of the t test results.
+* then, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species.  Print a summary of the t test results.
 
 ::::{.callout-answer}
 
@@ -91,7 +104,7 @@ ggplot(penguins_filtered, aes(x = bill_length_mm, y = bill_depth_mm, color = spe
   theme_minimal() +
   theme(legend.position = "bottom")
 
-### Run a t-test to determine the degree to which the bill lengths are statistically different between the two species
+### Run a t-test to determine whether the bill lengths are statistically different between the two species
 t.test(bill_length_mm ~ species, data = penguins_filtered)
 
 ### Print a summary of the t test results as a dataframe
@@ -103,17 +116,6 @@ t.test(bill_length_mm ~ species, data = penguins_filtered) %>%
 ::::
 :::
 
-::: {.callout-tip}
-## Pseudocode
-
-Pseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points, just as we did above.  Some tips:
-
-* Specify if you want to use the `tidyverse` metapackage or base R functions.
-* If you know the names of certain functions, it is helpful to use those in your pseudocode, to help Copilot incorporate those into its code completions.
-* Use comments to signal to Copilot what you'd like to do at each step.
-
-:::
-
 ::: {.callout-exercise}
 Let's try the same exercise but this time let's only use base R functions:
 
@@ -121,7 +123,7 @@ Let's try the same exercise but this time let's only use base R functions:
 * drop incomplete observations
 * filter to just keep the Chinstrap and Adelie species
 * generate a scatter plot of bill length vs. bill depth for each species
-* then, for the two species, run a t-test to determine the degree to which the bill lengths are statistically different between the two species.  Print a summary of the t test results.
+* then, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species.  Print a summary of the t test results.
 
 :::: {.callout-answer}
 
@@ -289,7 +291,7 @@ Let's give ChatGPT the same sequence of steps we used above.  We will copy and p
 * drop any incomplete observations (any NA values)
 * filter to just keep the Chinstrap and Adelie species
 * generate a scatter plot of bill length vs. bill depth for each species
-* then, for the two species, run a t-test to determine the degree to which the bill lengths are statistically different between the two species.  Print a summary of the t test results.
+* then, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species.  Print a summary of the t test results.
 
 ![](images/ai_coding_support/chatgpt_pseudocode1.png){width=600 fig-align="center"}
 
@@ -386,7 +388,7 @@ https://raw.githubusercontent.com/convei-wwf/NLParty/refs/heads/main/abstract_cl
 ![](images/ai_coding_support/chatgpt_comment.png){width=600 fig-align="center"}
 
 :::: {.callout-answer}
-Here's what it came up with! (This is a long script, so code folding is enabled)
+Here's what it came up with! Try asking ChatGPT to comment for you as if you were completely new to Python and see how it changes.
 
 ```{python}
 #| eval: false
@@ -531,7 +533,7 @@ Not only does ChatGPT comment the code for me, it also gives an overview of the 
  
 ### Suggesting improvements to code (refactoring)
 
-Often we have a piece of code we've written, or borrowed from somewhere else, but it is slow or hard to read, and we want to improve it (refactoring).  Perhaps we want to take a repeated process and streamline it or parallelize it across multiple processors.  ChatGPT can help with this as well.
+Often we have a piece of code we've written, or borrowed from somewhere else, but it is slow or hard to read, and we want to improve it ("refactoring").  Perhaps we want to take a repeated process and streamline it or parallelize it across multiple processors.  ChatGPT can help with this as well.
 
 ::: {.callout-exercise}
 Let's ask ChatGPT to take the nested for-loop above (a functional but not particularly elegant piece of code) and ask ChatGPT to recommend improvements.
@@ -770,7 +772,6 @@ What about ethics?
 
 * LLMs and generative AI are trained on large datasets, often including content scraped from artists and writers (and coders) without their consent.  This raises ethical concerns about the use of generative AI for creative tasks, for plagiarism and exploitation of writers' work and for the potential for putting artists out of work.  For coding tasks this may be less of an issue, as much of the codebase is open source, e.g., public repos on Github or Q&A on Stack Overflow, though even open source material is often licensed with rules for attribution that may be violated by AI-generated code.
 * While an LLM doesn't ingest the data or information you put into your prompts (once it is trained, it can't learn new things), it is still important to consider security and privacy risks.  Including sensitive or private information in a prompt may result in some of that sensitive information being exposed in the resulting code.  If you are coding an analysis that requires privacy or security, the LLM may not properly understand those privacy or security concerns and could generate code with security liabilities.
-
 
 
 
