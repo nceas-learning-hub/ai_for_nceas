@@ -16,11 +16,21 @@ title: AI for Coding Support
     * Translating code from one language to another (e.g., R vs. Python)
 :::
 
-![](images/ai_coding_support/english.png){width=600 fig-align="center"}
+[Full Screen](slides/r_programming_introduction/example_slides.html)
+
+```{=html}
+<iframe class="slide-deck" src="slides/ai_coding_support/slides.html" height="337px" width="600px" style="border: 1px solid #2e3846;"></iframe>
+```
+
+![](images/ai_coding_support/english.png){width=60% fig-alt="The hottest new programming language is English - Andrej Karpathy"}
+
+We can use GitHub Copilot and/or Large Language Models like ChatGPT or Claude to help us write code in R, Python, or other languages.
+
 
 ## Active coding support with GitHub Copilot
 
-GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is available as a plugin for IDEs such as Visual Studio Code and RStudio.  Copilot is a large language model (LLM) related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions in real time based on the context of your coding task.  In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot to assist with coding tasks.
+GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is effectively "pair programming" where you and a partner (in this case, an AI partner) code together in real time.
+It is available as a plugin for IDEs such as Visual Studio Code and RStudio.  Copilot is a large language model (LLM) related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions in real time based on the context of your coding task.  In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot effectively to assist with coding tasks.
 
 If you have an [education GitHub account](https://github.com/education) (e.g., an .edu email address that is associated with your GitHub account), you should be able to get free access to Copilot Pro.  Otherwise you can access a free but limited version of Copilot, which should be adequate for this session.  See [more Copilot requirements here](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html).
 
@@ -30,27 +40,7 @@ Here we will focus on using AI code completion tools in R and RStudio, since it 
 
 :::
 
-### Configure RStudio to work with GitHub Copilot
 
-In RStudio, open the "Tools" menu and scroll down to the "Global Options" menu item. In the dialog box, at the bottom of the left hand sidebar, you should see "Copilot" as an option (if not, perhaps you have an old version of RStudio, requires 2023.09.0 or later!).
-
-![](images/ai_coding_support/copilot_options.png){width=400 fig-align="center"}
-
-Click on the checkbox for "Enable GitHub Copilot."  You may wish to change some of the other options: setting Copilot to auto-suggest completions or only show completions when asked using `ctrl-\`, or changing the delay time before Copilot starts giving suggestions.
-
-Next, click the "sign in" button under the "Enable GitHub Copilot" checkbox. This will open dialog box with a link and an eight-digit verification code:
-
-![](images/ai_coding_support/copilot_login_code.png){width=400 fig-align="center"}
-
-Click on the link, enter the verification code, and sign in with your GitHub account.
-
-![](images/ai_coding_support/copilot_login_code2.png){width=400 fig-align="center"}
-
-Once you've entered the authorization code, you will need to authorize RStudio to use Copilot:
-
-![](images/ai_coding_support/copilot_login_code3.png){width=400 fig-align="center"}
-
-Now you should be good to go!  Open up a new Quarto document and start typing, see if it starts autocompleting your sentences or code.
 
 ### Using Copilot to assist with coding tasks
 
@@ -374,6 +364,8 @@ This code works exactly as desired, though we set it to not evaluate here in the
 
 ::::
 :::
+
+![](images/ai_coding_support/thank_you.jpg){.lightbox width=300 fig-align="center"}
 
 ### Commenting existing code
 

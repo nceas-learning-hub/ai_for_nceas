@@ -76,6 +76,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-cb1ef3049447f7db4cf1195ab26f18b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-0b1360af0479f672ace68f00cb592df9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -140,6 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="https://www.oharascience.com/">
  <span class="dropdown-text">Casey O’Hara</span></a>
   </li>  
+        <li class="dropdown-header">Li Kui</li>
     </ul>
   </li>
   <li class="nav-item compact">
@@ -214,13 +218,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./s02_ai_and_apis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ChatGPT API</span></a>
+  <a href="./s02_ai_analysis_in_llm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analysis using LLMs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./s03_ai_lit_review.html" class="sidebar-item-text sidebar-link">
+  <a href="./s03_ai_and_apis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accessing the ChatGPT API (or Claude API?)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s04_ai_lit_review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AI-assisted Lit Review</span></a>
   </div>
 </li>
@@ -236,10 +246,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#active-coding-support-with-github-copilot" id="toc-active-coding-support-with-github-copilot" class="nav-link active" data-scroll-target="#active-coding-support-with-github-copilot"><span class="header-section-number">1</span> Active coding support with GitHub Copilot</a>
   <ul class="collapse">
-  <li><a href="#configure-rstudio-to-work-with-github-copilot" id="toc-configure-rstudio-to-work-with-github-copilot" class="nav-link" data-scroll-target="#configure-rstudio-to-work-with-github-copilot"><span class="header-section-number">1.1</span> Configure RStudio to work with GitHub Copilot</a></li>
-  <li><a href="#using-copilot-to-assist-with-coding-tasks" id="toc-using-copilot-to-assist-with-coding-tasks" class="nav-link" data-scroll-target="#using-copilot-to-assist-with-coding-tasks"><span class="header-section-number">1.2</span> Using Copilot to assist with coding tasks</a></li>
-  <li><a href="#using-copilot-for-more-complex-coding-tasks" id="toc-using-copilot-for-more-complex-coding-tasks" class="nav-link" data-scroll-target="#using-copilot-for-more-complex-coding-tasks"><span class="header-section-number">1.3</span> Using Copilot for more complex coding tasks</a></li>
-  <li><a href="#copilot-for-coding-summary" id="toc-copilot-for-coding-summary" class="nav-link" data-scroll-target="#copilot-for-coding-summary"><span class="header-section-number">1.4</span> Copilot for coding: summary</a></li>
+  <li><a href="#using-copilot-to-assist-with-coding-tasks" id="toc-using-copilot-to-assist-with-coding-tasks" class="nav-link" data-scroll-target="#using-copilot-to-assist-with-coding-tasks"><span class="header-section-number">1.1</span> Using Copilot to assist with coding tasks</a></li>
+  <li><a href="#using-copilot-for-more-complex-coding-tasks" id="toc-using-copilot-for-more-complex-coding-tasks" class="nav-link" data-scroll-target="#using-copilot-for-more-complex-coding-tasks"><span class="header-section-number">1.2</span> Using Copilot for more complex coding tasks</a></li>
+  <li><a href="#copilot-for-coding-summary" id="toc-copilot-for-coding-summary" class="nav-link" data-scroll-target="#copilot-for-coding-summary"><span class="header-section-number">1.3</span> Copilot for coding: summary</a></li>
   </ul></li>
   <li><a href="#iterative-coding-support-with-chatgpt" id="toc-iterative-coding-support-with-chatgpt" class="nav-link" data-scroll-target="#iterative-coding-support-with-chatgpt"><span class="header-section-number">2</span> Iterative coding support with ChatGPT</a>
   <ul class="collapse">
@@ -288,10 +297,14 @@ Learning objectives
 </ul>
 </div>
 </div>
+<p><a href="slides/r_programming_introduction/example_slides.html">Full Screen</a></p>
+<iframe class="slide-deck" src="slides/ai_coding_support/slides.html" height="337px" width="600px" style="border: 1px solid #2e3846;"></iframe>
+<p><img src="images/ai_coding_support/english.png" class="img-fluid" style="width:60.0%" alt="The hottest new programming language is English - Andrej Karpathy"></p>
+<p>We can use GitHub Copilot and/or Large Language Models like ChatGPT or Claude to help us write code in R, Python, or other languages.</p>
 <section id="active-coding-support-with-github-copilot" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="active-coding-support-with-github-copilot"><span class="header-section-number">1</span> Active coding support with GitHub Copilot</h2>
-<p>GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is available as a plugin for IDEs such as Visual Studio Code and RStudio. Copilot is a large language model (LLM) related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions in real time based on the context of your coding task. In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot to assist with coding tasks.</p>
-<p>If you have an <a href="https://github.com/education">education GitHub account</a> (e.g., an .edu email address that is associated with your GitHub account), you should be able to get free access to Copilot. Otherwise you may need to pay for a subscription. See <a href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html">more Copilot requirements here</a>.</p>
+<p>GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is effectively “pair programming” where you and a partner (in this case, an AI partner) code together in real time. It is available as a plugin for IDEs such as Visual Studio Code and RStudio. Copilot is a large language model (LLM) related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions in real time based on the context of your coding task. In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot effectively to assist with coding tasks.</p>
+<p>If you have an <a href="https://github.com/education">education GitHub account</a> (e.g., an .edu email address that is associated with your GitHub account), you should be able to get free access to Copilot Pro. Otherwise you can access a free but limited version of Copilot, which should be adequate for this session. See <a href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html">more Copilot requirements here</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -305,40 +318,29 @@ Note
 <p>Here we will focus on using AI code completion tools in R and RStudio, since it is a popular language and IDE for ecologists, but the same methods work for other languages and IDEs. VS Code is a Microsoft product, as is Copilot (and GitHub for that matter), so its integration is even better than RStudio.</p>
 </div>
 </div>
-<section id="configure-rstudio-to-work-with-github-copilot" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="configure-rstudio-to-work-with-github-copilot"><span class="header-section-number">1.1</span> Configure RStudio to work with GitHub Copilot</h3>
-<p>In RStudio, open the “Tools” menu and scroll down to the “Global Options” menu item. In the dialog box, at the bottom of the left hand sidebar, you should see “Copilot” as an option (if not, perhaps you have an old version of RStudio, requires 2023.09.0 or later!).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ai_coding_support/copilot_options.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
-</figure>
+<section id="using-copilot-to-assist-with-coding-tasks" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="using-copilot-to-assist-with-coding-tasks"><span class="header-section-number">1.1</span> Using Copilot to assist with coding tasks</h3>
+<p>You need a fundamental understanding of coding to be able to use Copilot effectively. It can make intelligent guesses as to your intentions, but doesn’t necessarily know where your files are, or what you intend to do with the data. So it is helpful to guide Copilot in the right direction using comments, sentences, and “pseudocode” before you start any actual coding. The more information you provide through your Markdown text and code-chunk comments, the better Copilot will be able to help you.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>Click on the checkbox for “Enable GitHub Copilot.” You may wish to change some of the other options: setting Copilot to auto-suggest completions or only show completions when asked using <code>ctrl-\</code>, or changing the delay time before Copilot starts giving suggestions.</p>
-<p>Next, click the “sign in” button under the “Enable GitHub Copilot” checkbox. This will open dialog box with a link and an eight-digit verification code:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ai_coding_support/copilot_login_code.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
-</figure>
+<div class="callout-title-container flex-fill">
+Pseudocode
 </div>
-<p>Click on the link, enter the verification code, and sign in with your GitHub account.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ai_coding_support/copilot_login_code2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
-</figure>
 </div>
-<p>Once you’ve entered the authorization code, you will need to authorize RStudio to use Copilot:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ai_coding_support/copilot_login_code3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
-</figure>
+<div class="callout-body-container callout-body">
+<p>Pseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points. There are more formalized versions of pseudocode, but here we will stick with just plain English sentences to communicate our intentions. Some tips:</p>
+<ul>
+<li>Specify whether you want to use the <code>tidyverse</code> metapackage or base R functions (or another language, e.g., Python!).</li>
+<li>If you know the names of certain functions, it is helpful to use those in your pseudocode, to help Copilot incorporate those into its code completions.</li>
+<li>Use comments to signal to Copilot what you’d like to do at each step.</li>
+</ul>
 </div>
-<p>Now you should be good to go! Open up a new Quarto document and start typing, see if it starts autocompleting your sentences or code.</p>
-</section>
-<section id="using-copilot-to-assist-with-coding-tasks" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="using-copilot-to-assist-with-coding-tasks"><span class="header-section-number">1.2</span> Using Copilot to assist with coding tasks</h3>
-<p>You need a fundamental understanding of coding to be able to use Copilot effectively. It can make intelligent guesses as to your intentions, but doesn’t necessarily know where your files are, or what you intend to do with the data. So it is helpful to guide Copilot in the right direction using comments, sentences, and pseudocode before you start any actual coding. The more information you provide through your Markdown text and code-chunk comments, the better Copilot will be able to help you.</p>
+</div>
 <div class="callout callout-style-default callout-exercise no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -347,7 +349,7 @@ Exercise 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div class="callout-exercise">
 <p>Create a code chunk, read in some data, do some data wrangling, and then make a plot with the resulting data. Use comments in your code chunk to signal to Copilot what you’d like to do at each step. Here are the steps we will do, using a <code>tidyverse</code> workflow:</p>
@@ -356,10 +358,10 @@ Exercise 1
 <li>drop any incomplete observations (any NA values)</li>
 <li>filter to just keep the Chinstrap and Adelie species</li>
 <li>generate a scatter plot of bill length vs.&nbsp;bill depth for each species</li>
-<li>then, for the two species, run a t-test to determine the degree to which the bill lengths are statistically different between the two species. Print a summary of the t test results.</li>
+<li>then, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species. Print a summary of the t test results.</li>
 </ul>
 <div class="callout callout-style-default callout-answer no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -368,7 +370,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="callout-answer">
 <p>Here’s what it looked like when I let Copilot help me write the code - I accepted each line by pressing “tab”. This might change entirely if I ran the exercise again. How different does it look from the code you wrote?</p>
@@ -420,7 +422,7 @@ Answer
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Run a t-test to determine the degree to which the bill lengths are statistically different between the two species</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Run a t-test to determine whether the bill lengths are statistically different between the two species</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bill_length_mm <span class="sc">~</span> species, <span class="at">data =</span> penguins_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -496,24 +498,6 @@ sample estimates:
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Pseudocode
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Pseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points, just as we did above. Some tips:</p>
-<ul>
-<li>Specify if you want to use the <code>tidyverse</code> metapackage or base R functions.</li>
-<li>If you know the names of certain functions, it is helpful to use those in your pseudocode, to help Copilot incorporate those into its code completions.</li>
-<li>Use comments to signal to Copilot what you’d like to do at each step.</li>
-</ul>
-</div>
-</div>
 <div class="callout callout-style-default callout-exercise no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -533,7 +517,7 @@ Exercise 2
 <li>drop incomplete observations</li>
 <li>filter to just keep the Chinstrap and Adelie species</li>
 <li>generate a scatter plot of bill length vs.&nbsp;bill depth for each species</li>
-<li>then, for the two species, run a t-test to determine the degree to which the bill lengths are statistically different between the two species. Print a summary of the t test results.</li>
+<li>then, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species. Print a summary of the t test results.</li>
 </ul>
 <div class="callout callout-style-default callout-answer no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -608,11 +592,11 @@ Copilot limitations!
 </div>
 </div>
 </section>
-<section id="using-copilot-for-more-complex-coding-tasks" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="using-copilot-for-more-complex-coding-tasks"><span class="header-section-number">1.3</span> Using Copilot for more complex coding tasks</h3>
+<section id="using-copilot-for-more-complex-coding-tasks" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="using-copilot-for-more-complex-coding-tasks"><span class="header-section-number">1.2</span> Using Copilot for more complex coding tasks</h3>
 <p>Copilot can also help you write functions and loops, among other things.</p>
-<section id="copilot-to-write-a-function" class="level4" data-number="1.3.1">
-<h4 data-number="1.3.1" class="anchored" data-anchor-id="copilot-to-write-a-function"><span class="header-section-number">1.3.1</span> Copilot to write a function</h4>
+<section id="copilot-to-write-a-function" class="level4" data-number="1.2.1">
+<h4 data-number="1.2.1" class="anchored" data-anchor-id="copilot-to-write-a-function"><span class="header-section-number">1.2.1</span> Copilot to write a function</h4>
 <div class="callout callout-style-default callout-exercise no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -683,8 +667,8 @@ x 1.263017  18.80234 4.863481e-05</code></pre>
 </div>
 </div>
 </section>
-<section id="copilot-to-write-a-loop" class="level4" data-number="1.3.2">
-<h4 data-number="1.3.2" class="anchored" data-anchor-id="copilot-to-write-a-loop"><span class="header-section-number">1.3.2</span> Copilot to write a loop</h4>
+<section id="copilot-to-write-a-loop" class="level4" data-number="1.2.2">
+<h4 data-number="1.2.2" class="anchored" data-anchor-id="copilot-to-write-a-loop"><span class="header-section-number">1.2.2</span> Copilot to write a loop</h4>
 <div class="callout callout-style-default callout-exercise no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -797,8 +781,8 @@ Answer
 </div>
 </section>
 </section>
-<section id="copilot-for-coding-summary" class="level3" data-number="1.4">
-<h3 data-number="1.4" class="anchored" data-anchor-id="copilot-for-coding-summary"><span class="header-section-number">1.4</span> Copilot for coding: summary</h3>
+<section id="copilot-for-coding-summary" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="copilot-for-coding-summary"><span class="header-section-number">1.3</span> Copilot for coding: summary</h3>
 <p>Copilot can be very helpful at speeding up your coding, especially for simple or well-defined tasks. One potential pitfall is that using Copilot in this way has a certain amount of path dependency. Once a bit of code is written in the script, Copilot takes that as given - it can’t modify or erase code, it can only keep going forward. So it is important to monitor your progress and make sure Copilot is not leading you astray. For example, if you prefer <code>tidyverse</code> workflow but Copilot is suggesting base R functions, you may need to intervene and guide Copilot in the right direction.</p>
 <p>In the next section, we’ll look at how to use ChatGPT to help with coding in a more interactive/iterative fashion, which can avoid path dependency but may introduce other complexities.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Summary: Copilot tips">
@@ -854,7 +838,7 @@ Exercise 5
 <li>drop any incomplete observations (any NA values)</li>
 <li>filter to just keep the Chinstrap and Adelie species</li>
 <li>generate a scatter plot of bill length vs.&nbsp;bill depth for each species</li>
-<li>then, for the two species, run a t-test to determine the degree to which the bill lengths are statistically different between the two species. Print a summary of the t test results.</li>
+<li>then, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species. Print a summary of the t test results.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -976,6 +960,11 @@ Answer
 </div>
 </div>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/ai_coding_support/thank_you.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/ai_coding_support/thank_you.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></a></p>
+</figure>
+</div>
 </section>
 <section id="commenting-existing-code" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="commenting-existing-code"><span class="header-section-number">2.2</span> Commenting existing code</h3>
@@ -1013,7 +1002,7 @@ Answer
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="callout-answer">
-<p>Here’s what it came up with! (This is a long script, so code folding is enabled)</p>
+<p>Here’s what it came up with! Try asking ChatGPT to comment for you as if you were completely new to Python and see how it changes.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1160,7 +1149,7 @@ Answer
 </section>
 <section id="suggesting-improvements-to-code-refactoring" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="suggesting-improvements-to-code-refactoring"><span class="header-section-number">2.3</span> Suggesting improvements to code (refactoring)</h3>
-<p>Often we have a piece of code we’ve written, or borrowed from somewhere else, but it is slow or hard to read, and we want to improve it (refactoring). Perhaps we want to take a repeated process and streamline it or parallelize it across multiple processors. ChatGPT can help with this as well.</p>
+<p>Often we have a piece of code we’ve written, or borrowed from somewhere else, but it is slow or hard to read, and we want to improve it (“refactoring”). Perhaps we want to take a repeated process and streamline it or parallelize it across multiple processors. ChatGPT can help with this as well.</p>
 <div class="callout callout-style-default callout-exercise no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2079,6 +2068,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

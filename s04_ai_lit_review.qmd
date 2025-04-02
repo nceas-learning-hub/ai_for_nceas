@@ -5,6 +5,5 @@ title: AI-assisted Lit Review
 :::{.callout-tip}
 ## Learning Objectives
 
-- things
+-   tbd
 :::
-

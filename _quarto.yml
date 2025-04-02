@@ -35,6 +35,8 @@ website:
         menu:
           - text: "Casey O'Hara"
             href: https://www.oharascience.com/
+          - text: "Li Kui"
+            # href: https://www.oharascience.com/
       - icon: github
         href: https://github.com/nceas-learning-hub/ai_for_nceas
         aria-label: GitHub
@@ -53,8 +55,9 @@ website:
     contents:
       - index.qmd # preface
       - s01_ai_coding_support.qmd  ###  (coreRlessons version NA)
-      - s02_ai_and_apis.qmd  ###  (coreRlessons version NA)
-      - s03_ai_lit_review.qmd  ###  (coreRlessons version NA)
+      - s02_ai_analysis_in_llm.qmd  ###  (coreRlessons version NA)
+      - s03_ai_and_apis.qmd  ###  (coreRlessons version NA)
+      - s04_ai_lit_review.qmd  ###  (coreRlessons version NA)
 
   page-footer:
     center: "Copyright \u00a9 2024, NCEAS"

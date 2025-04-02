@@ -1,0 +1,61 @@
+---
+title: Accessing the ChatGPT API (or Claude API?)
+---
+
+
+:::{.callout-tip}
+## Learning Objectives
+
+-   tbd
+:::
+
+<!-- ## Intro to APIs -->
+
+<!-- What is an API?  Why use it? -->
+
+<!-- REST API - basics -->
+
+<!-- - key - getting one, storing it in environment variable (not code) -->
+<!-- - endpoint -->
+<!-- - query parameters -->
+<!-- - response (JSON) -->
+<!-- - etiquette -->
+
+<!-- ### Examples of APIs?   -->
+
+<!-- IUCN Red List API - https://apiv3.iucnredlist.org/api/v3/docs -->
+<!-- WoRMS API - http://www.marinespecies.org/rest/ -->
+
+<!-- ## ChatGPT API -->
+
+<!-- * sign up for an account - https://platform.openai.com/signup -->
+<!-- * Creating a key - https://platform.openai.com/docs/guides/create-api-key -->
+<!-- * pricing - https://platform.openai.com/pricing -->
+<!--     * do users get a free trial? nope - sign up, minimum $5 -->
+
+<!-- * making a request - the hard way -->
+<!-- * interpreting the response - all the pieces -->
+<!-- * isolating the response content -->
+<!-- * controlling the response -->
+<!--     * temperature -->
+<!--     * max_tokens -->
+
+<!-- * Classification into groups -->
+<!-- * Sentiment analysis -->
+
+<!-- * zero-shot vs one-shot vs few-shot prompting -->
+
+<!-- * conversations vs. single-turn tasks -->
+<!-- * roles -->
+<!-- * how to provide content for roles -->
+<!-- * how to use assistant role to provide sample responses -->
+
+<!-- * moderation? skip it -->
+
+<!-- * openAI whisper -->
+<!-- * transcription (transcriptions endpoint) incl non-english -->
+<!-- * translation (translations endpoint) -->
+<!-- * using prompts to provide context or control output -->
+
+
+

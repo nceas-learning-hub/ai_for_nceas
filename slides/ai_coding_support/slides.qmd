@@ -1,0 +1,118 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    code-link: true
+    highlight-style: a11y
+    chalkboard: true
+    theme:
+      - lh_slides_style.scss
+---
+
+## {#title-slide data-menu-title="Title Slide"} 
+
+[AI for coding support]{.custom-title}
+
+[An introduction to using AI tools to boost your coding practice]{.custom-subtitle}
+
+::: {.body-text .center-text}
+![](images/copilot.webp){width=25%} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](images/chatgpt.png){width=25%} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](images/claude.png){width=25%}
+:::
+
+
+
+---
+
+##  {#r-rstudio data-menu-title="Difference between R and RStudio"}
+
+[Configure RStudio to work with Copilot]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+In RStudio:  __Tools__ $\Rightarrow$ __Global Options__. Look for "Copilot" at the bottom of the sidebar\*:
+
+![](images/copilot_options.png){width=400 fig-align="center"}
+
+\* Copilot requires RStudio version 2023.09.0 or later!
+
+:::
+
+---
+
+[Configure RStudio to work with Copilot]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+Click on the checkbox for "Enable GitHub Copilot."
+
+![](images/copilot_options2.png){width=600 fig-align="center"}
+
+You may wish to change some of the other options: setting Copilot to auto-suggest completions or only show completions when asked using `ctrl-\`, or changing the delay time before Copilot starts giving suggestions.
+
+::: 
+
+---
+
+[Configure RStudio to work with Copilot]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+Next, click the "sign in" button under the "Enable GitHub Copilot" checkbox.
+
+![](images/copilot_options3.png){width=600 fig-align="center"}
+This will open dialog box with a link and an eight-digit verification code.
+
+:::
+
+---
+
+[Configure RStudio to work with Copilot]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+Click on the link, enter the verification code, and sign in with your GitHub account.
+
+![](images/copilot_login_code.png){width=600 fig-align="center"}
+
+:::
+
+---
+
+[Configure RStudio to work with Copilot]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+Click on the link, enter the verification code, and sign in with your GitHub account.
+
+![](images/copilot_login_code2.png){width=400 fig-align="center"}
+
+Once you've entered the authorization code, you will need to authorize RStudio to use Copilot.
+
+:::
+
+---
+
+[Configure RStudio to work with Copilot]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+Once you've entered the authorization code, you will need to authorize RStudio to use Copilot:
+
+![](images/copilot_login_code3.png){width=400 fig-align="center"}
+
+Now you should be good to go!  Open up a new Quarto document and start typing, see if it starts autocompleting your sentences or code.
+
+:::
+
