@@ -36,7 +36,7 @@ website:
           - text: "Casey O'Hara"
             href: https://www.oharascience.com/
           - text: "Li Kui"
-            # href: https://www.oharascience.com/
+            href: https://www.linkedin.com/in/kui2014/
       - icon: github
         href: https://github.com/nceas-learning-hub/ai_for_nceas
         aria-label: GitHub
