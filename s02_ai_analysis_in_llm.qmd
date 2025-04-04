@@ -14,11 +14,11 @@ datasets, and to accelerate common analytical workflows through prompt
 engineering.
 
 -   Dataset Inspection
-    -   missing values
-    -   summary statistics
-    -   data transformation
+    -   examine missing values
+    -   calculate summary statistics
+    -   transform data
 -   Statistical Analysis
-    -   general time series plots
+    -   generate time series plots
     -   identify potential analytical directions
     -   create report-ready narratives using natural language generation
     -   export code for reproducibility

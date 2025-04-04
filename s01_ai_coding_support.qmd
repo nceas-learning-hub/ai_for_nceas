@@ -5,15 +5,17 @@ title: AI for Coding Support
 :::{.callout-tip}
 ## Learning objectives
 
-* Active coding support in RStudio with GitHub Copilot:
-    * Configuring RStudio to work with GitHub Copilot
-    * Exploring techniques to use Copilot to assist with coding tasks
-* Iterative coding support with ChatGPT:
-    * Translating pseudocode into functional code
-    * Commenting existing code
-    * Suggesting improvements to code for performance or readability
-    * Writing unit tests for functions
-    * Translating code from one language to another (e.g., R vs. Python)
+By the end of this session, you should be able to:
+
+* Effectively use Github Copilot in RStudio:
+    * Configure RStudio to work with GitHub Copilot
+    * Use comments and pseudocode to guide Copilot to assist with coding tasks
+* Leverage ChatGPT (or another Large Language Model) to assist with coding tasks:
+    * Translate pseudocode into functional code
+    * Comment existing code
+    * Suggest improvements to code for performance or readability
+    * Write unit tests for functions
+    * Translate code from one language to another (e.g., R vs. Python)
 :::
 
 [Full Screen](slides/r_programming_introduction/example_slides.html)
@@ -24,7 +26,10 @@ title: AI for Coding Support
 
 ![](images/ai_coding_support/english.png){width=60% fig-alt="The hottest new programming language is English - Andrej Karpathy"}
 
-We can use GitHub Copilot and/or Large Language Models like ChatGPT or Claude to help us write code in R, Python, or other languages.
+We can use GitHub Copilot and/or Large Language Models like ChatGPT or Claude to help us write code in R, Python, or other languages.  It might be handy to consider these as two different avenues of leveraging AI in coding:
+
+* Active coding support with GitHub Copilot: Copilot is like an assistant sitting next to you at your computer, writing code along with you, in real time - i.e., pair programming.
+* Iterative coding support with ChatGPT: ChatGPT is more like an assistant in the next office over, not writing code in real time with you, but collaborating through back-and-forth interactions and prompts.
 
 
 ## Active coding support with GitHub Copilot
