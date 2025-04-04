@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analysis using LLMs – AI for NCEAS</title>
+<title>Data Inspection and Analysis using LLMs – AI for NCEAS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4379b0ccadffce622b03caf4c46266b3.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-cb1ef3049447f7db4cf1195ab26f18b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -130,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Analysis using LLMs</h1>
+          <h1 class="quarto-secondary-nav-title">Data Inspection and Analysis using LLMs</h1>
         </a>     
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -142,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Analysis using LLMs</h1>
+      <h1 class="title d-none d-lg-block">Data Inspection and Analysis using LLMs</h1>
                       </div>
   </div>
     
@@ -185,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./s02_ai_analysis_in_llm.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Analysis using LLMs</span></a>
+ <span class="menu-text">Data Inspection and Analysis using LLMs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -205,8 +205,28 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#who-and-why-to-use-chatgpt-for-data-analysis" id="toc-who-and-why-to-use-chatgpt-for-data-analysis" class="nav-link active" data-scroll-target="#who-and-why-to-use-chatgpt-for-data-analysis"><span class="header-section-number">1</span> Who and why to use ChatGPT for data analysis?</a></li>
+  <li><a href="#dataset-inspection" id="toc-dataset-inspection" class="nav-link" data-scroll-target="#dataset-inspection"><span class="header-section-number">2</span> Dataset Inspection</a>
+  <ul class="collapse">
+  <li><a href="#general-understanding-of-the-dataset" id="toc-general-understanding-of-the-dataset" class="nav-link" data-scroll-target="#general-understanding-of-the-dataset"><span class="header-section-number">2.1</span> General understanding of the dataset</a></li>
+  <li><a href="#detect-missing-values" id="toc-detect-missing-values" class="nav-link" data-scroll-target="#detect-missing-values"><span class="header-section-number">2.2</span> Detect Missing Values</a></li>
+  <li><a href="#get-summary-statistics" id="toc-get-summary-statistics" class="nav-link" data-scroll-target="#get-summary-statistics"><span class="header-section-number">2.3</span> Get Summary Statistics</a></li>
+  <li><a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation"><span class="header-section-number">2.4</span> Data Transformation</a></li>
+  </ul></li>
+  <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis"><span class="header-section-number">3</span> Statistical Analysis</a>
+  <ul class="collapse">
+  <li><a href="#general-time-series-plots" id="toc-general-time-series-plots" class="nav-link" data-scroll-target="#general-time-series-plots"><span class="header-section-number">3.1</span> General Time Series Plots</a></li>
+  <li><a href="#identify-potential-analytical-directions" id="toc-identify-potential-analytical-directions" class="nav-link" data-scroll-target="#identify-potential-analytical-directions"><span class="header-section-number">3.2</span> Identify Potential Analytical Directions</a></li>
+  <li><a href="#create-report-ready-narratives" id="toc-create-report-ready-narratives" class="nav-link" data-scroll-target="#create-report-ready-narratives"><span class="header-section-number">3.3</span> Create Report-Ready Narratives</a></li>
+  <li><a href="#export-code-for-reproducibility" id="toc-export-code-for-reproducibility" class="nav-link" data-scroll-target="#export-code-for-reproducibility"><span class="header-section-number">3.4</span> Export Code for Reproducibility</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -225,13 +245,156 @@ Learning Objectives
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>By the end of this session, participants will be able to use paid ChatGPT effectively to inspect, explore, and generate insights from datasets, and to accelerate common analytical workflows through prompt engineering.</p>
 <ul>
-<li>tbd</li>
+<li>Dataset Inspection
+<ul>
+<li>missing values</li>
+<li>summary statistics</li>
+<li>data transformation</li>
+</ul></li>
+<li>Statistical Analysis
+<ul>
+<li>general time series plots</li>
+<li>identify potential analytical directions</li>
+<li>create report-ready narratives using natural language generation</li>
+<li>export code for reproducibility</li>
+</ul></li>
 </ul>
 </div>
 </div>
+<section id="who-and-why-to-use-chatgpt-for-data-analysis" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="who-and-why-to-use-chatgpt-for-data-analysis"><span class="header-section-number">1</span> Who and why to use ChatGPT for data analysis?</h2>
+<ul>
+<li>If you’re not a programmer or statistician, ChatGPT can help you understand the overall story of your dataset by breaking down key patterns, trends, and issues in plain language.</li>
+<li>If you’re working on a data synthesis project and need to filter through multiple datasets, ChatGPT can assist in rapidly exploring each dataset—using visualizations and summaries—to help you decide which ones are most relevant for your goals.</li>
+<li>If you want to apply statistical methods but don’t recall all the details, ChatGPT can suggest appropriate techniques based on your data and research questions, and generate ready-to-use code for implementation in Python or R.</li>
+<li>If you need to produce a quick data report, ChatGPT can significantly speed up the process by generating summary statistics, visualizations, and clear written narratives tailored for stakeholders or publication.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important Notes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>ChatGPT is not a substitute for human expertise, but it serves as a powerful assistant that can enhance and accelerate your analytical workflow.</li>
+<li>Data analysis done within ChatGPT is not reproducible. If you discover valuable insights, always ask ChatGPT to generate the underlying code so you can document and reproduce the process independently.</li>
+<li>Using a customized GPT model is recommended for data analysis, as it can handle larger datasets and provide more context-aware responses. Therefore, access to the paid version of ChatGPT (such as ChatGPT Plus or Team) is required for this exercise.</li>
+<li>If you’re comparing the speed of conducting analysis in ChatGPT versus R (with existing code), R is generally more reliable and consistently faster. ChatGPT’s performance can vary depending on the time of day, server load, and the specific GPT model you’re using.</li>
+</ul>
+<div class="table-sm" style="font-size: 0.85em;">
+<p>As of April 2025, here are the estimated CSV table size by GPT Model</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 10%">
+<col style="width: 34%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Token Limit</th>
+<th>Approx. Rows × Columns (Typical CSV)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GPT-3.5</td>
+<td>4,096</td>
+<td>~200 rows × 10 columns</td>
+<td>Only good for small previews or subsets</td>
+</tr>
+<tr class="even">
+<td>GPT-4 (8k)</td>
+<td>8,192</td>
+<td>~400 rows × 10 columns</td>
+<td>Moderate analysis and EDA possible</td>
+</tr>
+<tr class="odd">
+<td>GPT-4-turbo (128k)</td>
+<td>128,000</td>
+<td>~6,000–10,000 rows × 10–20 columns</td>
+<td>Supports large datasets and full analysis</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Each cell ≈ 5–10 tokens (e.g., a short string or number).</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="dataset-inspection" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="dataset-inspection"><span class="header-section-number">2</span> Dataset Inspection</h2>
+<ul>
+<li>Uploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically.</li>
+<li>Looking for a dataset to practice with? Try the <a href="https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/17/40/a7899f2e57ea29a240be2c00cce7a0d4">SBCLTER annual fish survey</a></li>
+<li>In each section below, the example <strong><em>prompt</em></strong> are provided. You can copy and paste it into ChatGPT, or type your own prompt.</li>
+</ul>
+<section id="general-understanding-of-the-dataset" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="general-understanding-of-the-dataset"><span class="header-section-number">2.1</span> General understanding of the dataset</h3>
+<ul>
+<li><em>Tell me about this dataset, and what types of data does it contain?</em></li>
+</ul>
+</section>
+<section id="detect-missing-values" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="detect-missing-values"><span class="header-section-number">2.2</span> Detect Missing Values</h3>
+<ul>
+<li><em>Which columns are affected by the missing values and how many missing values are in each column.</em></li>
+</ul>
+</section>
+<section id="get-summary-statistics" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="get-summary-statistics"><span class="header-section-number">2.3</span> Get Summary Statistics</h3>
+<ul>
+<li><em>Provide summary statistics (mean, median, std, min, max) for count and size column, and unique values for the site, and year columns.</em></li>
+</ul>
+</section>
+<section id="data-transformation" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="data-transformation"><span class="header-section-number">2.4</span> Data Transformation</h3>
+<ul>
+<li><em>Convert this data table to wide format using sp_code as header and count as value</em></li>
+</ul>
+</section>
+</section>
+<section id="statistical-analysis" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="statistical-analysis"><span class="header-section-number">3</span> Statistical Analysis</h2>
+<section id="general-time-series-plots" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="general-time-series-plots"><span class="header-section-number">3.1</span> General Time Series Plots</h3>
+<ul>
+<li><em>Create a time series plot of the total species count, with year on the x-axis and count on the y-axis. Use different colors for each site.</em></li>
+<li><em>Create a time series plot of the top 5 most abundant species, with year on the x-axis and count on the y-axis. Use different colors for each site.</em></li>
+</ul>
+</section>
+<section id="identify-potential-analytical-directions" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="identify-potential-analytical-directions"><span class="header-section-number">3.2</span> Identify Potential Analytical Directions</h3>
+<ul>
+<li><em>I want to understand whether species has an increasing trend over time</em></li>
+<li><em>I like to do a glm() for this species, which family should I use? how about the link function?</em></li>
+</ul>
+</section>
+<section id="create-report-ready-narratives" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="create-report-ready-narratives"><span class="header-section-number">3.3</span> Create Report-Ready Narratives</h3>
+<ul>
+<li><em>I like this analysis and want to document in the report. Please describe statistical analysis for the glm() model and the corresponding results</em></li>
+</ul>
+</section>
+<section id="export-code-for-reproducibility" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="export-code-for-reproducibility"><span class="header-section-number">3.4</span> Export Code for Reproducibility</h3>
+<ul>
+<li><em>Please give me the R scripts for the glm() analysis</em></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

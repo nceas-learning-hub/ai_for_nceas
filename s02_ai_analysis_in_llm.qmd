@@ -1,11 +1,95 @@
 ---
-title: Analysis using LLMs
+title: Data Inspection and Analysis using LLMs
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
-
-:::{.callout-tip}
+::: callout-tip
 ## Learning Objectives
 
--   tbd
+By the end of this session, participants will be able to use paid
+ChatGPT effectively to inspect, explore, and generate insights from
+datasets, and to accelerate common analytical workflows through prompt
+engineering.
+
+-   Dataset Inspection
+    -   missing values
+    -   summary statistics
+    -   data transformation
+-   Statistical Analysis
+    -   general time series plots
+    -   identify potential analytical directions
+    -   create report-ready narratives using natural language generation
+    -   export code for reproducibility
 :::
+
+## Who and why to use ChatGPT for data analysis?
+* If you're not a programmer or statistician, ChatGPT can help you understand the overall story of your dataset by breaking down key patterns, trends, and issues in plain language.
+* If you're working on a data synthesis project and need to filter through multiple datasets, ChatGPT can assist in rapidly exploring each dataset—using visualizations and summaries—to help you decide which ones are most relevant for your goals. 
+* If you want to apply statistical methods but don’t recall all the details, ChatGPT can suggest appropriate techniques based on your data and research questions, and generate ready-to-use code for implementation in Python or R.
+* If you need to produce a quick data report, ChatGPT can significantly speed up the process by generating summary statistics, visualizations, and clear written narratives tailored for stakeholders or publication.
+
+::: {.callout-note}
+## Important Notes
+* ChatGPT is not a substitute for human expertise, but it serves as a powerful assistant that can enhance and accelerate your analytical workflow.
+* Data analysis done within ChatGPT is not reproducible. If you discover valuable insights, always ask ChatGPT to generate the underlying code so you can document and reproduce the process independently.
+* Using a customized GPT model is recommended for data analysis, as it can handle larger datasets and provide more context-aware responses. Therefore, access to the paid version of ChatGPT (such as ChatGPT Plus or Team) is required for this exercise.
+* If you're comparing the speed of conducting analysis in ChatGPT versus R (with existing code), R is generally more reliable and consistently faster. ChatGPT's performance can vary depending on the time of day, server load, and the specific GPT model you're using.
+
+::: {.table-sm style="font-size: 0.85em;"}
+As of April 2025, here are the estimated CSV table size by GPT Model
+
+| Model                | Token Limit | Approx. Rows × Columns (Typical CSV)   | Notes                                      |
+|----------------------|-------------|-----------------------------------------|--------------------------------------------|
+| GPT-3.5              | 4,096       | ~200 rows × 10 columns                  | Only good for small previews or subsets    |
+| GPT-4 (8k)           | 8,192       | ~400 rows × 10 columns                  | Moderate analysis and EDA possible         |
+| GPT-4-turbo (128k)   | 128,000     | ~6,000–10,000 rows × 10–20 columns      | Supports large datasets and full analysis  |
+* Each cell ≈ 5–10 tokens (e.g., a short string or number).
+:::
+:::
+
+## Dataset Inspection
+
+* Uploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically. 
+* Looking for a dataset to practice with? Try the [SBCLTER annual fish survey](https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/17/40/a7899f2e57ea29a240be2c00cce7a0d4)
+* In each section below, the example __*prompt*__ are provided. You can copy and paste it into ChatGPT, or type your own prompt.
+
+
+### General understanding of the dataset
+
+* *Tell me about this dataset, and what types of data does it contain?*
+
+### Detect Missing Values
+
+* *Which columns are affected by the missing values and how many missing values are in each column.*
+
+### Get Summary Statistics
+
+* *Provide summary statistics (mean, median, std, min, max) for count and size column, and unique values for the site, and year columns.*
+
+### Data Transformation
+
+* *Convert this data table to wide format using sp_code as header and count as value*
+
+
+## Statistical Analysis
+
+### General Time Series Plots
+
+* *Create a time series plot of the total species count, with year on the x-axis and count on the y-axis. Use different colors for each site.*
+* *Create a time series plot of the top 5 most abundant species, with year on the x-axis and count on the y-axis. Use different colors for each site.*
+
+### Identify Potential Analytical Directions
+
+* *I want to understand whether species has an increasing trend over time*
+* *I like to do a glm() for this species, which family should I use? how about the link function?*
+
+### Create Report-Ready Narratives
+
+* *I like this analysis and want to document in the report. Please describe statistical analysis for the glm() model and the corresponding results*
+
+### Export Code for Reproducibility
+
+* *Please give me the R scripts for the glm() analysis*
 
