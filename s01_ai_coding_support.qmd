@@ -49,7 +49,7 @@ You need a fundamental understanding of coding to be able to use Copilot effecti
 ::: {.callout-tip}
 ## Pseudocode
 
-Pseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points.  There are more formalized versions of pseudocode, but here we will stick with just plain English sentences to communicate our intentions.  Some tips:
+Pseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points.  There are more formalized versions of pseudocode, and less formalized (see ["vibecoding"](https://www.oneusefulthing.org/p/speaking-things-into-existence?utm_source=post-email-title&publication_id=1180644&post_id=148596183)) but here we take a middle road, and we will stick with just plain English sentences to communicate our intentions.  Some tips:
 
 * Specify whether you want to use the `tidyverse` metapackage or base R functions (or another language, e.g., Python!).
 * If you know the names of certain functions, it is helpful to use those in your pseudocode, to help Copilot incorporate those into its code completions.
@@ -765,5 +765,7 @@ What about ethics?
 * LLMs and generative AI are trained on large datasets, often including content scraped from artists and writers (and coders) without their consent.  This raises ethical concerns about the use of generative AI for creative tasks, for plagiarism and exploitation of writers' work and for the potential for putting artists out of work.  For coding tasks this may be less of an issue, as much of the codebase is open source, e.g., public repos on Github or Q&A on Stack Overflow, though even open source material is often licensed with rules for attribution that may be violated by AI-generated code.
 * While an LLM doesn't ingest the data or information you put into your prompts (once it is trained, it can't learn new things), it is still important to consider security and privacy risks.  Including sensitive or private information in a prompt may result in some of that sensitive information being exposed in the resulting code.  If you are coding an analysis that requires privacy or security, the LLM may not properly understand those privacy or security concerns and could generate code with security liabilities.
 
+Will this be problematic for the future of coding?
 
-
+* Definitely!  With such tools readily at hand, then students won't learn how to properly code - they will just have to rely on LLMs to do everything for them.  Additionally, if a senior analyst can use an LLM to write code, they won't need to hire junior analysts, thus breaking the pipeline for entry level coding jobs.
+* Certainly not!  With such tools readily at hand, the barrier to entry for coding is lowered.  Consider that we've progressed from punch cards to binary to assembly language to FORTRAN to COBOL to C to R to Python to RStudio to Jupyter notebooks to LLMs.  Each step has made coding more human readable and comprehensible, and yet we still have demand for coders.  Instead of coding in R or Python (or binary), we'll soon be coding in English (or Spanish, Chinese, etc).  Coding will no longer be a barrier to statistical analysis, so junior and senior analysts can focus on the science!
