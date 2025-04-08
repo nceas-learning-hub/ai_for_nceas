@@ -16,11 +16,11 @@
   {
     "objectID": "s03_ai_and_apis.html",
     "href": "s03_ai_and_apis.html",
-    "title": "Accessing the ChatGPT API (or Claude API?)",
+    "title": "Accessing the ChatGPT API",
     "section": "",
     "text": "Learning Objectives\n\n\n\n\ntbd",
     "crumbs": [
-      "Accessing the ChatGPT API (or Claude API?)"
+      "Accessing the ChatGPT API"
     ]
   },
   {
@@ -64,11 +64,21 @@
     ]
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About the sessions",
+    "section": "",
+    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
     "objectID": "index.html#ai-for-nceas",
     "href": "index.html#ai-for-nceas",
     "title": "About the sessions",
-    "section": "1 AI for NCEAS",
-    "text": "1 AI for NCEAS\nThis set of informal interactive workshop sessions has been adapted from NCEAS coreR course, in line with the NCEAS 2025 theme of AI for the Planet. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. We expect these sessions may eventually become formal modules in various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
+    "section": "",
+    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
     "crumbs": [
       "About the sessions"
     ]
@@ -78,7 +88,7 @@
     "href": "index.html#nceas-expertise",
     "title": "About the sessions",
     "section": "2 NCEAS Expertise",
-    "text": "2 NCEAS Expertise\nThe National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is a leading expert on interdisciplinary data science and works collaboratively to answer the world’s largest and most complex questions. The NCEAS approach leverages existing data and employs a team science philosophy to squeeze out all potential insights and solutions efficiently - this is called synthesis science.\nNCEAS has 30 years of success with this model among working groups and environmental professionals. In conjunction with the NCEAS Learning Hub, we are excited to pass along skills, workflows, and mindsets to help the NCEAS community better understand the implications of AI for the Planet.\n\n\n\n\n\n\n\nLearning Objectives\n\n\n\n\nPractice strategies for using AI tools effectively and responsibly in coding, analysis, and research.\nExplore the ethical implications of using AI in research and how to navigate them.\nFeel comfortable with using various AI tools in your own work.",
+    "text": "2 NCEAS Expertise\nNCEAS is a leading expert on interdisciplinary data science and works collaboratively to answer the world’s largest and most complex questions. The NCEAS approach leverages existing data and employs a team science philosophy to squeeze out all potential insights and solutions efficiently - this is called synthesis science.\nNCEAS has 30 years of success with this model among working groups and environmental professionals. In conjunction with the NCEAS Learning Hub, we are excited to pass along skills, workflows, and mindsets to help the NCEAS community better understand the implications of AI for the Planet.\n\n\n\n\n\n\n\nLearning Objectives\n\n\n\n\nPractice strategies for using AI tools effectively and responsibly in coding, analysis, and research.\nExplore the ethical implications of using AI in research and how to navigate them.\nFeel comfortable with using various AI tools in your own work.",
     "crumbs": [
       "About the sessions"
     ]
