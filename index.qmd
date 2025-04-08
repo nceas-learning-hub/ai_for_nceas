@@ -1,5 +1,5 @@
 ---
-title: About the course
+title: About the sessions
 format:
   html:
     toc: false
@@ -10,32 +10,26 @@ format:
 :::
 
 
-AI for NCEAS
-<!-- As part of a collaboration between NCEAS and the Delta Science Program, this course has been adapted from [NCEAS coreR course](https://www.nceas.ucsb.edu/learning-hub/core-r), an in-person immersion in R programming for environmental data science. Researchers will gain experience with essential data science tools and best practices to increase their capacity as collaborators, reproducible coders, and open scientists. -->
+## AI for NCEAS
+
+This set of informal interactive workshop sessions has been adapted from [NCEAS coreR course](https://www.nceas.ucsb.edu/learning-hub/core-r), in line with the NCEAS 2025 theme of AI for the Planet.  In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing.  We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer.  We expect these sessions may eventually become formal modules in various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.
 
 
 ## NCEAS Expertise
 
 The [National Center for Ecological Analysis and Synthesis (NCEAS)](https://www.nceas.ucsb.edu/), a research affiliate of UCSB, is a leading expert on interdisciplinary data science and works collaboratively to answer the world's largest and most complex questions. The NCEAS approach leverages existing data and employs a team science philosophy to squeeze out all potential insights and solutions efficiently - this is called [synthesis science](https://www.nceas.ucsb.edu/our-approach).
 
-NCEAS has 30 years of success with this model among working groups and environmental professionals. Together with the Delta Science Program and the Delta Stewardship Council we are excited to pass along skills, workflows, mindsets learn throughout the years.
+NCEAS has 30 years of success with this model among working groups and environmental professionals.  In conjunction with the NCEAS Learning Hub, we are excited to pass along skills, workflows, and mindsets to help the NCEAS community better understand the implications of AI for the Planet.
 
 
 <!-- *June 10 - 13, 2024* -->
 
 :::{.callout-tip}
 ### Learning Objectives
--   Effectively manage data using `tidy` data practices
--   Implement reproducible scientific workflows throughout all aspects of a project
--   Establish best practices and utilize tools like Git & GitHub to optimize your collaboration
--   Better communicate scientific analyses and results using Markdown, GitHub webpages, and R packages like `ggplot2` and `Shiny`
-- Increase your familiarity and confidence with data science tools
-:::
 
-### Week's Schedule
-
-:::{.column-body-outset}
-<!-- ![](images/schedule.png) -->
+- Practice strategies for using AI tools effectively and responsibly in coding, analysis, and research.
+- Explore the ethical implications of using AI in research and how to navigate them.
+- Feel comfortable with using various AI tools in your own work.
 :::
 
 
@@ -49,11 +43,9 @@ These written materials are the result of a continuous and collaborative effort 
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
-**Citation:** Camila Vargas Poulsen & Angel Chen (2024), NCEAS coreR for Delta Science Program, June 2024, NCEAS Learning Hub. URL <https://learning.nceas.ucsb.edu/2024-06-delta>.
+**Citation:** Casey O'Hara and Li Kui (2025), AI for NCEAS. URL <https://nceas-learning-hub.github.io/ai_for_nceas>.
 
-**Additional contributors:** Ben Bolker, Amber E. Budden, Julien Brun, Samantha Csik, Halina Do-Linh, Natasha Haycock-Chavez, S. Jeanette Clark, Julie Lowndes, Stephanie Hampton, Matt Jone, Samanta Katz, Erin McLean, Bryce Mecum, Deanna Pennington, Karthik Ram, Jim Regetz, Tracy Teal, Daphne Virlar-Knight, Leah Wasser.
-
-
+**Additional contributors:** tbd
 
 This is a Quarto book. To learn more about Quarto books visit <https://quarto.org/docs/books>.
 

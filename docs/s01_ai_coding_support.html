@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About the course</span></a>
+ <span class="menu-text">About the sessions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -283,19 +283,20 @@ Learning objectives
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>By the end of this session, you should be able to:</p>
 <ul>
-<li>Active coding support in RStudio with GitHub Copilot:
+<li>Effectively use Github Copilot in RStudio:
 <ul>
-<li>Configuring RStudio to work with GitHub Copilot</li>
-<li>Exploring techniques to use Copilot to assist with coding tasks</li>
+<li>Configure RStudio to work with GitHub Copilot</li>
+<li>Use comments and pseudocode to guide Copilot to assist with coding tasks</li>
 </ul></li>
-<li>Iterative coding support with ChatGPT:
+<li>Leverage ChatGPT (or another Large Language Model) to assist with coding tasks:
 <ul>
-<li>Translating pseudocode into functional code</li>
-<li>Commenting existing code</li>
-<li>Suggesting improvements to code for performance or readability</li>
-<li>Writing unit tests for functions</li>
-<li>Translating code from one language to another (e.g., R vs.&nbsp;Python)</li>
+<li>Translate pseudocode into functional code</li>
+<li>Comment existing code</li>
+<li>Suggest improvements to code for performance or readability</li>
+<li>Write unit tests for functions</li>
+<li>Translate code from one language to another (e.g., R vs.&nbsp;Python)</li>
 </ul></li>
 </ul>
 </div>
@@ -303,7 +304,11 @@ Learning objectives
 <p><a href="slides/r_programming_introduction/example_slides.html">Full Screen</a></p>
 <iframe class="slide-deck" src="slides/ai_coding_support/slides.html" height="337px" width="600px" style="border: 1px solid #2e3846;"></iframe>
 <p><img src="images/ai_coding_support/english.png" class="img-fluid" style="width:60.0%" alt="The hottest new programming language is English - Andrej Karpathy"></p>
-<p>We can use GitHub Copilot and/or Large Language Models like ChatGPT or Claude to help us write code in R, Python, or other languages.</p>
+<p>We can use GitHub Copilot and/or Large Language Models like ChatGPT or Claude to help us write code in R, Python, or other languages. It might be handy to consider these as two different avenues of leveraging AI in coding:</p>
+<ul>
+<li>Active coding support with GitHub Copilot: Copilot is like an assistant sitting next to you at your computer, writing code along with you, in real time - i.e., pair programming.</li>
+<li>Iterative coding support with ChatGPT: ChatGPT is more like an assistant in the next office over, not writing code in real time with you, but collaborating through back-and-forth interactions and prompts.</li>
+</ul>
 <section id="active-coding-support-with-github-copilot" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="active-coding-support-with-github-copilot"><span class="header-section-number">1</span> Active coding support with GitHub Copilot</h2>
 <p>GitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is effectively “pair programming” where you and a partner (in this case, an AI partner) code together in real time. It is available as a plugin for IDEs such as Visual Studio Code and RStudio. Copilot is a large language model (LLM) related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions in real time based on the context of your coding task. In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot effectively to assist with coding tasks.</p>
