@@ -18,19 +18,13 @@ By the end of this session, you should be able to:
     * Translate code from one language to another (e.g., R vs. Python)
 :::
 
-[Full Screen](slides/r_programming_introduction/example_slides.html)
-
-```{=html}
-<iframe class="slide-deck" src="slides/ai_coding_support/slides.html" height="337px" width="600px" style="border: 1px solid #2e3846;"></iframe>
-```
 
 ![](images/ai_coding_support/english.png){width=60% fig-alt="The hottest new programming language is English - Andrej Karpathy"}
 
-We can use GitHub Copilot and/or Large Language Models like ChatGPT or Claude to help us write code in R, Python, or other languages.  It might be handy to consider these as two different avenues of leveraging AI in coding:
+We can use GitHub Copilot and/or Large Language Models like ChatGPT or Claude to help us write code in R, Python, or other languages, using natural language such as English.  It might be handy to consider these as two different avenues of leveraging AI in coding:
 
 * Active coding support with GitHub Copilot: Copilot is like an assistant sitting next to you at your computer, writing code along with you, in real time - i.e., pair programming.
 * Iterative coding support with ChatGPT: ChatGPT is more like an assistant in the next office over, not writing code in real time with you, but collaborating through back-and-forth interactions and prompts.
-
 
 ## Active coding support with GitHub Copilot
 
@@ -45,7 +39,13 @@ Here we will focus on using AI code completion tools in R and RStudio, since it 
 
 :::
 
+### Configuring RStudio to work with GitHub Copilot
 
+[Full Screen](slides/ai_coding_support/slides.html)
+
+```{=html}
+<iframe class="slide-deck" src="slides/ai_coding_support/slides.html" height="337px" width="600px" style="border: 1px solid #2e3846;"></iframe>
+```
 
 ### Using Copilot to assist with coding tasks
 
@@ -72,9 +72,14 @@ Create a code chunk, read in some data, do some data wrangling, and then make a 
 * generate a scatter plot of bill length vs. bill depth for each species
 * then, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species.  Print a summary of the t test results.
 
+_(Copy the above text and paste into a Quarto document, or rephrase it in your own words, then create a code chunk and let Copilot suggest some code!)_
+
 ::::{.callout-answer}
 
-Here's what it looked like when I let Copilot help me write the code - I accepted each line by pressing "tab".  This might change entirely if I ran the exercise again.  How different does it look from the code you wrote?
+Here's what it looked like when I let Copilot help me write the code - I accepted each line by pressing "tab".  This might change entirely if I ran the exercise again.  
+
+* How different does it look from the code you wrote?
+* How does it differ from how you might code it on your own?
 
 ```{r}
 #| code-fold: true
@@ -120,9 +125,12 @@ Let's try the same exercise but this time let's only use base R functions:
 * generate a scatter plot of bill length vs. bill depth for each species
 * then, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species.  Print a summary of the t test results.
 
+_(Below the previous code chunk, in a Markdown section, copy and paste the above text, or simply write a sentence along the lines of "Repeat the previous analysis using only base R functions and plotting."  Then create a new code chunk and let Copilot suggest code for you.)_
+
 :::: {.callout-answer}
 
 Here is what Copilot came up with for me.  Note, it knew from above that I wanted to use base R functions this time instead of `tidyverse` functions!
+
 ```{r}
 ### Load the palmer penguins package and load the penguins data
 library(palmerpenguins)
@@ -146,9 +154,11 @@ summary(t.test(penguins_filtered$bill_length_mm ~ penguins_filtered$species))
 
 ::: {.callout-warning title="Copilot limitations!"}
 
-Copilot cannot read your mind, and it may make incorrect assumptions about what you want to do with your data and analysis.  It is important to understand the code that Copilot is generating for you, and to check it for errors!  You get the last word (no matter how hard Copilot tries!), and you as the coder are responsible for the final product.
+Copilot cannot read your mind, and it may make incorrect assumptions about what you want to do with your data and analysis.  It is important to understand the code that Copilot is generating for you, and to check it for errors!  
 
-Keep in mind that you can always reject Copilot's suggestions and write your own code, or accept its suggestions as a starting point then edit them as you see fit.
+* Copilot can only _add_ code or text; it cannot subtract or edit buggy or incorrect code or text without specific prompting from the user.
+* You can always reject Copilot's suggestions and write your own code, or accept its suggestions as a starting point then edit them as you see fit before moving on.
+* You get the last word (no matter how hard Copilot tries!), and you as the coder are responsible for the final product.
 
 :::
 
@@ -164,6 +174,8 @@ Let's write a function that takes a dataframe of data and for two given columns,
 * identify and pull out the y (outcome) and x (predictor) variables as columns in the data frame
 * perform a linear regression on `y ~ x`
 * return the slope, intercept, and p value in a dataframe.
+
+_(Feel free to copy the above text and paste into a Markdown section of your Quarto document, then let Copilot make its suggestions)_
 
 :::: {.callout-answer}
 
@@ -205,6 +217,8 @@ Now let's get Copilot to help use the previous function to iterate over the vari
 * For each species, and each sex, apply the function above to the penguins data, and add the species and sex to the resulting dataframe.
 * Store the results in a list of dataframes
 * Then combine the results into a single dataframe.
+
+_(Again, copy the text above and paste into a Markdown section, open a new code chunk and let Copilot make suggestions.  It may struggle with this, so if it gets stuck, help it by writing some code or comments_)
 
 :::: {.callout-warning}
 I almost certainly wouldn't have actually used a `for` loop here in the first place - better options would be a `group_by() %>% summarize()` workflow or `purrr::map2` - but we're just trying to see what Copilot can do with a more complex coding task!
@@ -253,7 +267,7 @@ In summary, Copilot was helpful in getting the ball rolling here, but needed lot
 
 ### Copilot for coding: summary
 
-Copilot can be very helpful at speeding up your coding, especially for simple or well-defined tasks.  One potential pitfall is that using Copilot in this way has a certain amount of path dependency.  Once a bit of code is written in the script, Copilot takes that as given - it can't modify or erase code, it can only keep going forward.  So it is important to monitor your progress and make sure Copilot is not leading you astray.  For example, if you prefer `tidyverse` workflow but Copilot is suggesting base R functions, you may need to intervene and guide Copilot in the right direction.
+Copilot can be very helpful at speeding up your coding, especially for simple or well-defined tasks.  One potential pitfall is that using Copilot in this way has a certain amount of path dependency.  Once a bit of code is written in the script, Copilot takes that as given - it can't modify or erase existing code, it can only keep going forward by adding.
 
 In the next section, we'll look at how to use ChatGPT to help with coding in a more interactive/iterative fashion, which can avoid path dependency but may introduce other complexities.
 
@@ -272,7 +286,7 @@ In the next section, we'll look at how to use ChatGPT to help with coding in a m
 
 ## Iterative coding support with ChatGPT
 
-In this section we'll look at using ChatGPT outside of RStudio.  Here we can take existing code and feed it into ChatGPT and ask it to help us with various tasks, or feed pseudocode into ChatGPT and ask it to generate code for us.
+In this section we'll look at using ChatGPT outside of RStudio.  Here we can take existing code and feed it into ChatGPT and ask it to help us with various tasks, or feed pseudocode into ChatGPT and ask it to generate code for us.  Rather than line by line, like Copilot, an LLM can often provide a more complete solution that can then be copied/pasted back into RStudio.  It can also iterate through multiple rounds of conversation/prompts.
 
 ### Pseudocode into code
 
@@ -292,7 +306,7 @@ Let's give ChatGPT the same sequence of steps we used above.  We will copy and p
 
 :::: {.callout-answer}
 
-Here is the code it generated for me: 
+Here is the code it generated for me.  Note it chose a (mostly) `tidyverse` approach this time, though I didn't explicitly prompt it to do so: 
 
 ```{r}
 #| eval: false
@@ -374,7 +388,7 @@ This code works exactly as desired, though we set it to not evaluate here in the
 
 ### Commenting existing code
 
-Often when we are trying to code, we Google to find a solution online (e.g., Stack Overflow), but the code is not familiar to us or difficult to understand.  ChatGPT can automatically take that code and insert helpful comments to explain what each line is doing.  
+Often when we are trying to code, we Google to find a solution online (e.g., Stack Overflow), but the code is not familiar to us or difficult to understand.  ChatGPT can take that code and insert helpful comments to explain what each line is doing.  
 
 ::: {.callout-exercise}
 
@@ -387,9 +401,7 @@ https://raw.githubusercontent.com/convei-wwf/NLParty/refs/heads/main/abstract_cl
 :::: {.callout-answer}
 Here's what it came up with! Try asking ChatGPT to comment for you as if you were completely new to Python and see how it changes.
 
-```{python}
-#| eval: false
-#| code-fold: true
+```python
 
 import argparse  # For parsing command-line arguments
 import glob  # For file pattern matching
@@ -532,6 +544,16 @@ Not only does ChatGPT comment the code for me, it also gives an overview of the 
 
 Often we have a piece of code we've written, or borrowed from somewhere else, but it is slow or hard to read, and we want to improve it ("refactoring").  Perhaps we want to take a repeated process and streamline it or parallelize it across multiple processors.  ChatGPT can help with this as well.
 
+::: {.callout-tip}
+### Start a new chat or continue with existing chat?
+
+Since we've already chatted with the LLM, if we continue in the same conversation it will "remember" the previous context.  But perhaps we want to start fresh on a new problem.  
+
+* For example, if I asked ChatGPT to comment the previous code as if I were a novice in Python, it may continue to assume I'm a novice for future questions, which may produce overly simplified or verbose responses.  This might call for a new chat.
+* Alternately, if I tried a bit of suggested code and encountered an error, I can paste that error back into the same conversation and ask ChatGPT to alter its suggestion accordingly.  This would not be effective if I started a new chat.
+
+:::
+
 ::: {.callout-exercise}
 Let's ask ChatGPT to take the nested for-loop above (a functional but not particularly elegant piece of code) and ask ChatGPT to recommend improvements.
 
@@ -548,7 +570,7 @@ Before offering refactored code, it offered some tips, quoted here:
 > * Use `split()` + `lapply()`: This avoids explicit for loops and makes the code more concise and efficient.
 > * Use `bind_rows()` from `dplyr`: Instead of `do.call(rbind, results)`, `dplyr::bind_rows()` is faster and more readable.
 
-Note that ChatGPT can't see the rest of my script, including the part where I suggested `bind_rows()`... 
+Note that I didn't show ChatGPT the rest of my script, including the part where I suggested `bind_rows()`... glad it came up with that on its own!
 
 Here's the refactored code it suggested:
 
@@ -677,8 +699,7 @@ Here's what it returned for me, nearly a line-by-line translation with a note: "
 
 However, note that the code is not stand-alone, since it calls the function `calc_lm()` that we defined previously but in R, and calls for the `penguins_filtered` object which has not yet been loaded and filter in Python.  But those can be fixed pretty easily!  (e.g., ask ChatGPT to rewrite `calc_lm` in Python, and suggest code for loading/filtering the penguins data in Python).
 
-```{python}
-#| eval: false
+```python
 
 import pandas as pd
 
@@ -720,8 +741,7 @@ And as long as we're here, let's ask it to refactor this code in Python instead 
 
 And again, it provided a little context, and some nice tidy code (with the same limitations noted above).  Note this refactored version in Python looks pretty different from the refactored version in R, but shares some functional similarities.
 
-```{python}
-#| eval: false
+```python
 
 import pandas as pd
 
@@ -756,6 +776,10 @@ results_df = pd.concat(
 * As with Copilot, you are responsible for the final product.  Test the code, check for errors, and make sure it works as expected!
 
 :::
+
+## Conclusions
+
+In this lesson we've introduced you to two different tools for leveraging generative AI tools to boost your coding practice.  We encourage you to try out both tools and approaches, and mix and match to see what works best for you.
 
 ## Further considerations
 
