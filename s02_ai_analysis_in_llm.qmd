@@ -1,8 +1,5 @@
 ---
 title: Data Inspection and Analysis using LLMs
-editor: 
-  markdown: 
-    wrap: 72
 ---
 
 ::: callout-tip
@@ -55,41 +52,41 @@ As of April 2025, here are the estimated CSV table size by GPT Model
 * Looking for a dataset to practice with? Try the [SBCLTER annual fish survey](https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/17/40/a7899f2e57ea29a240be2c00cce7a0d4)
 * In each section below, the example __*prompt*__ are provided. You can copy and paste it into ChatGPT, or type your own prompt.
 
+::: {.callout-tip title="ChatGPT prompt"}
 
-### General understanding of the dataset
 
 * *Tell me about this dataset, and what types of data does it contain?*
 
-### Detect Missing Values
 
 * *Which columns are affected by the missing values and how many missing values are in each column.*
 
-### Get Summary Statistics
 
 * *Provide summary statistics (mean, median, std, min, max) for count and size column, and unique values for the site, and year columns.*
 
-### Data Transformation
 
 * *Convert this data table to wide format using sp_code as header and count as value*
-
+:::
 
 ## Statistical Analysis
 
-### General Time Series Plots
+::: {.callout-tip title="ChatGPT prompt"}
 
-* *Create a time series plot of the total species count, with year on the x-axis and count on the y-axis. Use different colors for each site.*
-* *Create a time series plot of the top 5 most abundant species, with year on the x-axis and count on the y-axis. Use different colors for each site.*
+**a. Time series plot**
 
-### Identify Potential Analytical Directions
+- *Create a time series plot of the total species count, with year on the x-axis and count on the y-axis. Use different colors for each site.*
+- *Create a time series plot of the top 5 most abundant species, with year on the x-axis and count on the y-axis. Use different colors for each site.*
 
-* *I want to understand whether species has an increasing trend over time*
-* *I like to do a glm() for this species, which family should I use? how about the link function?*
+**b. Identify Potential Analytical Directions**
 
-### Create Report-Ready Narratives
+- *I want to understand whether species has an increasing trend over time*
+- *I like to do a glm() for this species, which family should I use? how about the link function?*
 
-* *I like this analysis and want to document in the report. Please describe statistical analysis for the glm() model and the corresponding results*
+**c. Create Report-Ready Narratives**
 
-### Export Code for Reproducibility
+- *I like this analysis and want to document in the report. Please describe statistical analysis for the glm() model and the corresponding results*
 
-* *Please give me the R scripts for the glm() analysis*
+**d. Export Code for Reproducibility**
 
+- *Please give me the R scripts for the glm() analysis*
+
+:::
