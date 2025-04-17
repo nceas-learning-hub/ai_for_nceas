@@ -16,7 +16,7 @@ title: AI for Coding Support
     * Translating code from one language to another (e.g., R vs. Python)
 :::
 
-[Full Screen](slides/r_programming_introduction/example_slides.html)
+[Full Screen](slides/ai_coding_support/example_slides.html)
 
 ```{=html}
 <iframe class="slide-deck" src="slides/ai_coding_support/slides.html" height="337px" width="600px" style="border: 1px solid #2e3846;"></iframe>
