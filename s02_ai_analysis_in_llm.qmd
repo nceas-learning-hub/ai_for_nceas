@@ -79,7 +79,7 @@ As of April 2025, here are the estimated CSV table size by GPT Model
 **b. Identify Potential Analytical Directions**
 
 - *I want to understand whether species has an increasing trend over time*
-- *I like to do a glm() for this species, which family should I use? how about the link function?*
+- *I like to do a glm() to see the species trend over time, which family should I use? how about the link function?*
 
 **c. Create Report-Ready Narratives**
 
