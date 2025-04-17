@@ -9,6 +9,9 @@ exercises: ### for custom theme callouts
 editor: source
 bibliography: book.bib
 
+execute:
+  freeze: auto
+
 format:
   html:
     theme:
