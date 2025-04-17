@@ -711,6 +711,7 @@ Here's what it returned for me, nearly a line-by-line translation with a note: "
 However, note that the code is not stand-alone, since it calls the function `calc_lm()` that we defined previously but in R, and calls for the `penguins_filtered` object which has not yet been loaded and filter in Python.  But those can be fixed pretty easily!  (e.g., ask ChatGPT to rewrite `calc_lm` in Python, and suggest code for loading/filtering the penguins data in Python).
 
 ```python
+#| eval: false
 
 import pandas as pd
 
@@ -753,7 +754,7 @@ And as long as we're here, let's ask it to refactor this code in Python instead 
 And again, it provided a little context, and some nice tidy code (with the same limitations noted above).  Note this refactored version in Python looks pretty different from the refactored version in R, but shares some functional similarities.
 
 ```python
-
+#| eval: false
 import pandas as pd
 
 # Define a function to process each group

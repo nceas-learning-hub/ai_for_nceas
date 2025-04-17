@@ -10,6 +10,7 @@ editor: source
 bibliography: book.bib
 
 execute:
+  freeze: auto
   eval: false
   echo: true
   warning: false
