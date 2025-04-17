@@ -1,5 +1,5 @@
 ---
-title: Accessing the ChatGPT API (or Claude API?)
+title: Accessing the ChatGPT API
 ---
 
 
