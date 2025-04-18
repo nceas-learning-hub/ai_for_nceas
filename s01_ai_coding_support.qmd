@@ -184,8 +184,7 @@ _(Feel free to copy the above text and paste into a Markdown section of your Qua
 
 Here's what Copilot suggested for me, line by line, as I was writing this lesson.  After finishing the function, I started writing a comment to test, it assumed I wanted to use data that I had mentioned earlier in the script, i.e., `penguins_filtered`.
 
-```{r}
-#| eval: false
+```r
 # function to calculate slope, intercept, and p value for a linear regression model
 calc_lm <- function(data, y, x) {
   # identify and pull out the y (outcome) and x (predictor) variables as columns in the data frame
@@ -232,8 +231,7 @@ I almost certainly wouldn't have actually used a `for` loop here in the first pl
 
 Here's what Copilot suggested, based on the pseudocode and previous code chunks.  However, this was a little more complex and required some guidance, hand holding, and bug-fixing.
 
-```{r}
-#| eval: false
+```r
 # create an empty list to store the results
 results <- list()                                                 # <1>
 i <- 1                                                            # <2>
@@ -313,9 +311,7 @@ Let's give ChatGPT the same sequence of steps we used above.  We will copy and p
 
 Here is the code it generated for me.  Note it chose a (mostly) `tidyverse` approach this time, though I didn't explicitly prompt it to do so: 
 
-```{r}
-#| eval: false
-
+```r
 # Load necessary packages
 library(palmerpenguins)
 library(ggplot2)
@@ -355,9 +351,7 @@ I could follow up with a request to not use any `tidyverse` packages...
 :::: {.callout-answer}
 And this is what it came up with:
 
-```{r}
-#| eval: false
-
+```r
 # Load the palmerpenguins package
 library(palmerpenguins)
 
@@ -580,8 +574,7 @@ Note that I didn't show ChatGPT the rest of my script, including the part where 
 
 Here's the refactored code it suggested:
 
-```{r}
-#| eval: false
+```r
 library(dplyr)
 
 # Function to apply calc_lm across groups
@@ -614,10 +607,7 @@ Let's ask ChatGPT to write a unit test for our `calc_lm()` function.  This is a 
 :::: {.callout-answer}
 Here is what ChatGPT suggested:
 
-```{r}
-#| eval: false
-#| code-fold: true
-
+```r
 library(testthat)
 
 # Load the function (if not already sourced)
@@ -650,13 +640,11 @@ This uses the `testthat` package, designed specifically for unit testing.  It cr
 
 Just to see what would happen, I told ChatGPT about the warning:
 
-![](images/ai_coding_support/chatgpt_unittest2.png){width=600 fig-align="center}
+![](images/ai_coding_support/chatgpt_unittest2.png){width=600 fig-align="center"}
 
 And it adjusted the unit test to incorporate a small amount of noise, just as I would have done!
 
-```{r}
-#| eval: false
-#| code-fold: true
+```r
 library(testthat)
 
 # Load the function (if not already sourced)
