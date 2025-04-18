@@ -259,6 +259,65 @@ Learning Objectives
 <li>If you want to apply statistical methods but don’t recall all the details, ChatGPT can suggest appropriate techniques based on your data and research questions, and generate ready-to-use code for implementation in Python or R.</li>
 <li>If you need to produce a quick data report, ChatGPT can significantly speed up the process by generating summary statistics, visualizations, and clear written narratives tailored for stakeholders or publication.</li>
 </ul>
+</section>
+<section id="dataset-inspection" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="dataset-inspection"><span class="header-section-number">2</span> Dataset Inspection</h2>
+<ul>
+<li>Uploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically.</li>
+<li>Looking for a dataset to practice with? Try the <a href="https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/17/40/a7899f2e57ea29a240be2c00cce7a0d4">SBCLTER annual fish survey</a></li>
+<li>In each section below, the example <strong><em>prompt</em></strong> are provided. You can copy and paste it into ChatGPT, or type your own prompt.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="ChatGPT prompt">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ChatGPT prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><em>Tell me about this dataset, and what types of data does it contain?</em></p></li>
+<li><p><em>Which columns are affected by the missing values and how many missing values are in each column.</em></p></li>
+<li><p><em>Provide summary statistics (mean, median, std, min, max) for count and size column, and unique values for the site, and year columns.</em></p></li>
+<li><p><em>Convert this data table to wide format using sp_code as header and count as value</em></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="statistical-analysis" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="statistical-analysis"><span class="header-section-number">3</span> Statistical Analysis</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="ChatGPT prompt">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ChatGPT prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>a. Time series plot</strong></p>
+<ul>
+<li><em>Create a time series plot of the total species count, with year on the x-axis and count on the y-axis. Use different colors for each site.</em></li>
+<li><em>Create a time series plot of the top 5 most abundant species, with year on the x-axis and count on the y-axis. Use different colors for each site.</em></li>
+</ul>
+<p><strong>b. Identify Potential Analytical Directions</strong></p>
+<ul>
+<li><em>I want to understand whether species has an increasing trend over time</em></li>
+<li><em>I like to do a glm() to see the species trend over time, which family should I use? how about the link function?</em></li>
+</ul>
+<p><strong>c.&nbsp;Create Report-Ready Narratives</strong></p>
+<ul>
+<li><em>I like this analysis and want to document in the report. Please describe statistical analysis for the glm() model and the corresponding results</em></li>
+</ul>
+<p><strong>d.&nbsp;Export Code for Reproducibility</strong></p>
+<ul>
+<li><em>Please give me the R scripts for the glm() analysis</em></li>
+</ul>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -317,65 +376,6 @@ Important Notes
 <li>Each cell ≈ 5–10 tokens (e.g., a short string or number).</li>
 </ul>
 </div>
-</div>
-</div>
-</section>
-<section id="dataset-inspection" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="dataset-inspection"><span class="header-section-number">2</span> Dataset Inspection</h2>
-<ul>
-<li>Uploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically.</li>
-<li>Looking for a dataset to practice with? Try the <a href="https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/17/40/a7899f2e57ea29a240be2c00cce7a0d4">SBCLTER annual fish survey</a></li>
-<li>In each section below, the example <strong><em>prompt</em></strong> are provided. You can copy and paste it into ChatGPT, or type your own prompt.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="ChatGPT prompt">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ChatGPT prompt
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><p><em>Tell me about this dataset, and what types of data does it contain?</em></p></li>
-<li><p><em>Which columns are affected by the missing values and how many missing values are in each column.</em></p></li>
-<li><p><em>Provide summary statistics (mean, median, std, min, max) for count and size column, and unique values for the site, and year columns.</em></p></li>
-<li><p><em>Convert this data table to wide format using sp_code as header and count as value</em></p></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="statistical-analysis" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="statistical-analysis"><span class="header-section-number">3</span> Statistical Analysis</h2>
-<div class="callout callout-style-default callout-tip callout-titled" title="ChatGPT prompt">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ChatGPT prompt
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>a. Time series plot</strong></p>
-<ul>
-<li><em>Create a time series plot of the total species count, with year on the x-axis and count on the y-axis. Use different colors for each site.</em></li>
-<li><em>Create a time series plot of the top 5 most abundant species, with year on the x-axis and count on the y-axis. Use different colors for each site.</em></li>
-</ul>
-<p><strong>b. Identify Potential Analytical Directions</strong></p>
-<ul>
-<li><em>I want to understand whether species has an increasing trend over time</em></li>
-<li><em>I like to do a glm() to see the species trend over time, which family should I use? how about the link function?</em></li>
-</ul>
-<p><strong>c.&nbsp;Create Report-Ready Narratives</strong></p>
-<ul>
-<li><em>I like this analysis and want to document in the report. Please describe statistical analysis for the glm() model and the corresponding results</em></li>
-</ul>
-<p><strong>d.&nbsp;Export Code for Reproducibility</strong></p>
-<ul>
-<li><em>Please give me the R scripts for the glm() analysis</em></li>
-</ul>
 </div>
 </div>
 
