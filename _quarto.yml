@@ -9,13 +9,6 @@ exercises: ### for custom theme callouts
 editor: source
 bibliography: book.bib
 
-execute:
-  freeze: auto
-  eval: false
-  echo: true
-  warning: false
-  error: false
-
 format:
   html:
     theme:
