@@ -8,6 +8,8 @@ exercises: ### for custom theme callouts
   number: false ### see https://cambiotraining.github.io/quarto-course-template/materials/02-content_guidelines.html but does not work
 editor: source
 bibliography: book.bib
+execute:
+  freeze: auto
 
 format:
   html:

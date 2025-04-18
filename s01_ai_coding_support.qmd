@@ -21,11 +21,6 @@ By the end of this session, you should be able to:
     * Translate code from one language to another (e.g., R vs. Python)
 :::
 
-[Full Screen](slides/ai_coding_support/example_slides.html)
-
-```{=html}
-<iframe class="slide-deck" src="slides/ai_coding_support/slides.html" height="337px" width="600px" style="border: 1px solid #2e3846;"></iframe>
-```
 
 ![](images/ai_coding_support/english.png){width=60% fig-alt="The hottest new programming language is English - Andrej Karpathy"}
 
@@ -90,7 +85,6 @@ Here's what it looked like when I let Copilot help me write the code - I accepte
 * How does it differ from how you might code it on your own?
 
 ```{r}
-#| eval: false
 #| code-fold: true
 ### Load the tidyverse and palmer penguins packages
 library(tidyverse)
@@ -141,7 +135,6 @@ _(Below the previous code chunk, in a Markdown section, copy and paste the above
 Here is what Copilot came up with for me.  Note, it knew from above that I wanted to use base R functions this time instead of `tidyverse` functions!
 
 ```{r}
-#| eval: false
 ### Load the palmer penguins package and load the penguins data
 library(palmerpenguins)
 data("penguins")
