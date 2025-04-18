@@ -27,25 +27,6 @@ engineering.
 * If you want to apply statistical methods but don’t recall all the details, ChatGPT can suggest appropriate techniques based on your data and research questions, and generate ready-to-use code for implementation in Python or R.
 * If you need to produce a quick data report, ChatGPT can significantly speed up the process by generating summary statistics, visualizations, and clear written narratives tailored for stakeholders or publication.
 
-::: {.callout-note}
-## Important Notes
-* ChatGPT is not a substitute for human expertise, but it serves as a powerful assistant that can enhance and accelerate your analytical workflow.
-* Data analysis done within ChatGPT is not reproducible. If you discover valuable insights, always ask ChatGPT to generate the underlying code so you can document and reproduce the process independently.
-* Using a customized GPT model is recommended for data analysis, as it can handle larger datasets and provide more context-aware responses. Therefore, access to the paid version of ChatGPT (such as ChatGPT Plus or Team) is required for this exercise.
-* If you're comparing the speed of conducting analysis in ChatGPT versus R (with existing code), R is generally more reliable and consistently faster. ChatGPT's performance can vary depending on the time of day, server load, and the specific GPT model you're using.
-
-::: {.table-sm style="font-size: 0.85em;"}
-As of April 2025, here are the estimated CSV table size by GPT Model
-
-| Model                | Token Limit | Approx. Rows × Columns (Typical CSV)   | Notes                                      |
-|----------------------|-------------|-----------------------------------------|--------------------------------------------|
-| GPT-3.5              | 4,096       | ~200 rows × 10 columns                  | Only good for small previews or subsets    |
-| GPT-4 (8k)           | 8,192       | ~400 rows × 10 columns                  | Moderate analysis and EDA possible         |
-| GPT-4-turbo (128k)   | 128,000     | ~6,000–10,000 rows × 10–20 columns      | Supports large datasets and full analysis  |
-* Each cell ≈ 5–10 tokens (e.g., a short string or number).
-:::
-:::
-
 ## Dataset Inspection
 
 * Uploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically. 
@@ -89,4 +70,23 @@ As of April 2025, here are the estimated CSV table size by GPT Model
 
 - *Please give me the R scripts for the glm() analysis*
 
+:::
+
+::: {.callout-note}
+## Important Notes
+* ChatGPT is not a substitute for human expertise, but it serves as a powerful assistant that can enhance and accelerate your analytical workflow.
+* Data analysis done within ChatGPT is not reproducible. If you discover valuable insights, always ask ChatGPT to generate the underlying code so you can document and reproduce the process independently.
+* Using a customized GPT model is recommended for data analysis, as it can handle larger datasets and provide more context-aware responses. Therefore, access to the paid version of ChatGPT (such as ChatGPT Plus or Team) is required for this exercise.
+* If you're comparing the speed of conducting analysis in ChatGPT versus R (with existing code), R is generally more reliable and consistently faster. ChatGPT's performance can vary depending on the time of day, server load, and the specific GPT model you're using.
+
+::: {.table-sm style="font-size: 0.85em;"}
+As of April 2025, here are the estimated CSV table size by GPT Model
+
+| Model                | Token Limit | Approx. Rows × Columns (Typical CSV)   | Notes                                      |
+|----------------------|-------------|-----------------------------------------|--------------------------------------------|
+| GPT-3.5              | 4,096       | ~200 rows × 10 columns                  | Only good for small previews or subsets    |
+| GPT-4 (8k)           | 8,192       | ~400 rows × 10 columns                  | Moderate analysis and EDA possible         |
+| GPT-4-turbo (128k)   | 128,000     | ~6,000–10,000 rows × 10–20 columns      | Supports large datasets and full analysis  |
+* Each cell ≈ 5–10 tokens (e.g., a short string or number).
+:::
 :::
