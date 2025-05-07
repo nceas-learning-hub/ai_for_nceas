@@ -30,7 +30,7 @@ engineering.
 ## Dataset Inspection
 
 * Uploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically. 
-* Looking for a dataset to practice with? Try the [SBCLTER annual fish survey](https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/17/40/a7899f2e57ea29a240be2c00cce7a0d4). For free version of the ChatGPT, try dataset that is smaller than 10 KB, such as [Subset version of the annual fish survey](https://sbclter.msi.ucsb.edu/external/Reef/Data/trial_data/Annual_survey_NAPL_only.csv).
+* Looking for a dataset to practice with? Try the [SBCLTER annual fish survey](https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/17/40/a7899f2e57ea29a240be2c00cce7a0d4). For free version of the ChatGPT, try dataset that is smaller than 8 KB, such as [Subset version of the annual fish survey](https://sbclter.msi.ucsb.edu/external/Reef/Data/trial_data/Annual_survey_NAPL_only.csv).
 * In each section below, the example __*prompts*__ are provided. You can copy and paste it into ChatGPT, or type your own prompts.
 
 ::: {.callout-tip title="ChatGPT prompt"}
