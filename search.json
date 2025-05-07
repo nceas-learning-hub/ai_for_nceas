@@ -1,15 +1,5 @@
 [
   {
-    "objectID": "s04_ai_lit_review.html",
-    "href": "s04_ai_lit_review.html",
-    "title": "AI-assisted Lit Review",
-    "section": "",
-    "text": "Learning Objectives\n\n\n\n\ntbd",
-    "crumbs": [
-      "AI-assisted Lit Review"
-    ]
-  },
-  {
     "objectID": "slides/ai_coding_support/slides.html#title-slide",
     "href": "slides/ai_coding_support/slides.html#title-slide",
     "title": "AI for NCEAS",
@@ -28,7 +18,7 @@
     "href": "s02_ai_analysis_in_llm.html",
     "title": "Data Inspection and Analysis using LLMs",
     "section": "",
-    "text": "Learning Objectives\n\n\n\nBy the end of this session, participants will be able to use paid ChatGPT effectively to inspect, explore, and generate insights from datasets, and to accelerate common analytical workflows through prompt engineering.\n\nDataset Inspection\n\nexamine missing values\ncalculate summary statistics\ntransform data\n\nStatistical Analysis\n\ngenerate time series plots\nidentify potential analytical directions\ncreate report-ready narratives using natural language generation\nexport code for reproducibility",
+    "text": "Learning Objectives\n\n\n\nBy the end of this session, participants will be able to use ChatGPT effectively to inspect, explore, and generate insights from datasets, and to accelerate common analytical workflows through prompt engineering.\n\nDataset Inspection\n\nexamine missing values\ncalculate summary statistics\ntransform data\n\nStatistical Analysis\n\ngenerate time series plots\nidentify potential analytical directions\ncreate report-ready narratives using natural language generation\nexport code for reproducibility",
     "crumbs": [
       "Data Inspection and Analysis using LLMs"
     ]
@@ -48,7 +38,7 @@
     "href": "s02_ai_analysis_in_llm.html#dataset-inspection",
     "title": "Data Inspection and Analysis using LLMs",
     "section": "2 Dataset Inspection",
-    "text": "2 Dataset Inspection\n\nUploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically.\nLooking for a dataset to practice with? Try the SBCLTER annual fish survey\nIn each section below, the example prompt are provided. You can copy and paste it into ChatGPT, or type your own prompt.\n\n\n\n\n\n\n\nChatGPT prompt\n\n\n\n\nTell me about this dataset, and what types of data does it contain?\nWhich columns are affected by the missing values and how many missing values are in each column.\nProvide summary statistics (mean, median, std, min, max) for count and size column, and unique values for the site, and year columns.\nConvert this data table to wide format using sp_code as header and count as value",
+    "text": "2 Dataset Inspection\n\nUploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically.\nLooking for a dataset to practice with? Try the SBCLTER annual fish survey. For free version of the ChatGPT, try dataset that is smaller than 10 KB, such as Subset version of the annual fish survey.\nIn each section below, the example prompts are provided. You can copy and paste it into ChatGPT, or type your own prompts.\n\n\n\n\n\n\n\nChatGPT prompt\n\n\n\n\nTell me about this dataset, and what types of data does it contain?\nWhich columns are affected by the missing values and how many missing values are in each column.\nProvide summary statistics (mean, median, std, min, max) for count and size column, and unique values for the site, and year columns.\nConvert this data table to wide format using sp_code as header and count as value",
     "crumbs": [
       "Data Inspection and Analysis using LLMs"
     ]
@@ -61,66 +51,6 @@
     "text": "3 Statistical Analysis\n\n\n\n\n\n\nChatGPT prompt\n\n\n\na. Time series plot\n\nCreate a time series plot of the total species count, with year on the x-axis and count on the y-axis. Use different colors for each site.\nCreate a time series plot of the top 5 most abundant species, with year on the x-axis and count on the y-axis. Use different colors for each site.\n\nb. Identify Potential Analytical Directions\n\nI want to understand whether species has an increasing trend over time\nI like to do a glm() to see the species trend over time, which family should I use? how about the link function?\n\nc. Create Report-Ready Narratives\n\nI like this analysis and want to document in the report. Please describe statistical analysis for the glm() model and the corresponding results\n\nd. Export Code for Reproducibility\n\nPlease give me the R scripts for the glm() analysis\n\n\n\n\n\n\n\n\n\nImportant Notes\n\n\n\n\nChatGPT is not a substitute for human expertise, but it serves as a powerful assistant that can enhance and accelerate your analytical workflow.\nData analysis done within ChatGPT is not reproducible. If you discover valuable insights, always ask ChatGPT to generate the underlying code so you can document and reproduce the process independently.\nUsing a customized GPT model is recommended for data analysis, as it can handle larger datasets and provide more context-aware responses. Therefore, access to the paid version of ChatGPT (such as ChatGPT Plus or Team) is required for this exercise.\nIf you’re comparing the speed of conducting analysis in ChatGPT versus R (with existing code), R is generally more reliable and consistently faster. ChatGPT’s performance can vary depending on the time of day, server load, and the specific GPT model you’re using.\n\n\nAs of April 2025, here are the estimated CSV table size by GPT Model\n\n\n\n\n\n\n\n\n\nModel\nToken Limit\nApprox. Rows × Columns (Typical CSV)\nNotes\n\n\n\n\nGPT-3.5\n4,096\n~200 rows × 10 columns\nOnly good for small previews or subsets\n\n\nGPT-4 (8k)\n8,192\n~400 rows × 10 columns\nModerate analysis and EDA possible\n\n\nGPT-4-turbo (128k)\n128,000\n~6,000–10,000 rows × 10–20 columns\nSupports large datasets and full analysis\n\n\n\n\nEach cell ≈ 5–10 tokens (e.g., a short string or number).",
     "crumbs": [
       "Data Inspection and Analysis using LLMs"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About the sessions",
-    "section": "",
-    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "index.html#ai-for-nceas",
-    "href": "index.html#ai-for-nceas",
-    "title": "About the sessions",
-    "section": "",
-    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "index.html#nceas-expertise",
-    "href": "index.html#nceas-expertise",
-    "title": "About the sessions",
-    "section": "2 NCEAS Expertise",
-    "text": "2 NCEAS Expertise\nNCEAS is a leading expert on interdisciplinary data science and works collaboratively to answer the world’s largest and most complex questions. The NCEAS approach leverages existing data and employs a team science philosophy to squeeze out all potential insights and solutions efficiently - this is called synthesis science.\nNCEAS has 30 years of success with this model among working groups and environmental professionals. In conjunction with the NCEAS Learning Hub, we are excited to pass along skills, workflows, and mindsets to help the NCEAS community better understand the implications of AI for the Planet.\n\n\n\n\n\n\n\nLearning Objectives\n\n\n\n\nPractice strategies for using AI tools effectively and responsibly in coding, analysis, and research.\nExplore the ethical implications of using AI in research and how to navigate them.\nFeel comfortable with using various AI tools in your own work.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "index.html#code-of-conduct",
-    "href": "index.html#code-of-conduct",
-    "title": "About the sessions",
-    "section": "3 Code of Conduct",
-    "text": "3 Code of Conduct\nBy participating in this activity you agree to abide by the NCEAS Code of Conduct.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "index.html#about-this-book",
-    "href": "index.html#about-this-book",
-    "title": "About the sessions",
-    "section": "4 About this book",
-    "text": "4 About this book\nThese written materials are the result of a continuous and collaborative effort at NCEAS to help researchers make their work more transparent and reproducible. This work began in the early 2000’s, and reflects the expertise and diligence of many, many individuals. The primary authors are listed in the citation below, with additional contributors recognized for their role in developing previous iterations of these or similar materials.\nThis work is licensed under a Creative Commons Attribution 4.0 International License.\nCitation: Casey O’Hara and Li Kui (2025), AI for NCEAS. URL https://nceas-learning-hub.github.io/ai_for_nceas.\nAdditional contributors: tbd\nThis is a Quarto book. To learn more about Quarto books visit https://quarto.org/docs/books.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "s03_ai_and_apis.html",
-    "href": "s03_ai_and_apis.html",
-    "title": "Accessing the ChatGPT API",
-    "section": "",
-    "text": "Learning Objectives\n\n\n\n\ntbd",
-    "crumbs": [
-      "Accessing the ChatGPT API"
     ]
   },
   {
@@ -171,6 +101,76 @@
     "text": "4 Further considerations\nWhat about hallucinations and errors?\n\nLLMs and generative AI are known to “hallucinate” and make up incorrect information from time to time. In coding, this may be less of an issue, since you can run the code to test it and verify that the results match expectations.\n\nHowever, if you are asking an LLM to code something that you don’t fully understand, you may not recognize errors or incorrect results. It might be risky to ask an LLM to write code for you that you wouldn’t be able to write yourself if given the time.\nLLMs are essentially trying to provide the most likely completion to a given prompt, i.e., the least surprising answer. For creative writing tasks, this can result in pretty mediocre and predictable prose. But for a highly structured task like coding, surprise is not the goal! An LLM trained on a massive code base will have a pretty good idea of the most common - and least surprising - ways to approach a typical coding problem.\n\nWhat about ethics?\n\nLLMs and generative AI are trained on large datasets, often including content scraped from artists and writers (and coders) without their consent. This raises ethical concerns about the use of generative AI for creative tasks, for plagiarism and exploitation of writers’ work and for the potential for putting artists out of work. For coding tasks this may be less of an issue, as much of the codebase is open source, e.g., public repos on Github or Q&A on Stack Overflow, though even open source material is often licensed with rules for attribution that may be violated by AI-generated code.\nWhile an LLM doesn’t ingest the data or information you put into your prompts (once it is trained, it can’t learn new things), it is still important to consider security and privacy risks. Including sensitive or private information in a prompt may result in some of that sensitive information being exposed in the resulting code. If you are coding an analysis that requires privacy or security, the LLM may not properly understand those privacy or security concerns and could generate code with security liabilities.\n\nWill this be problematic for the future of coding?\n\nDefinitely! With such tools readily at hand, then students won’t learn how to properly code - they will just have to rely on LLMs to do everything for them. Additionally, if a senior analyst can use an LLM to write code, they won’t need to hire junior analysts, thus breaking the pipeline for entry level coding jobs.\nCertainly not! With such tools readily at hand, the barrier to entry for coding is lowered. Consider that we’ve progressed from punch cards to binary to assembly language to FORTRAN to COBOL to C to R to Python to RStudio to Jupyter notebooks to LLMs. Each step has made coding more human readable and comprehensible, and yet we still have demand for coders. Instead of coding in R or Python (or binary), we’ll soon be coding in English (or Spanish, Chinese, etc). Coding will no longer be a barrier to statistical analysis, so junior and senior analysts can focus on the science!",
     "crumbs": [
       "AI for Coding Support"
+    ]
+  },
+  {
+    "objectID": "s04_ai_lit_review.html",
+    "href": "s04_ai_lit_review.html",
+    "title": "AI-assisted Lit Review",
+    "section": "",
+    "text": "Learning Objectives\n\n\n\n\ntbd",
+    "crumbs": [
+      "AI-assisted Lit Review"
+    ]
+  },
+  {
+    "objectID": "s03_ai_and_apis.html",
+    "href": "s03_ai_and_apis.html",
+    "title": "Accessing the ChatGPT API",
+    "section": "",
+    "text": "Learning Objectives\n\n\n\n\ntbd",
+    "crumbs": [
+      "Accessing the ChatGPT API"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About the sessions",
+    "section": "",
+    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
+    "objectID": "index.html#ai-for-nceas",
+    "href": "index.html#ai-for-nceas",
+    "title": "About the sessions",
+    "section": "",
+    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
+    "objectID": "index.html#nceas-expertise",
+    "href": "index.html#nceas-expertise",
+    "title": "About the sessions",
+    "section": "2 NCEAS Expertise",
+    "text": "2 NCEAS Expertise\nNCEAS is a leading expert on interdisciplinary data science and works collaboratively to answer the world’s largest and most complex questions. The NCEAS approach leverages existing data and employs a team science philosophy to squeeze out all potential insights and solutions efficiently - this is called synthesis science.\nNCEAS has 30 years of success with this model among working groups and environmental professionals. In conjunction with the NCEAS Learning Hub, we are excited to pass along skills, workflows, and mindsets to help the NCEAS community better understand the implications of AI for the Planet.\n\n\n\n\n\n\n\nLearning Objectives\n\n\n\n\nPractice strategies for using AI tools effectively and responsibly in coding, analysis, and research.\nExplore the ethical implications of using AI in research and how to navigate them.\nFeel comfortable with using various AI tools in your own work.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
+    "objectID": "index.html#code-of-conduct",
+    "href": "index.html#code-of-conduct",
+    "title": "About the sessions",
+    "section": "3 Code of Conduct",
+    "text": "3 Code of Conduct\nBy participating in this activity you agree to abide by the NCEAS Code of Conduct.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
+    "objectID": "index.html#about-this-book",
+    "href": "index.html#about-this-book",
+    "title": "About the sessions",
+    "section": "4 About this book",
+    "text": "4 About this book\nThese written materials are the result of a continuous and collaborative effort at NCEAS to help researchers make their work more transparent and reproducible. This work began in the early 2000’s, and reflects the expertise and diligence of many, many individuals. The primary authors are listed in the citation below, with additional contributors recognized for their role in developing previous iterations of these or similar materials.\nThis work is licensed under a Creative Commons Attribution 4.0 International License.\nCitation: Casey O’Hara and Li Kui (2025), AI for NCEAS. URL https://nceas-learning-hub.github.io/ai_for_nceas.\nAdditional contributors: tbd\nThis is a Quarto book. To learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "About the sessions"
     ]
   }
 ]
