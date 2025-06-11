@@ -3,25 +3,17 @@ project:
   output-dir: docs
 
 filters:
-- nceas-learning-hub/lh_theme
+- nceas-learning-hub/theme
+
 exercises: ### for custom theme callouts
   number: false ### see https://cambiotraining.github.io/quarto-course-template/materials/02-content_guidelines.html but does not work
 editor: source
-bibliography: book.bib
+
 execute:
   freeze: auto
 
 format:
-  html:
-    theme:
-       light: _extensions/nceas-learning-hub/lh_theme/lh_light.scss
-       dark: _extensions/nceas-learning-hub/lh_theme/lh_dark.scss
-    css: banner/banner.css
-      ### doesn't render NCEAS logo if put in scss file?
-      ### seems to work locally but not when published on GitHub
-    toc: true
-    number-sections: true
-    title-block-banner: "blue" ### need this here to "turn on" the title-block-banner
+  theme-html
 
 website:
   title: "AI for NCEAS"
@@ -56,10 +48,10 @@ website:
         href: COURSE_URL
     contents:
       - index.qmd # preface
-      # - s01_ai_coding_support.qmd  ###  (coreRlessons version NA)
-      # - s02_ai_analysis_in_llm.qmd  ###  (coreRlessons version NA)
-      # - s03_ai_and_apis.qmd  ###  (coreRlessons version NA)
-      # - s04_ai_lit_review.qmd  ###  (coreRlessons version NA)
+      - s01_ai_coding_support.qmd  ###  (coreRlessons version NA)
+      - s02_ai_analysis_in_llm.qmd  ###  (coreRlessons version NA)
+      - s03_ai_and_apis.qmd  ###  (coreRlessons version NA)
+      - s04_ai_lit_review.qmd  ###  (coreRlessons version NA)
 
   page-footer:
     center: "Copyright \u00a9 2025, NCEAS"
