@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/slides/ai_coding_support/slides.html</loc>
-    <lastmod>2025-05-08T17:59:44.116Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s02_ai_analysis_in_llm.html</loc>
-    <lastmod>2025-05-08T17:59:44.112Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s01_ai_coding_support.html</loc>
-    <lastmod>2025-05-08T17:59:44.112Z</lastmod>
+    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/index.html</loc>
+    <lastmod>2025-06-11T18:08:07.589Z</lastmod>
   </url>
   <url>
     <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s04_ai_lit_review.html</loc>
-    <lastmod>2025-05-08T17:59:44.112Z</lastmod>
+    <lastmod>2025-06-11T18:08:07.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/slides/ai_coding_support/slides.html</loc>
+    <lastmod>2025-06-11T18:08:07.592Z</lastmod>
   </url>
   <url>
     <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s03_ai_and_apis.html</loc>
-    <lastmod>2025-05-08T17:59:44.112Z</lastmod>
+    <lastmod>2025-06-11T18:08:07.589Z</lastmod>
   </url>
   <url>
-    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/index.html</loc>
-    <lastmod>2025-05-08T17:59:44.111Z</lastmod>
+    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s02_ai_analysis_in_llm.html</loc>
+    <lastmod>2025-06-11T18:08:07.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s01_ai_coding_support.html</loc>
+    <lastmod>2025-06-11T18:08:07.589Z</lastmod>
   </url>
 </urlset>
