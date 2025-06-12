@@ -60,6 +60,73 @@
     ]
   },
   {
+    "objectID": "slides/ai_and_apis/slides.html#title-slide",
+    "href": "slides/ai_and_apis/slides.html#title-slide",
+    "title": "AI for NCEAS",
+    "section": "",
+    "text": "AI and APIs\nAn introduction to accessing and using the ChatGPT API"
+  },
+  {
+    "objectID": "s03_ai_and_apis.html",
+    "href": "s03_ai_and_apis.html",
+    "title": "Accessing ChatGPT through its API",
+    "section": "",
+    "text": "Learning Objectives\n\n\n\nAfter this lesson focused on accessing and using the ChatGPT Application Programming Interface (API), you should be able to:\n\nExplain what an API is and why it is useful\nSet up a user account and get an access token to the ChatGPT API\nPost a simple request and parse a response from the API using R\nAssemble, send, and parse more complex requests using R\nAccess voice summary and translation functionality using R",
+    "crumbs": [
+      "Accessing ChatGPT through its API"
+    ]
+  },
+  {
+    "objectID": "s03_ai_and_apis.html#intro-to-chatgpt-api",
+    "href": "s03_ai_and_apis.html#intro-to-chatgpt-api",
+    "title": "Accessing ChatGPT through its API",
+    "section": "1 Intro to ChatGPT API",
+    "text": "1 Intro to ChatGPT API\nFull Screen\n\n\n1.1 Getting and storing an API key\n\nGenerate a new API key using the instructions on the slides, through https://platform.openai.com/settings/organization/api-keys\nSave this key somewhere safe. Not in an R script or any Git-tracked file!\nRecommended: usethis::edit_r_environ() - opens .Renviron file. Edit this and save it!\nAfter you first set this up, you probably need to restart R to get it to kick in…\nShould look something like this:\n\nOPENAI = your-API-key-here\n\nTo access in a script, use Sys.getenv(\"OPENAI\") (using the name you save it as)\n\napi_key &lt;- Sys.getenv(\"OPENAI\")",
+    "crumbs": [
+      "Accessing ChatGPT through its API"
+    ]
+  },
+  {
+    "objectID": "s03_ai_and_apis.html#rest-api---basics",
+    "href": "s03_ai_and_apis.html#rest-api---basics",
+    "title": "Accessing ChatGPT through its API",
+    "section": "2 REST API - basics",
+    "text": "2 REST API - basics\nREST APIs use “endpoints” - basically URLs that indicate the function or data you are trying to access. They are associated with a “method” (here we’ll focus on GET, to retrieve specific data, and POST, to send information and get a response)\n\n2.1 Examples of APIs\n\nWorld Register of Marine Species API\nIUCN Red List API\nGitHub API\n\nExample: WoRMS, query records based on the vernacular name of a species, e.g., “blue whale”.\ncurl -X 'GET' \\\n  'https://www.marinespecies.org/rest/AphiaRecordsByVernacular/blue%20whale?like=false&offset=1' \\\n  -H 'accept: application/json'\nNotes:\n\nthe method is GET request\nthe base URL is https://www.marinespecies.org/rest/\nthe endpoint is AphiaRecordsByVernacular\nthe main parameter is the name of the species, here blue%20whale\ntwo other parameters are like and offset, with default values here\nif you just paste that whole URL into the browser, you get a bunch of data as JSON format\n\n\n\n2.2 How to access an API in R?\nin R we’ll use the httr package, which has been around a while and is pretty straightforward, to create our API queries. Note, the developers have superseded httr with httr2 but since I’m not familiar with the new syntax, we’ll be old school for now! (watch here for updates)\nExample:\nwhale_url &lt;- \"https://www.marinespecies.org/rest/AphiaRecordsByVernacular/blue%20whale?like=false&offset=1\"\nx &lt;- httr::GET(url = whale_url)\nresults &lt;- httr::content(x, as = \"parsed\")  ### to parse content into R-friendly\nsciname &lt;- results[[1]]$scientificname      ### access info from the list\nNOTE: for very simple GET requests, it might be easier to access using the jsonlite package:\nwhale_df &lt;- jsonlite::fromJSON(whale_url, simplifyDataFrame = TRUE)",
+    "crumbs": [
+      "Accessing ChatGPT through its API"
+    ]
+  },
+  {
+    "objectID": "s03_ai_and_apis.html#crafting-a-chatgpt-api-call",
+    "href": "s03_ai_and_apis.html#crafting-a-chatgpt-api-call",
+    "title": "Accessing ChatGPT through its API",
+    "section": "3 Crafting a ChatGPT API call",
+    "text": "3 Crafting a ChatGPT API call\nFirst, a few terms:\n\n“tokens”: Tokens are the currency of these Large Language Models. A token is more or less one word, about 4-5 letters. Your prompt into ChatGPT is broken into input tokens, and the response you get is output tokens.\n“context window”: how much data the LLM can handle per request (both in and out) - kind of like the working memory. Older models could only “remember” a few sentences; newer models can handle a lot more.\n“token rate”: how rapidly can you feed data into/out of the LLM (again, both in and out) before you run into problems - again, older models were much more limited in their rates.\n\n\n3.1 Endpoint URL\nFor basic text “completions” the endpoint URL is https://api.openai.com/v1/chat/completions.\nThere are other endpoints, for audio generation, audio transcriptions/translations, content moderation, image generation, etc.\n\n\n3.2 POST body including model and message\nSome things we need to specify for post body for the ChatGPT API:\n\nThe model we want to use! Tradeoff of cost vs. performance:\n\nnewer, more sophisticated models are much more expensive per token\nolder models are more restrictive (how many tokens go in or out) but a lot cheaper\nlet’s use gpt-4o-mini: $0.15 per 1M tokens in, $0.60 per 1M tokens out\n\nThe message(s) to send, as a list. There are three “roles” for messages:\n\nrole = \"system\" - how you want the model to answer questions, e.g., “You are a helpful and concise research assistant” or “You are a sassy teenager”\nrole = \"user\" - this is where your query goes\nrole = \"assistant\" - you can use this to feed back the model’s prior responses, OR it can be helpful to “force” a certain kind of output… more on this later!\n\ntemperature (OPTIONAL) - this is a number from 0 to 1 indicating how much randomness you want the model to incorporate\n\ncloser to 0: more predictable, more focused, but less creative\ncloser to 1: more creative, potentially less coherent or focused\n\nmax_tokens (OPTIONAL) - if you want to limit the response (e.g., to keep short responses and keep cost down), set a value here. Note, you can also tell the system role to keep it brief!\n\n\n\n3.3 Other metadata\nWe also need to supply the API with our key and our desired output format, using additional headers.\nAuthorization = 'Bearer &lt;api key&gt;',\nContent-Type = 'application/json'",
+    "crumbs": [
+      "Accessing ChatGPT through its API"
+    ]
+  },
+  {
+    "objectID": "s03_ai_and_apis.html#our-first-chatgpt-api-call",
+    "href": "s03_ai_and_apis.html#our-first-chatgpt-api-call",
+    "title": "Accessing ChatGPT through its API",
+    "section": "4 Our first ChatGPT API call!",
+    "text": "4 Our first ChatGPT API call!\nendpt &lt;- 'https://api.openai.com/v1/chat/completions'\n\npost_body &lt;- list(\n  model = 'gpt-4o-mini',\n  messages = list(\n    list(role = 'system', \n         content = 'You are a helpful travel agent'),\n    list(role = 'user', \n         content = 'Tell me five things to do with my friends who are coming to \n                    visit Santa Barbara - they love the outdoors and good food')),\n  temperature = 0.7\n)\n\nresponse &lt;- POST(\n  url = endpt,\n  body = post_body,\n  encode = 'json',\n  add_headers(\n    Authorization = paste('Bearer', api_key),\n    `Content-Type` = 'application/json'\n  )\n)\nThat response is hard to understand. Use httr::content() to parse that response to make it sensible\nx &lt;- content(response, as = 'parsed')\nNow note that in this list of stuff, there is an element called $choices that contains $message, in which is $content that looks like an answer (and note $role is “assistant”). Let’s get that content!\nout_text &lt;- x$choices[[1]]$message$content\nout_text\nThe response (truncated a bit):\n\nSanta Barbara is a beautiful destination with plenty of outdoor activities and fantastic dining options. Here are five things you and your friends can do:\n\nHiking in the Santa Barbara Mountains: &lt;…text truncated…&gt;\nVisit the Santa Barbara Botanic Garden: &lt;…&gt;\nWine Tasting in the Santa Ynez Valley: &lt;…&gt;\nBeach Day at East Beach: &lt;…&gt;\nBike Along the Waterfront: &lt;…&gt;\n\nThese activities will allow you and your friends to enjoy both the natural beauty and culinary delights Santa Barbara has to offer!”",
+    "crumbs": [
+      "Accessing ChatGPT through its API"
+    ]
+  },
+  {
+    "objectID": "s03_ai_and_apis.html#use-cases-for-chat-completions",
+    "href": "s03_ai_and_apis.html#use-cases-for-chat-completions",
+    "title": "Accessing ChatGPT through its API",
+    "section": "5 Use cases for chat completions",
+    "text": "5 Use cases for chat completions\n\n5.1 Classification\nGive ChatGPT a list of terms, and ask it to classify based on some criterion.\nLet’s leave everything the same as the first query, just change the prompt to classify movies, feel free to try other classifications:\nmovies &lt;- c('Die Hard', 'Gremlins', 'Star Wars', 'Halloween', 'The Princess Bride', \n            'Its a Wonderful Life', 'Shawshank Redemption', 'The Godfather', \n            'Jaws', 'Spirited Away', 'Alien', 'The Shining')\nprompt &lt;- paste('Classify these movies into Christmas vs not Christmas movies: ',\n                paste(movies, collapse = ', '))\npost_body &lt;- list(\n  model = 'gpt-4o-mini',\n  messages = list(\n    list(role = 'system', content = 'You are an opinionated movie critic'),\n    list(role = 'user',   content = prompt)),\n  temperature = 0.7\n)\n\nresponse &lt;- POST(\n  url = endpt, body = post_body, encode = 'json',\n  add_headers(\n    Authorization = paste('Bearer', api_key),\n    `Content-Type` = 'application/json'\n  )\n)\n\nout_text &lt;- content(response, 'parsed')$choices[[1]]$message$content\nout_text\nThe response (I removed most of the explanations for brevity):\n\n“Certainly! Here’s how I would classify those movies into Christmas vs. not Christmas:\nChristmas Movies: 1. Die Hard - A classic action film often debated as a Christmas movie, but it takes place during the holiday season, so it qualifies. 2. Gremlins &lt;…&gt; 3. It’s a Wonderful Life - &lt;…&gt;\nNot Christmas Movies: 1. Star Wars &lt;…&gt; 2. Halloween &lt;…&gt; 3. The Princess Bride &lt;…this one is wrong…&gt; 4. Shawshank Redemption &lt;…&gt; 5. The Godfather &lt;…&gt; 6. Jaws &lt;…&gt; 7. Spirited Away &lt;…&gt; 8. Alien &lt;…&gt; 9. The Shining &lt;…&gt; .\nSo there you have it! A clear distinction between the Christmas-themed films and those that are not.\n\n\n\n5.2 Sentiment analysis\nRate statements based on their sentiment, generally positive vs. negative or according to emotional weight.\nreviews &lt;- c('1. Best tacos ever',\n             '2. Service was very slow, but the food was great',\n             '3. Sick vibes and killer music',\n             '4. Ive had better')\nprompt &lt;- paste('Classify these restaurant reviews by sentiment: ',\n                paste(reviews, collapse = ', '))\npost_body &lt;- list(\n  model = 'gpt-4o-mini',\n  messages = list(\n    list(role = 'system', content = 'You are a sassy teen restaurant critic'),\n    list(role = 'user',   content = prompt)),\n  temperature = 0.7\n)\n\nresponse &lt;- POST(\n  url = endpt, body = post_body, encode = 'json',\n  add_headers(\n    Authorization = paste('Bearer', api_key),\n    `Content-Type` = 'application/json'\n  )\n)\n\nout_text &lt;- content(response, 'parsed')$choices[[1]]$message$content\nout_text\nResponse:\n\nAlright, let’s break these down with some sass:\n\nBest tacos ever - Positive vibes, ten out of ten! 🌮✨ \nService was very slow, but the food was great - A mixed bag, but leaning positive. Food saves the day! 🐢❤️🍽️\n\nSick vibes and killer music - Totally positive! This place is serving up the good times! 🎶🤘\n\nI’ve had better - Oof, that’s a hard pass. Major disappointment vibes. 😒👎\nSo, we’ve got: . Positive . Mixed . Positive . Negative the reviews coming, peeps! 🥳”",
+    "crumbs": [
+      "Accessing ChatGPT through its API"
+    ]
+  },
+  {
     "objectID": "slides/ai_coding_support/slides.html#title-slide",
     "href": "slides/ai_coding_support/slides.html#title-slide",
     "title": "AI for NCEAS",
@@ -72,16 +139,6 @@
     "title": "AI for NCEAS",
     "section": "",
     "text": "Configure RStudio to work with Copilot\n\n\nIn RStudio: Tools \\(\\Rightarrow\\) Global Options. Look for “Copilot” at the bottom of the sidebar*:\n\n\n\n\n\n* Copilot requires RStudio version 2023.09.0 or later!"
-  },
-  {
-    "objectID": "s03_ai_and_apis.html",
-    "href": "s03_ai_and_apis.html",
-    "title": "Accessing the ChatGPT API",
-    "section": "",
-    "text": "Learning Objectives\n\n\n\n\ntbd",
-    "crumbs": [
-      "Accessing the ChatGPT API"
-    ]
   },
   {
     "objectID": "s02_ai_analysis_in_llm.html",
