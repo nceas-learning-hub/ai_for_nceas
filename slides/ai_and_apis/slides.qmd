@@ -1,0 +1,164 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    code-link: true
+    highlight-style: a11y
+    chalkboard: true
+    theme:
+      - lh_slides_style.scss
+---
+
+## {#title-slide data-menu-title="Title Slide"} 
+
+[AI and APIs]{.custom-title}
+
+[An introduction to accessing and using the ChatGPT API]{.custom-subtitle}
+
+::: {.body-text .center-text}
+![](images/chatgpt.png){width=50%}
+:::
+
+---
+
+[What is an API?]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+* **A**pplication **P**rogramming **I**nterface allows a user to access data from a remote server
+* A RESTful API (**Re**presentational **S**tate **T**ransfer) is a common architecture that uses standard HTTP commands (GET, POST, ...)
+
+![](images/api_basics.png){width=900 fig-align="center"}
+
+:::
+
+<p style="font-size: 9px; color: #cccccc;">
+Laptop icons created by Freepik - Flaticon (flaticon.com/free-icons/laptop); Server icons created by Elias Bikbulatov - Flaticon (flaticon.com/free-icons/server); Automation icons created by Becris - Flaticon (flaticon.com/free-icons/automation)
+</p>
+
+
+---
+
+[Why use an API?]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+![](images/api_basics.png){width=600 fig-align="center"}
+
+* Query and retrieve remote data for a repeatable analysis (e.g., IUCN Red List data)
+* Query and retrieve remote data programatically for a website or Shiny App (e.g., [The Phactory](https://www.tylerclavelle.com/shiny/phactory/))
+* Build a package or function to allow others to access data for their own nefarious schemes
+
+:::
+
+<p style="font-size: 9px; color: #cccccc;">
+Laptop icons created by Freepik - Flaticon (flaticon.com/free-icons/laptop); Server icons created by Elias Bikbulatov - Flaticon (flaticon.com/free-icons/server); Automation icons created by Becris - Flaticon (flaticon.com/free-icons/automation)
+</p>
+
+
+---
+
+[Log in to your ChatGPT account]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+To use the API, you need an authorized account at https://auth.openai.com/log-in.
+
+You can sign up with OpenAI or use your Google (or other) login credentials.
+
+![](images/chatgpt_login.png){width=600 fig-align="center"}
+
+:::
+
+
+---
+
+[OpenAI Playground tab]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+The basic chat interface you've probably seen before:
+
+![](images/openai_playground.png){width=900 fig-align="center"}
+
+::: 
+
+---
+
+[OpenAI API documentation tab]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+Overview of the OpenAI API.  We'll come back to this later.
+
+![](images/openai_api.png){width=900 fig-align="center"}
+
+::: 
+
+---
+
+[OpenAI Developer documentation tab]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+Instructions on accessing OpenAI API through the OpenAI Python library
+
+![](images/openai_docs.png){width=900 fig-align="center"}
+
+::: 
+
+---
+
+[OpenAI Settings tab]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+We need to set up an API key and put up a little credit to use the API
+
+![](images/openai_settings.png){width=900 fig-align="center"}
+
+::: 
+
+---
+
+[OpenAI Settings tab: billing]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+Add credit under **Settings --> Billing** (min $5, but expires after 1 year)
+
+![](images/openai_billing.png){width=900 fig-align="center"}
+
+::: 
+
+---
+
+[OpenAI Settings tab: API keys]{.slide-title}
+
+<hr>
+
+::: {.body-text}
+
+Generate a new API key under **Settings --> Billing**
+
+![](images/openai_key.png){width=900 fig-align="center"}
+
+::: 
+
+---

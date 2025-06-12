@@ -1,44 +1,269 @@
 ---
-title: Accessing the ChatGPT API
+title: Accessing ChatGPT through its API
 ---
 
 
 :::{.callout-tip}
 ## Learning Objectives
 
--   tbd
+After this lesson focused on accessing and using the ChatGPT Application Programming Interface (API), you should be able to:
+
+* Explain what an API is and why it is useful
+* Set up a user account and get an access token to the ChatGPT API
+* Post a simple request and parse a response from the API using R
+* Assemble, send, and parse more complex requests using R
+* Access voice summary and translation functionality using R
+
 :::
 
-<!-- ## Intro to APIs -->
+## Intro to ChatGPT API
 
-<!-- What is an API?  Why use it? -->
+[Full Screen](slides/ai_and_apis/slides.html)
 
-<!-- REST API - basics -->
+```{=html}
+<iframe class="slide-deck" src="slides/ai_and_apis/slides.html" height="337px" width="600px" style="border: 1px solid #2e3846;"></iframe>
+```
 
-<!-- - key - getting one, storing it in environment variable (not code) -->
-<!-- - endpoint -->
-<!-- - query parameters -->
-<!-- - response (JSON) -->
-<!-- - etiquette -->
+### Getting and storing an API key
 
-<!-- ### Examples of APIs?   -->
+* Generate a new API key using the instructions on the slides, through https://platform.openai.com/settings/organization/api-keys
+* Save this key somewhere safe.  Not in an R script or any Git-tracked file!
+* Recommended: usethis::edit_r_environ() - opens .Renviron file.  Edit this and save it!
+* After you first set this up, you probably need to restart R to get it to kick in...
+* Should look something like this:
 
-<!-- IUCN Red List API - https://apiv3.iucnredlist.org/api/v3/docs -->
-<!-- WoRMS API - http://www.marinespecies.org/rest/ -->
+```r
+OPENAI = your-API-key-here
+```
+
+* To access in a script, use `Sys.getenv("OPENAI")` (using the name you save it as)
+
+```r
+api_key <- Sys.getenv("OPENAI")
+```
+
+## REST API - basics
+
+REST APIs use "endpoints" - basically URLs that indicate the function or data you are trying to access.  They are associated with a "method" (here we'll focus on `GET`, to retrieve specific data, and `POST`, to send information and get a response)
+
+### Examples of APIs
+
+* [World Register of Marine Species API](http://www.marinespecies.org/rest/)
+* [IUCN Red List API](https://api.iucnredlist.org/api-docs/index.html)
+* [GitHub API](https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28)
+
+Example: WoRMS, query records based on the vernacular name of a species, e.g., "blue whale".  
+
+```bash
+curl -X 'GET' \
+  'https://www.marinespecies.org/rest/AphiaRecordsByVernacular/blue%20whale?like=false&offset=1' \
+  -H 'accept: application/json'
+```
+
+Notes:
+
+* the method is `GET` request
+* the base URL is `https://www.marinespecies.org/rest/`
+* the endpoint is `AphiaRecordsByVernacular`
+* the main parameter is the name of the species, here `blue%20whale`
+* two other parameters are `like` and `offset`, with default values here
+* if you just paste that whole URL into the browser, you get a bunch of data as JSON format
+
+### How to access an API in R?
+
+in R we'll use the `httr` package, which has been around a while and is pretty straightforward, to create our API queries.  Note, the developers have superseded `httr` with `httr2` but since I'm not familiar with the new syntax, we'll be old school for now!  (watch here for updates)
+
+Example:
+
+```r
+whale_url <- "https://www.marinespecies.org/rest/AphiaRecordsByVernacular/blue%20whale?like=false&offset=1"
+x <- httr::GET(url = whale_url)
+results <- httr::content(x, as = "parsed")  ### to parse content into R-friendly
+sciname <- results[[1]]$scientificname      ### access info from the list
+```
+
+NOTE: for very simple `GET` requests, it might be easier to access using the `jsonlite` package:
+
+```r
+whale_df <- jsonlite::fromJSON(whale_url, simplifyDataFrame = TRUE)
+```
+
+## Crafting a ChatGPT API call
+
+First, a few terms:
+
+* "tokens": Tokens are the currency of these Large Language Models.  A token is more or less one word, about 4-5 letters.  Your prompt into ChatGPT is broken into input tokens, and the response you get is output tokens.
+* "context window": how much data the LLM can handle per request (both in and out) - kind of like the working memory.  Older models could only "remember" a few sentences; newer models can handle a lot more.
+* "token rate": how rapidly can you feed data into/out of the LLM (again, both in and out) before you run into problems - again, older models were much more limited in their rates.
+
+### Endpoint URL
+
+For basic text "completions" the endpoint URL is `https://api.openai.com/v1/chat/completions`.  
+
+There are other endpoints, for [audio generation](https://platform.openai.com/docs/api-reference/audio), audio [transcriptions](https://platform.openai.com/docs/api-reference/audio/createTranscription)/[translations](https://platform.openai.com/docs/api-reference/audio/createTranslation), [content moderation](https://platform.openai.com/docs/api-reference/moderations), [image generation](https://platform.openai.com/docs/api-reference/images), etc.
+
+### POST body including model and message
+
+Some things we need to specify for post body for the ChatGPT API:
+
+* The `model` we want to use!  [Tradeoff of cost vs. performance](https://platform.openai.com/docs/pricing):
+    * newer, more sophisticated models are much more expensive per token
+    * older models are more restrictive (how many tokens go in or out) but a lot cheaper
+    * let's use `gpt-4o-mini`: \$0.15 per 1M tokens in, \$0.60 per 1M tokens out
+* The `message`(s) to send, as a list.  There are three "roles" for messages:
+    * `role = "system"` - how you want the model to answer questions, e.g., "You are a helpful and concise research assistant" or "You are a sassy teenager"
+    * `role = "user"` - this is where your query goes
+    * `role = "assistant"` - you can use this to feed back the model's prior responses, OR it can be helpful to "force" a certain kind of output... more on this later!
+* `temperature` (OPTIONAL) - this is a number from 0 to 1 indicating how much randomness you want the model to incorporate
+    * closer to 0: more predictable, more focused, but less creative
+    * closer to 1: more creative, potentially less coherent or focused
+* `max_tokens` (OPTIONAL) - if you want to limit the response (e.g., to keep short responses and keep cost down), set a value here.  Note, you can also tell the `system` role to keep it brief!
+    
+### Other metadata
+
+We also need to supply the API with our key and our desired output format, using additional headers.
+
+```r
+Authorization = 'Bearer <api key>',
+Content-Type = 'application/json'
+```
+
+## Our first ChatGPT API call!
+
+```r
+endpt <- 'https://api.openai.com/v1/chat/completions'
+
+post_body <- list(
+  model = 'gpt-4o-mini',
+  messages = list(
+    list(role = 'system', 
+         content = 'You are a helpful travel agent'),
+    list(role = 'user', 
+         content = 'Tell me five things to do with my friends who are coming to 
+                    visit Santa Barbara - they love the outdoors and good food')),
+  temperature = 0.7
+)
+
+response <- POST(
+  url = endpt,
+  body = post_body,
+  encode = 'json',
+  add_headers(
+    Authorization = paste('Bearer', api_key),
+    `Content-Type` = 'application/json'
+  )
+)
+```
+
+That response is hard to understand.  Use `httr::content()` to parse that response to make it sensible
+
+```r
+x <- content(response, as = 'parsed')
+```
+
+Now note that in this list of stuff, there is an element called `$choices` that contains `$message`, in which is `$content` that looks like an answer (and note `$role` is "assistant").  Let's get that content!
+
+```r
+out_text <- x$choices[[1]]$message$content
+out_text
+```
+
+The response (truncated a bit): 
+
+> Santa Barbara is a beautiful destination with plenty of outdoor activities and fantastic dining options. Here are five things you and your friends can do:
+>
+> 1. **Hiking in the Santa Barbara Mountains**: <...text truncated...>
+> 2. **Visit the Santa Barbara Botanic Garden**:  <...>
+> 3. **Wine Tasting in the Santa Ynez Valley**:  <...>
+> 4. **Beach Day at East Beach**:  <...>
+> 5. **Bike Along the Waterfront**:  <...>
+>
+> These activities will allow you and your friends to enjoy both the natural beauty and culinary delights Santa Barbara has to offer!"
+
+## Use cases for chat completions
+
+### Classification
+
+Give ChatGPT a list of terms, and ask it to classify based on some criterion.
+
+Let's leave everything the same as the first query, just change the prompt to classify movies, feel free to try other classifications:
+
+```r
+movies <- c('Die Hard', 'Gremlins', 'Star Wars', 'Halloween', 'The Princess Bride', 
+            'Its a Wonderful Life', 'Shawshank Redemption', 'The Godfather', 
+            'Jaws', 'Spirited Away', 'Alien', 'The Shining')
+prompt <- paste('Classify these movies into Christmas vs not Christmas movies: ',
+                paste(movies, collapse = ', '))
+post_body <- list(
+  model = 'gpt-4o-mini',
+  messages = list(
+    list(role = 'system', content = 'You are an opinionated movie critic'),
+    list(role = 'user',   content = prompt)),
+  temperature = 0.7
+)
+
+response <- POST(
+  url = endpt, body = post_body, encode = 'json',
+  add_headers(
+    Authorization = paste('Bearer', api_key),
+    `Content-Type` = 'application/json'
+  )
+)
+
+out_text <- content(response, 'parsed')$choices[[1]]$message$content
+out_text
+```
+
+The response (I removed most of the explanations for brevity):
+
+> "Certainly! Here’s how I would classify those movies into Christmas vs. not Christmas:
+>
+> **Christmas Movies:** 1. **Die Hard** - A classic action film often debated as a Christmas movie, but it takes place during the holiday season, so it qualifies. 2. **Gremlins** <...> 3. **It’s a Wonderful Life** -  <...>  
+> **Not Christmas Movies:** 1. **Star Wars**  <...>  2. **Halloween**  <...>  3. **The Princess Bride**  <...this one is wrong...>  4. **Shawshank Redemption**  <...>  5. **The Godfather**  <...>  6. **Jaws**  <...>  7. **Spirited Away**  <...>  8. **Alien**  <...>  9. **The Shining**  <...> .  
+> So there you have it! A clear distinction between the Christmas-themed films and those that are not.
+
+### Sentiment analysis
+
+Rate statements based on their sentiment, generally positive vs. negative or according to emotional weight.
+
+```r
+reviews <- c('1. Best tacos ever',
+             '2. Service was very slow, but the food was great',
+             '3. Sick vibes and killer music',
+             '4. Ive had better')
+prompt <- paste('Classify these restaurant reviews by sentiment: ',
+                paste(reviews, collapse = ', '))
+post_body <- list(
+  model = 'gpt-4o-mini',
+  messages = list(
+    list(role = 'system', content = 'You are a sassy teen restaurant critic'),
+    list(role = 'user',   content = prompt)),
+  temperature = 0.7
+)
+
+response <- POST(
+  url = endpt, body = post_body, encode = 'json',
+  add_headers(
+    Authorization = paste('Bearer', api_key),
+    `Content-Type` = 'application/json'
+  )
+)
+
+out_text <- content(response, 'parsed')$choices[[1]]$message$content
+out_text
+```
+
+Response:
+
+> Alright, let’s break these down with some sass:
+>
+> 1. **Best tacos ever** - Positive vibes, ten out of ten! 🌮✨\  
+> 2. **Service was very slow, but the food was great** - A mixed bag, but leaning positive. Food saves the day! 🐢❤️🍽️  
+> 3. **Sick vibes and killer music** - Totally positive! This place is serving up the good times! 🎶🤘  
+> 4. **I've had better** - Oof, that’s a hard pass. Major disappointment vibes. 😒👎  
+> So, we’ve got: \n1. Positive \n2. Mixed \n3. Positive \n4. Negative \n\nKeep the reviews coming, peeps! 🥳"
 
 <!-- ## ChatGPT API -->
-
-<!-- * sign up for an account - https://platform.openai.com/signup -->
-<!-- * Creating a key - https://platform.openai.com/docs/guides/create-api-key -->
-<!-- * pricing - https://platform.openai.com/pricing -->
-<!--     * do users get a free trial? nope - sign up, minimum $5 -->
-
-<!-- * making a request - the hard way -->
-<!-- * interpreting the response - all the pieces -->
-<!-- * isolating the response content -->
-<!-- * controlling the response -->
-<!--     * temperature -->
-<!--     * max_tokens -->
 
 <!-- * Classification into groups -->
 <!-- * Sentiment analysis -->
