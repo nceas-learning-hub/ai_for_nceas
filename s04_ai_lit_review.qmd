@@ -5,12 +5,20 @@ title: AI-assisted Literature Review
 :::{.callout-tip}
 ## Learning Objectives
 
-- Identify and describe the core purpose and features of leading AI research tools.
-
-- Evaluate the suitability of each tool for specific research tasks (e.g., literature reviews, summarization, visualization).
-
-- Demonstrate the ability to access and navigate these tools through available tutorials and resources.
+- Identify the key features and purposes of leading AI-powered literature review tools.
+- Select the appropriate tool for specific research scenarios.
+- Apply best practices for ethical and effective use of AI in the research process.
 :::
+
+## Background: Limitations of Traditional Literature Reviews
+
+Traditional literature reviews, while rigorous, often face several challenges:
+
+- **Information overload**: The sheer volume of potentially relevant papers can be overwhelming, making it hard to prioritize.  
+- **Limited scope**: Searches focused only on personal subscriptions or familiar journals may miss important interdisciplinary work (though Google Scholar helps broaden this).  
+- **Citation chasing limitations**: Following references manually makes it hard to see large-scale relationships and influential clusters.  
+- **Time constraints**: Researchers often lack sufficient time to systematically screen, read, and synthesize a vast literature base.  
+- **Summarization bottlenecks**: Even with enough time, distilling and synthesizing findings from a high volume of papers is cognitively demanding and prone to errors or oversights.
 
 
 ## AI tools for literature review comparison
@@ -23,14 +31,78 @@ title: AI-assisted Literature Review
 | **Price** | Free | Free with sign-up; Pro subscription available | Free basic tier; Pro subscription available | Free | Free (experimental beta) |
 | **Best For** | Discovering and exploring academic literature | Streamlining empirical research | Reading and summarizing complex papers | Discovering literature and author connections | Organizing and exploring research ideas with AI assistance |
 | **Free Tier Limits** | Unlimited searches, about 50 results per page | 4–5 top results per query, up to 20–30 uploaded docs | Practical ~20–50 upload, ~50–100 results per query | ~50 results per collection, collections can grow to hundreds | Up to 20–30 personal documents per notebook |
+| **Limitations** | - No personal uploads  <br> - Limited customization | - Only top 4–5 results free  <br> | - Hallucination in "Ask PDF" part  <br> - Struggles with large PDFs | - No PDF uploads  <br> - Graphs can be cluttered | - No external literature search  <br> - Early stage beta |
+:::
+## How to use it?
 
+### Scenario 1: I have a specific research question and want targeted answers
+
+  - **Elicit**: helps you find and summarize studies that directly address your question  
+  - **SciSpace**: lets you upload papers and ask questions about their content  
+  - **Semantic Scholar**: supports semantic keyword queries to refine answers  
+
+---
+
+### Scenario 2: I want to broadly discover the most influential papers in my field
+
+  - **Semantic Scholar**: ideal for exploring influential papers by citation counts, influential authors, and topic clusters  
+
+---
+
+### Scenario 3: I have a list of citations in Zotero and want to explore related literature
+
+  - **Research Rabbit**: Integrates directly with Zotero collections, helps visualize related works and authors  
+
+---
+
+### Scenario 4: I have a folder of PDF articles and want to ask questions about them
+
+- **Recommended tools**:  
+  - **SciSpace**: Upload PDFs and use the AI Copilot to ask questions  
+  - **Google NotebookLM**: Upload multiple documents and explore connections, notes, and summaries  
+
+---
+
+### Scenario 5: I want to stay organized and link notes and documents with an AI assistant
+
+- **Recommended tool**:  
+  - **Google NotebookLM**: Best for organizing your own documents and exploring them with AI queries  
+
+
+## Let's give it a try
+::: {.callout-exercise}
+ - Register one literature review tool of your choice
+ - Provide 1–2 sample research questions
+ - Let's talk about the results:
+   - how many results were returned?
+   - how relevant were the results?
+   - how easy was the interface?
 :::
 
-## How it Works
+::: {.callout-warning}
+## Ethical Considerations
+
+AI-powered literature review tools can be powerful, but users should be aware of potential ethical challenges, including:
+
+- **Hallucinations**: AI models can sometimes generate or cite incorrect information.
+- **Bias**: Results may reflect biases present in the training data or prioritization algorithms.
+- **Data privacy**: Uploaded documents might be processed in ways that store or analyze sensitive information.
+:::
+
+::: {.callout-note}
+## Best Practices
+
+- **Verify sources**: Double-check references and original papers.
+- **Do not copy uncritically**: Use AI tools as a *support*, not a replacement for critical thinking.
+- **Cross-check**: Compare results from multiple tools to gain a balanced perspective.
+- **Cite appropriately**: Follow academic integrity guidelines when summarizing AI-assisted outputs.
+:::
+
+## A list of further resources
 
 ### Semantic Scholar
 
-- [Semantic Scholar Overview | AI-Powered Research Tool](https://www.youtube.com/watch?v=U25ZhuokyG4)
+- [Semantic Scholar Overview | AI-Powered Research Tool (YouTube)](https://www.youtube.com/watch?v=U25ZhuokyG4)
 
 
 ### Elicit
@@ -42,8 +114,8 @@ title: AI-assisted Literature Review
 
 ### SciSpace
 
-- [How to use SciSpace](https://www.youtube.com/watch?v=gk7O2o_6CY4)
-- [How to use SciSpace and Copilot](https://www.youtube.com/watch?v=TV1tfPzQGfU)
+- [How to use SciSpace (YouTube)](https://www.youtube.com/watch?v=gk7O2o_6CY4)
+- [How to use SciSpace and Copilot (YouTube)](https://www.youtube.com/watch?v=TV1tfPzQGfU)
 
 
 ### Research Rabbit
@@ -54,6 +126,7 @@ title: AI-assisted Literature Review
 ### Google NotebookLM
 
 - [Google Notebook LM Tutorial (YouTube)](https://www.youtube.com/watch?v=UG0DP6nVnrc)
+
 
 ### Acknowledgement
 The structure of the course is adapted from the [Purdue Libraries AI Tools](https://guides.lib.purdue.edu/c.php?g=1371380&p=10592801), which provides a good framework for overview of AI tools designed to assist with literature reviews.
