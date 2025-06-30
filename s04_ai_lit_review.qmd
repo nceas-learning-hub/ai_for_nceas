@@ -1,9 +1,59 @@
 ---
-title: AI-assisted Lit Review
+title: AI-assisted Literature Review
 ---
 
 :::{.callout-tip}
 ## Learning Objectives
 
--   tbd
+- Identify and describe the core purpose and features of leading AI research tools.
+
+- Evaluate the suitability of each tool for specific research tasks (e.g., literature reviews, summarization, visualization).
+
+- Demonstrate the ability to access and navigate these tools through available tutorials and resources.
 :::
+
+
+## AI tools for literature review comparison
+::: {.table-sm style="font-size: 0.75em;"}
+
+| **Feature** | **[Semantic Scholar](https://www.semanticscholar.org/)** | **[Elicit](https://elicit.com/)** | **[SciSpace](https://typeset.io/)** | **[Research Rabbit](https://www.researchrabbit.ai/)** | **[Google NotebookLM](https://notebooklm.google/)** |
+|------------|--------------|----------------|--------------|-----------------|---------------|
+| **Purpose** | Help researchers navigate and understand scientific literature | Automates research workflows, especially empirical research | Streamline the research process for students and researchers | Discovers and visualizes relevant literature and authors | Organize, explore, and summarize personal documents using AI |
+| **Key Features** | - Paper recommendations  <br> - Citation graphs  <br> - Semantic search | - Displays relevant papers  <br> - Summarizes key information | - Understands papers with AI  <br> - Answers questions about papers | - Visualizations  <br> - Personalized recommendations | - Summarizes and organizes notes  <br> - Connects ideas across documents |
+| **Price** | Free | Free with sign-up; Pro subscription available | Free basic tier; Pro subscription available | Free | Free (experimental beta) |
+| **Best For** | Discovering and exploring academic literature | Streamlining empirical research | Reading and summarizing complex papers | Discovering literature and author connections | Organizing and exploring research ideas with AI assistance |
+| **Free Tier Limits** | Unlimited searches, about 50 results per page | 4–5 top results per query, up to 20–30 uploaded docs | Practical ~20–50 upload, ~50–100 results per query | ~50 results per collection, collections can grow to hundreds | Up to 20–30 personal documents per notebook |
+
+:::
+
+## How it Works
+
+### Semantic Scholar
+
+- [Semantic Scholar Overview | AI-Powered Research Tool](https://www.youtube.com/watch?v=U25ZhuokyG4)
+
+
+### Elicit
+
+- [Choose papers to summarize in Elicit Notebooks (YouTube)](https://www.youtube.com/watch?v=7WkjpblrrQw)
+- [Systematic reviews in Elicit | Screening & extraction (YouTube)](https://www.youtube.com/watch?v=6C6wJfvvPlw)
+- [Use Elicit to find hundreds of relevant papers (YouTube)](https://www.youtube.com/watch?v=kI6wG46ua2E)
+
+
+### SciSpace
+
+- [How to use SciSpace](https://www.youtube.com/watch?v=gk7O2o_6CY4)
+- [How to use SciSpace and Copilot](https://www.youtube.com/watch?v=TV1tfPzQGfU)
+
+
+### Research Rabbit
+
+- [ResearchRabbit Demo (YouTube)](https://www.youtube.com/watch?v=16eOHCbi9fI&t=112s)
+- [Zotero Integration | ResearchRabbit (YouTube)](https://www.youtube.com/watch?v=eM7h4lol2lY&t=67s)
+
+### Google NotebookLM
+
+- [Google Notebook LM Tutorial (YouTube)](https://www.youtube.com/watch?v=UG0DP6nVnrc)
+
+### Acknowledgement
+The structure of the course is adapted from the [Purdue Libraries AI Tools](https://guides.lib.purdue.edu/c.php?g=1371380&p=10592801), which provides a good framework for overview of AI tools designed to assist with literature reviews.
