@@ -15,7 +15,6 @@ title: AI-assisted Literature Review
 Traditional literature reviews, while rigorous, often face several challenges:
 
 - **Information overload**: The sheer volume of potentially relevant papers can be overwhelming, making it hard to prioritize.  
-- **Limited scope**: Searches focused only on personal subscriptions or familiar journals may miss important interdisciplinary work (though Google Scholar helps broaden this).  
 - **Citation chasing limitations**: Following references manually makes it hard to see large-scale relationships and influential clusters.  
 - **Time constraints**: Researchers often lack sufficient time to systematically screen, read, and synthesize a vast literature base.  
 - **Summarization bottlenecks**: Even with enough time, distilling and synthesizing findings from a high volume of papers is cognitively demanding and prone to errors or oversights.
@@ -26,20 +25,17 @@ Traditional literature reviews, while rigorous, often face several challenges:
 
 | **Feature** | **[Semantic Scholar](https://www.semanticscholar.org/)** | **[Elicit](https://elicit.com/)** | **[SciSpace](https://typeset.io/)** | **[Research Rabbit](https://www.researchrabbit.ai/)** | **[Google NotebookLM](https://notebooklm.google/)** |
 |------------|--------------|----------------|--------------|-----------------|---------------|
-| **Purpose** | Help researchers navigate and understand scientific literature | Automates research workflows, especially empirical research | Streamline the research process for students and researchers | Discovers and visualizes relevant literature and authors | Organize, explore, and summarize personal documents using AI |
-| **Key Features** | - Paper recommendations  <br> - Citation graphs  <br> - Semantic search | - Displays relevant papers  <br> - Summarizes key information | - Understands papers with AI  <br> - Answers questions about papers | - Visualizations  <br> - Personalized recommendations | - Summarizes and organizes notes  <br> - Connects ideas across documents |
+| **Key Features** | - Paper recommendations  <br> - Semantic search | - Displays relevant papers  <br> - Summarizes key information <br> - Integrate with Zotero| - Streamline the research process  <br> - AI writer <br> - Integrate with Zotero| - Discovers and visualizes relevant literature and author connections <br> - Integrate with Zotero | - Summarizes and organizes notes, videos, PDFs, and other documents |
 | **Price** | Free | Free with sign-up; Pro subscription available | Free basic tier; Pro subscription available | Free | Free (experimental beta) |
-| **Best For** | Discovering and exploring academic literature | Streamlining empirical research | Reading and summarizing complex papers | Discovering literature and author connections | Organizing and exploring research ideas with AI assistance |
-| **Free Tier Limits** | Unlimited searches, about 50 results per page | 4–5 top results per query, up to 20–30 uploaded docs | Practical ~20–50 upload, ~50–100 results per query | ~50 results per collection, collections can grow to hundreds | Up to 20–30 personal documents per notebook |
+| **Free Tier Limits** | Unlimited searches, about 50 results per page | 10 top results for details and 50 results overall, up to 20–30 uploaded docs | Practical ~20–50 upload, ~100 results overall | ~50 results per collection, collections can grow to hundreds | Up to 20–30 personal documents per notebook |
 | **Limitations** | - No personal uploads  <br> - Limited customization | - Only top 4–5 results free  <br> | - Hallucination in "Ask PDF" part  <br> - Struggles with large PDFs | - No PDF uploads  <br> - Graphs can be cluttered | - No external literature search  <br> - Early stage beta |
 :::
 ## How to use it?
 
 ### Scenario 1: I have a specific research question and want targeted answers
 
-  - **Elicit**: helps you find and summarize studies that directly address your question  
-  - **SciSpace**: lets you upload papers and ask questions about their content  
-  - **Semantic Scholar**: supports semantic keyword queries to refine answers  
+  - Recommended tools: **Elicit**, **SciSpace**, **Semantic Scholar**
+  - Potential prompt: *Risks of artificial intelligence in environmental science, specifically the content risk and ethical risk. *
 
 ---
 
@@ -69,15 +65,18 @@ Traditional literature reviews, while rigorous, often face several challenges:
   - **Google NotebookLM**: Best for organizing your own documents and exploring them with AI queries  
 
 
-## Let's give it a try
+
 ::: {.callout-exercise}
+## Let's give it a try
+
  - Register one literature review tool of your choice
- - Provide 1–2 sample research questions
+ - Provide one sample research questions
  - Let's talk about the results:
    - how many results were returned?
    - how relevant were the results?
    - how easy was the interface?
 :::
+
 
 ::: {.callout-warning}
 ## Ethical Considerations
@@ -107,9 +106,9 @@ AI-powered literature review tools can be powerful, but users should be aware of
 
 ### Elicit
 
-- [Choose papers to summarize in Elicit Notebooks (YouTube)](https://www.youtube.com/watch?v=7WkjpblrrQw)
-- [Systematic reviews in Elicit | Screening & extraction (YouTube)](https://www.youtube.com/watch?v=6C6wJfvvPlw)
-- [Use Elicit to find hundreds of relevant papers (YouTube)](https://www.youtube.com/watch?v=kI6wG46ua2E)
+- [detailed overview of how that works](https://blog.elicit.com/systematic-review/)
+- [Introduce to Elicit report](https://blog.elicit.com/introducing-elicit-reports/)
+- [Elicit Youtube channel](https://www.youtube.com/@elicit-research)
 
 
 ### SciSpace
@@ -127,6 +126,3 @@ AI-powered literature review tools can be powerful, but users should be aware of
 
 - [Google Notebook LM Tutorial (YouTube)](https://www.youtube.com/watch?v=UG0DP6nVnrc)
 
-
-### Acknowledgement
-The structure of the course is adapted from the [Purdue Libraries AI Tools](https://guides.lib.purdue.edu/c.php?g=1371380&p=10592801), which provides a good framework for overview of AI tools designed to assist with literature reviews.
