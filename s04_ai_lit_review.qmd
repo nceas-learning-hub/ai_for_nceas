@@ -72,9 +72,8 @@ Traditional literature reviews, while rigorous, often face several challenges:
  - Register one literature review tool of your choice
  - Provide one sample research questions
  - Let's talk about the results:
-   - how many results were returned?
    - how relevant were the results?
-   - how easy was the interface?
+   - which feature do you like the most? 
 :::
 
 
