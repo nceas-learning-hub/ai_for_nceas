@@ -28,7 +28,7 @@ Traditional literature reviews, while rigorous, often face several challenges:
 | **Key Features** | - Paper recommendations  <br> - Semantic search | - Displays relevant papers  <br> - Summarizes key information <br> - Integrate with Zotero| - Streamline the research process  <br> - AI writer <br> - Integrate with Zotero| - Discovers and visualizes relevant literature and author connections <br> - Integrate with Zotero | - Summarizes and organizes notes, videos, PDFs, and other documents |
 | **Price** | Free | Free with sign-up; Pro subscription available | Free basic tier; Pro subscription available | Free | Free, and plus (paid version) |
 | **Free Tier Limits** | Unlimited searches, about 50 results per page | 10 top results for details and 50 results overall, up to 20–30 uploaded docs | Practical ~20–50 upload, ~100 results overall | ~50 results per collection, collections can grow to hundreds | Up to 20–30 personal documents per notebook |
-| **Limitations** | - No personal uploads  <br> - Limited customization | - Only top 4–5 results free  <br> | - Hallucination in "Ask PDF" part  <br> - Struggles with large PDFs | - No PDF uploads  <br> - Graphs can be cluttered | - No external literature search  <br> - Early stage beta |
+| **Limitations** | - No personal uploads  <br> - Limited customization | - Limited assistance with theoretical or non-empirical research | - Hallucination in "Ask PDF" part  <br> - Struggles with large PDFs | - No PDF uploads  <br> - Graphs can be cluttered | - No external literature search  <br> - Early stage beta |
 :::
 ## How to use it?
 
