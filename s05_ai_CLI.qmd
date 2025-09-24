@@ -1,0 +1,113 @@
+---
+title: MCP and Gemini CLI
+---
+
+:::{.callout-tip}
+## Learning Objectives
+
+- Understand what the MCP is and what Gemini CLI can do
+- Apply prompts to read, analyze, and modify files using the Gemini agent
+- Create and push content to GitHub with the help of the AI agent
+:::
+
+::: {.callout-example}
+## 🧪 warming up: How Google Gemini Can Access Your Emails, Calendars, and Task Lists {.unnumbered}
+
+In this demo, we explore how Google Gemini — when connected with the right permissions — can access personal productivity data such as:
+
+- 📧 Emails  
+- 📅 Calendars  
+- ✅ Task lists  
+
+This is made possible through **APIs** (e.g., Google Workspace APIs) and authenticated using **OAuth**.  
+
+⚠️ **Important Note:** For security, Gemini (or any LLM agent) can only access these services if you explicitly grant permission and configure the integration. The Model Context Protocol (MCP) is used to control what the model can and cannot access.
+:::
+
+
+## What is MCP?
+
+**MCP (Model Context Protocol)** is a standard for connecting AI models (like Gemini) with the outside world.  
+It provides a safe and consistent way for AI agents to access:
+
+- Local files on your computer  
+- External tools (like GitHub, Google Workspace, Slack)  
+- APIs or data services  
+
+Think of MCP as a **bridge**:  
+It defines how an AI model communicates with tools and resources so that interactions are reliable and reproducible.
+
+![](images/ai_CLI/MCP.png){fig-align="center" width="100%"}
+
+<small>Image credit: **Descope**</small>
+
+
+::: {.callout-tip}
+
+### Why MCP Matters
+
+- Ensures **structured communication** between AI and external systems  
+- Improves **safety** by controlling what the model can and cannot access  
+- Makes it easier to **integrate AI into workflows** like coding, research, and publishing
+
+:::
+
+
+## From MCP to [Gemini CLI](https://github.com/google-gemini/gemini-cli)
+
+Now that you understand what **MCP (Model Context Protocol)** is — a framework for controlling how AI agents access tools, files, and services — let’s see how it works in practice.
+
+The **Gemini CLI** is one of the first practical tools that implements MCP.  
+It allows you to:
+
+- Use Google’s Gemini AI models directly in your terminal  
+- Access your local files
+- Asking questions about code or data summary  
+- Generating code snippets or documentation  
+- Editing or refactoring code via prompt  
+- GitHub integration: cloning, committing, pushing, issuing
+
+
+::: {.callout-exercise}
+## Demo: from a code to a GitHub project {.unnumbered}
+
+- ⚙️ **Installation & Setup**
+  - How to install Gemini CLI on your system (you need to have Node.js (version 20 or higher) and npm installed on your machine). Follow the detailed instruction on installation on [Gemini CLI GitHub page](https://github.com/google-gemini/gemini-cli).
+  - Configuring your [API key](https://aistudio.google.com/apikey)  for authentication (options)
+
+- 📂 **Working with Local Files**
+  - Summarize the contents of a script or dataset
+  - Ask Gemini to explain functions or methods in plain language
+  - Edit a script with a prompt (e.g., refactor code)
+
+- 🌐 **GitHub Integration**
+  - Connect to a repository
+  - Generate or improve a README
+  - Commit changes with Gemini’s assistance
+
+- 💡 **Prompting Best Practices**
+  - How to phrase effective commands for accurate results
+  - Refining prompts when answers are incomplete or unclear
+
+- ❓ **Qroubleshooting**
+  - Common issues (authentication, permissions)
+  - How to verify Gemini CLI is running correctly in VS Code or terminal
+
+:::
+
+
+
+## CLI Tools Comparison
+
+AI command-line tools give researchers different ways to bring AI into their workflows.  
+Here is a comparison of some of the most widely used ones:
+<small>
+
+| Tool            | Models Behind It           | Hosted vs Local | Best Use Cases | Link |
+|-----------------|----------------------------|-----------------|----------------|------|
+| **Gemini CLI**  | Google Gemini models       | Cloud (Google)  | File Q&A, summarization, code generation, and GitHub-aware workflows — great for scientists and developers who want seamless file + GitHub integration with AI | [Gemini CLI](https://github.com/google-gemini/gemini-cli) |
+| **Codex CLI** (OpenAI) | GPT models | Cloud (OpenAI) | Write/edit code, generate README, interactive chat — ideal for quick coding tasks, debugging, and automation | [OpenAI CLI](https://developers.openai.com/codex/cli) |
+| **Claude Code** | Anthropic Claude models | Cloud (Anthropic) | Long-context reasoning, code explanation, and structured outputs — best for handling large documents, summarization, and research workflows | [Claude CLI Wrapper](https://claude.com/product/claude-code) |
+| **Ollama**      | Open-source models | Local (runs on your machine) | Run LLMs offline, customize models, and private workflows — perfect for privacy-first workflows, running models without internet, and experimenting with open-source LLMs | [Ollama](https://github.com/ollama/ollama) |
+
+</small>
