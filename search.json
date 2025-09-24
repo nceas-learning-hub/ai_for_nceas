@@ -99,51 +99,61 @@
   {
     "objectID": "s05_ai_CLI.html",
     "href": "s05_ai_CLI.html",
-    "title": "MCP and Gemini CLI",
+    "title": "AI at the Command Line",
     "section": "",
     "text": "TipLearning Objectives\n\n\n\n\nUnderstand what the MCP is and what Gemini CLI can do\nApply prompts to read, analyze, and modify files using the Gemini agent\nCreate and push content to GitHub with the help of the AI agent",
     "crumbs": [
-      "MCP and Gemini CLI"
-    ]
-  },
-  {
-    "objectID": "s05_ai_CLI.html#warming-up-how-google-gemini-can-access-your-emails-calendars-and-task-lists",
-    "href": "s05_ai_CLI.html#warming-up-how-google-gemini-can-access-your-emails-calendars-and-task-lists",
-    "title": "MCP and Gemini CLI",
-    "section": "🧪 warming up: How Google Gemini Can Access Your Emails, Calendars, and Task Lists",
-    "text": "🧪 warming up: How Google Gemini Can Access Your Emails, Calendars, and Task Lists\nIn this demo, we explore how Google Gemini — when connected with the right permissions — can access personal productivity data such as:\n\n📧 Emails\n\n📅 Calendars\n\n✅ Task lists\n\nThis is made possible through APIs (e.g., Google Workspace APIs) and authenticated using OAuth.\n⚠️ Important Note: For security, Gemini (or any LLM agent) can only access these services if you explicitly grant permission and configure the integration. The Model Context Protocol (MCP) is used to control what the model can and cannot access.",
-    "crumbs": [
-      "MCP and Gemini CLI"
+      "AI at the Command Line"
     ]
   },
   {
     "objectID": "s05_ai_CLI.html#what-is-mcp",
     "href": "s05_ai_CLI.html#what-is-mcp",
-    "title": "MCP and Gemini CLI",
+    "title": "AI at the Command Line",
     "section": "1 What is MCP?",
-    "text": "1 What is MCP?\nMCP (Model Context Protocol) is a standard for connecting AI models (like Gemini) with the outside world.\nIt provides a safe and consistent way for AI agents to access:\n\nLocal files on your computer\n\nExternal tools (like GitHub, Google Workspace, Slack)\n\nAPIs or data services\n\nThink of MCP as a bridge:\nIt defines how an AI model communicates with tools and resources so that interactions are reliable and reproducible.\n\n\n\n\n\nImage credit: Descope\n\n\n\n\n\n\nTipWhy MCP Matters\n\n\n\n\nEnsures structured communication between AI and external systems\n\nImproves safety by controlling what the model can and cannot access\n\nMakes it easier to integrate AI into workflows like coding, research, and publishing",
+    "text": "1 What is MCP?\nMCP (Model Context Protocol) is a standard for connecting AI models (like Gemini) with the outside world. It provides a safe and consistent way for AI agents to access:\n\nLocal files on your computer\n\nExternal tools (like GitHub, Google Workspace, Slack)\n\nAPIs or data services\n\nThink of MCP as a bridge: It defines how an AI model communicates with tools and resources so that interactions are reliable and reproducible.\n Image credit: Descope\n\n\n\n\n\n\nTipWhy MCP Matters\n\n\n\n\nEnsures structured communication between AI and external systems\n\nImproves safety by controlling what the model can and cannot access\n\nMakes it easier to integrate AI into workflows like coding, research, and publishing",
     "crumbs": [
-      "MCP and Gemini CLI"
+      "AI at the Command Line"
     ]
   },
   {
     "objectID": "s05_ai_CLI.html#from-mcp-to-gemini-cli",
     "href": "s05_ai_CLI.html#from-mcp-to-gemini-cli",
-    "title": "MCP and Gemini CLI",
+    "title": "AI at the Command Line",
     "section": "2 From MCP to Gemini CLI",
-    "text": "2 From MCP to Gemini CLI\nNow that you understand what MCP (Model Context Protocol) is — a framework for controlling how AI agents access tools, files, and services — let’s see how it works in practice.\nThe Gemini CLI is one of the first practical tools that implements MCP.\nIt allows you to:\n\nUse Google’s Gemini AI models directly in your terminal\n\nAccess your local files\nAsking questions about code or data summary\n\nGenerating code snippets or documentation\n\nEditing or refactoring code via prompt\n\nGitHub integration: cloning, committing, pushing, issuing\n\n\n\n\n\n\n\nExerciseExercise 1 - Demo: from a code to a GitHub project\n\n\n\n\n\n\n\n⚙️ Installation & Setup\n\nHow to install Gemini CLI on your system (you need to have Node.js (version 20 or higher) and npm installed on your machine). Follow the detailed instruction on installation on Gemini CLI GitHub page.\nConfiguring your API key for authentication (options)\n\n📂 Working with Local Files\n\nSummarize the contents of a script or dataset\nAsk Gemini to explain functions or methods in plain language\nEdit a script with a prompt (e.g., refactor code)\n\n🌐 GitHub Integration\n\nConnect to a repository\nGenerate or improve a README\nCommit changes with Gemini’s assistance\n\n💡 Prompting Best Practices\n\nHow to phrase effective commands for accurate results\nRefining prompts when answers are incomplete or unclear\n\n❓ Qroubleshooting\n\nCommon issues (authentication, permissions)\nHow to verify Gemini CLI is running correctly in VS Code or terminal",
+    "text": "2 From MCP to Gemini CLI\nNow that you understand what MCP (Model Context Protocol) is, let’s see how it works in practice in addition to google workspace.\nThe Gemini CLI is one of the first practical tools that implements MCP. It allows you to:\n\nUse Google’s Gemini AI models directly in your terminal\n\nAccess your local files\nAsking questions about code or data summary\n\nGenerating code snippets or documentation\n\nEditing or refactoring code via prompt\n\nGitHub integration: cloning, committing, pushing, issuing\n\n\n\n\n\n\n\nExerciseExercise 2 - Publishing Code with Gemini CLI\n\n\n\n\n\n\n\n⚙️ Installation & Setup\n\nFollow the detailed installation instruction on Gemini CLI GitHub page.\n\n📂 Working with Local Files\n\nGenerate a R script for downloading NOAA weather data\nEdit the script with prompts\n\n🌐 GitHub Integration\n\nCreate a GitHub repository\nGenerate or improve a README\nCommit changes with Gemini’s assistance\n\n\n\n\n\n\n\n\n\n\n\n\nTip🛠 Troubleshooting\n\n\n\n\n🔑 Authentication\n\nWhen you first launch Gemini CLI, you’ll be redirected to a webpage for authentication.\n\nFree tier limits: 60 requests/min and 1,000 requests/day. If you exceed this, generate a Gemini API key for more allowance.\n\nRunning Gemini CLI inside VS Code? You will be prompted to authorize VS Code to connect with Gemini CLI.\n\n\n\n\n🌐 GitHub Integration\n\nIf GitHub CLI (gh) is not installed, Gemini CLI will prompt you to install it. It is recommended to install it outside of Gemini CLI terminal.\n\nThe first run requires authenticating with your GitHub account. Example GitHub authentication screen below. The authentication token is obtained: GitHub settings → Developer settings → Personal access tokens\n\n\n\n\n\n✅ Verifying Changes\n\nThe tracked changes can be viewed in VS Code (Gemini CLI Companion extension) - or GitHub Desktop.\nOr, in the terminal, run git diff to see what changes were made.",
     "crumbs": [
-      "MCP and Gemini CLI"
+      "AI at the Command Line"
+    ]
+  },
+  {
+    "objectID": "s05_ai_CLI.html#section",
+    "href": "s05_ai_CLI.html#section",
+    "title": "AI at the Command Line",
+    "section": "",
+    "text": "✅ Verifying Changes\n\nThe tracked changes can be viewed in VS Code (Gemini CLI Companion extension) - or GitHub Desktop.\nOr, in the terminal, run git diff to see what changes were made.",
+    "crumbs": [
+      "AI at the Command Line"
     ]
   },
   {
     "objectID": "s05_ai_CLI.html#cli-tools-comparison",
     "href": "s05_ai_CLI.html#cli-tools-comparison",
-    "title": "MCP and Gemini CLI",
+    "title": "AI at the Command Line",
     "section": "3 CLI Tools Comparison",
-    "text": "3 CLI Tools Comparison\nAI command-line tools give researchers different ways to bring AI into their workflows.\nHere is a comparison of some of the most widely used ones: \n\n\n\nTool\nModels Behind It\nHosted vs Local\nBest Use Cases\nLink\n\n\n\n\nGemini CLI\nGoogle Gemini models\nCloud (Google)\nFile Q&A, summarization, code generation, and GitHub-aware workflows — great for scientists and developers who want seamless file + GitHub integration with AI\nGemini CLI\n\n\nCodex CLI (OpenAI)\nGPT models\nCloud (OpenAI)\nWrite/edit code, generate README, interactive chat — ideal for quick coding tasks, debugging, and automation\nOpenAI CLI\n\n\nClaude Code\nAnthropic Claude models\nCloud (Anthropic)\nLong-context reasoning, code explanation, and structured outputs — best for handling large documents, summarization, and research workflows\nClaude CLI Wrapper\n\n\nOllama\nOpen-source models\nLocal (runs on your machine)\nRun LLMs offline, customize models, and private workflows — perfect for privacy-first workflows, running models without internet, and experimenting with open-source LLMs\nOllama",
+    "text": "3 CLI Tools Comparison\nAI command-line tools give researchers different ways to bring AI into their workflows.\nHere is a comparison of some of the most widely used ones:\n\n\n\n\nTool\nHosted vs Local\nBest Use Cases\n\n\n\n\nGemini CLI\nCloud (Google)\nBest for individual experimentation because a substantial free tier, and it is lightweight\n\n\nCodex CLI\nCloud (OpenAI)\nIdeal for coding tasks (GPT-5), debugging, and automation\n\n\nClaude Code\nCloud (Anthropic)\nBest for handling large documents, summarization, and long-context reasoning\n\n\nOllama\nLocal (runs on your machine)\nPerfect for privacy-first workflows, running offline models, and experimenting with open-source LLMs",
     "crumbs": [
-      "MCP and Gemini CLI"
+      "AI at the Command Line"
+    ]
+  },
+  {
+    "objectID": "s05_ai_CLI.html#key-risks-and-mitigation-strategies-for-gemini-cli",
+    "href": "s05_ai_CLI.html#key-risks-and-mitigation-strategies-for-gemini-cli",
+    "title": "AI at the Command Line",
+    "section": "4 Key Risks and Mitigation Strategies for Gemini CLI",
+    "text": "4 Key Risks and Mitigation Strategies for Gemini CLI\nGemini CLI and GitHub CLI are powerful — but with great power comes the responsibility to secure credentials, minimize permissions, and update regularly.\n\n\n\n\n\n\n\n🔑 Risk\n✅ Mitigation\n\n\n\n\nCredential Exposure\nUse fine-grained tokens, avoid sharing on multi-user systems\n\n\nAccidental Actions\ndouble-check commands, avoid risky scripts\n\n\nToo Many Permissions\nApply least privilege, audit tokens regularly\n\n\nUpdates\nKeep CLI tools up to date\n\n\nData Privacy\nAvoid sharing sensitive data, use local models for sensitive tasks",
+    "crumbs": [
+      "AI at the Command Line"
     ]
   },
   {

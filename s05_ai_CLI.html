@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MCP and Gemini CLI – AI for NCEAS</title>
+<title>AI at the Command Line – AI for NCEAS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -298,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">MCP and Gemini CLI</h1>
+          <h1 class="quarto-secondary-nav-title">AI at the Command Line</h1>
         </a>     
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -310,7 +310,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">MCP and Gemini CLI</h1>
+      <h1 class="title d-none d-lg-block">AI at the Command Line</h1>
                       </div>
   </div>
     
@@ -375,7 +375,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./s05_ai_CLI.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">MCP and Gemini CLI</span></a>
+ <span class="menu-text">AI at the Command Line</span></a>
   </div>
 </li>
     </ul>
@@ -391,6 +391,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#what-is-mcp" id="toc-what-is-mcp" class="nav-link active" data-scroll-target="#what-is-mcp"><span class="header-section-number">1</span> What is MCP?</a></li>
   <li><a href="#from-mcp-to-gemini-cli" id="toc-from-mcp-to-gemini-cli" class="nav-link" data-scroll-target="#from-mcp-to-gemini-cli"><span class="header-section-number">2</span> From MCP to Gemini CLI</a></li>
   <li><a href="#cli-tools-comparison" id="toc-cli-tools-comparison" class="nav-link" data-scroll-target="#cli-tools-comparison"><span class="header-section-number">3</span> CLI Tools Comparison</a></li>
+  <li><a href="#key-risks-and-mitigation-strategies-for-gemini-cli" id="toc-key-risks-and-mitigation-strategies-for-gemini-cli" class="nav-link" data-scroll-target="#key-risks-and-mitigation-strategies-for-gemini-cli"><span class="header-section-number">4</span> Key Risks and Mitigation Strategies for Gemini CLI</a></li>
   </ul>
 </nav>
     </div>
@@ -419,21 +420,20 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-example no-icon callout-titled">
+<div class="callout callout-style-default callout-exercise no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Example</span>Example
+<span class="screen-reader-only">Exercise</span>Exercise 1 - 🧪 warming up: Beyond Chat to Your Daily Tools
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<section id="warming-up-how-google-gemini-can-access-your-emails-calendars-and-task-lists" class="level2 unnumbered callout-example">
-<h2 class="unnumbered anchored" data-anchor-id="warming-up-how-google-gemini-can-access-your-emails-calendars-and-task-lists">🧪 warming up: How Google Gemini Can Access Your Emails, Calendars, and Task Lists</h2>
-<p>In this demo, we explore how Google Gemini — when connected with the right permissions — can access personal productivity data such as:</p>
+<div class="callout-exercise">
+<p>In this demo, we explore how Google Gemini can access personal productivity data such as:</p>
 <ul>
 <li>📧 Emails<br>
 </li>
@@ -441,16 +441,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>✅ Task lists</li>
 </ul>
-<p>This is made possible through <strong>APIs</strong> (e.g., Google Workspace APIs) and authenticated using <strong>OAuth</strong>.</p>
 <p>⚠️ <strong>Important Note:</strong> For security, Gemini (or any LLM agent) can only access these services if you explicitly grant permission and configure the integration. The Model Context Protocol (MCP) is used to control what the model can and cannot access.</p>
-</section>
+</div>
 </div>
 </div>
 </div>
 <section id="what-is-mcp" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="what-is-mcp"><span class="header-section-number">1</span> What is MCP?</h2>
-<p><strong>MCP (Model Context Protocol)</strong> is a standard for connecting AI models (like Gemini) with the outside world.<br>
-It provides a safe and consistent way for AI agents to access:</p>
+<p><strong>MCP (Model Context Protocol)</strong> is a standard for connecting AI models (like Gemini) with the outside world. It provides a safe and consistent way for AI agents to access:</p>
 <ul>
 <li>Local files on your computer<br>
 </li>
@@ -458,14 +456,8 @@ It provides a safe and consistent way for AI agents to access:</p>
 </li>
 <li>APIs or data services</li>
 </ul>
-<p>Think of MCP as a <strong>bridge</strong>:<br>
-It defines how an AI model communicates with tools and resources so that interactions are reliable and reproducible.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ai_CLI/MCP.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-<p><small>Image credit: <strong>Descope</strong></small></p>
+<p>Think of MCP as a <strong>bridge</strong>: It defines how an AI model communicates with tools and resources so that interactions are reliable and reproducible.</p>
+<p><img src="images/ai_CLI/MCP.png" class="img-fluid quarto-figure quarto-figure-center" style="width:100.0%"> <small>Image credit: <strong>Descope</strong></small></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -487,10 +479,9 @@ It defines how an AI model communicates with tools and resources so that interac
 </div>
 </section>
 <section id="from-mcp-to-gemini-cli" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="from-mcp-to-gemini-cli"><span class="header-section-number">2</span> From MCP to <a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a></h2>
-<p>Now that you understand what <strong>MCP (Model Context Protocol)</strong> is — a framework for controlling how AI agents access tools, files, and services — let’s see how it works in practice.</p>
-<p>The <strong>Gemini CLI</strong> is one of the first practical tools that implements MCP.<br>
-It allows you to:</p>
+<h2 data-number="2" class="anchored" data-anchor-id="from-mcp-to-gemini-cli"><span class="header-section-number">2</span> From MCP to Gemini CLI</h2>
+<p>Now that you understand what <strong>MCP (Model Context Protocol)</strong> is, let’s see how it works in practice in addition to google workspace.</p>
+<p>The <a href="https://github.com/google-gemini/gemini-cli"><strong>Gemini CLI</strong></a> is one of the first practical tools that implements MCP. It allows you to:</p>
 <ul>
 <li>Use Google’s Gemini AI models directly in your terminal<br>
 </li>
@@ -509,7 +500,7 @@ It allows you to:</p>
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Exercise</span>Exercise 1 - Demo: from a code to a GitHub project
+<span class="screen-reader-only">Exercise</span>Exercise 2 - Publishing Code with Gemini CLI
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -519,83 +510,141 @@ It allows you to:</p>
 <ul>
 <li>⚙️ <strong>Installation &amp; Setup</strong>
 <ul>
-<li>How to install Gemini CLI on your system (you need to have Node.js (version 20 or higher) and npm installed on your machine). Follow the detailed instruction on installation on <a href="https://github.com/google-gemini/gemini-cli">Gemini CLI GitHub page</a>.</li>
-<li>Configuring your <a href="https://aistudio.google.com/apikey">API key</a> for authentication (options)</li>
+<li>Follow the detailed installation instruction on <a href="https://github.com/google-gemini/gemini-cli">Gemini CLI GitHub page</a>.</li>
 </ul></li>
 <li>📂 <strong>Working with Local Files</strong>
 <ul>
-<li>Summarize the contents of a script or dataset</li>
-<li>Ask Gemini to explain functions or methods in plain language</li>
-<li>Edit a script with a prompt (e.g., refactor code)</li>
+<li>Generate a R script for downloading NOAA weather data</li>
+<li>Edit the script with prompts</li>
 </ul></li>
 <li>🌐 <strong>GitHub Integration</strong>
 <ul>
-<li>Connect to a repository</li>
+<li>Create a GitHub repository</li>
 <li>Generate or improve a README</li>
 <li>Commit changes with Gemini’s assistance</li>
-</ul></li>
-<li>💡 <strong>Prompting Best Practices</strong>
-<ul>
-<li>How to phrase effective commands for accurate results</li>
-<li>Refining prompts when answers are incomplete or unclear</li>
-</ul></li>
-<li>❓ <strong>Qroubleshooting</strong>
-<ul>
-<li>Common issues (authentication, permissions)</li>
-<li>How to verify Gemini CLI is running correctly in VS Code or terminal</li>
 </ul></li>
 </ul>
 </div>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🛠 Troubleshooting
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<section id="authentication" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="authentication">🔑 Authentication</h3>
+<ul>
+<li>When you first launch <strong>Gemini CLI</strong>, you’ll be redirected to a webpage for authentication.<br>
+</li>
+<li>Free tier limits: <strong>60 requests/min</strong> and <strong>1,000 requests/day</strong>. If you exceed this, generate a <a href="https://aistudio.google.com/app/apikey">Gemini API key</a> for more allowance.<br>
+</li>
+<li>Running Gemini CLI inside <strong>VS Code</strong>? You will be prompted to authorize VS Code to connect with Gemini CLI.</li>
+</ul>
+<hr>
+</section>
+<section id="github-integration" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="github-integration">🌐 GitHub Integration</h3>
+<ul>
+<li>If GitHub CLI (<code>gh</code>) is not installed, Gemini CLI will prompt you to install it. It is recommended to install it outside of Gemini CLI terminal.<br>
+</li>
+<li>The first run requires authenticating with your GitHub account. Example GitHub authentication screen below. The authentication token is obtained: GitHub settings → Developer settings → Personal access tokens</li>
+</ul>
+</section>
+<section id="section" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="section"><img src="images/ai_CLI/githubcli.png" class="img-fluid quarto-figure quarto-figure-center" style="width:90.0%"></h2>
+<section id="verifying-changes" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="verifying-changes">✅ Verifying Changes</h3>
+<ul>
+<li>The tracked changes can be viewed in VS Code (Gemini CLI Companion extension) - or GitHub Desktop.</li>
+<li>Or, in the terminal, run <code>git diff</code> to see what changes were made.</li>
+</ul>
+</section>
+</section>
+</div>
+</div>
 </section>
 <section id="cli-tools-comparison" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="cli-tools-comparison"><span class="header-section-number">3</span> CLI Tools Comparison</h2>
 <p>AI command-line tools give researchers different ways to bring AI into their workflows.<br>
-Here is a comparison of some of the most widely used ones: <small></small></p><small>
+Here is a comparison of some of the most widely used ones:</p>
+<p><small></small></p><small>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Tool</th>
-<th>Models Behind It</th>
 <th>Hosted vs Local</th>
 <th>Best Use Cases</th>
-<th>Link</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Gemini CLI</strong></td>
-<td>Google Gemini models</td>
+<td><a href="https://github.com/google-gemini/gemini-cli"><strong>Gemini CLI</strong></a></td>
 <td>Cloud (Google)</td>
-<td>File Q&amp;A, summarization, code generation, and GitHub-aware workflows — great for scientists and developers who want seamless file + GitHub integration with AI</td>
-<td><a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a></td>
+<td>Best for individual experimentation because a substantial free tier, and it is lightweight</td>
 </tr>
 <tr class="even">
-<td><strong>Codex CLI</strong> (OpenAI)</td>
-<td>GPT models</td>
+<td><a href="https://developers.openai.com/codex/cli"><strong>Codex CLI</strong></a></td>
 <td>Cloud (OpenAI)</td>
-<td>Write/edit code, generate README, interactive chat — ideal for quick coding tasks, debugging, and automation</td>
-<td><a href="https://developers.openai.com/codex/cli">OpenAI CLI</a></td>
+<td>Ideal for coding tasks (GPT-5), debugging, and automation</td>
 </tr>
 <tr class="odd">
-<td><strong>Claude Code</strong></td>
-<td>Anthropic Claude models</td>
+<td><a href="https://claude.com/product/claude-code"><strong>Claude Code</strong></a></td>
 <td>Cloud (Anthropic)</td>
-<td>Long-context reasoning, code explanation, and structured outputs — best for handling large documents, summarization, and research workflows</td>
-<td><a href="https://claude.com/product/claude-code">Claude CLI Wrapper</a></td>
+<td>Best for handling large documents, summarization, and long-context reasoning</td>
 </tr>
 <tr class="even">
-<td><strong>Ollama</strong></td>
-<td>Open-source models</td>
+<td><a href="https://github.com/ollama/ollama"><strong>Ollama</strong></a></td>
 <td>Local (runs on your machine)</td>
-<td>Run LLMs offline, customize models, and private workflows — perfect for privacy-first workflows, running models without internet, and experimenting with open-source LLMs</td>
-<td><a href="https://github.com/ollama/ollama">Ollama</a></td>
+<td>Perfect for privacy-first workflows, running offline models, and experimenting with open-source LLMs</td>
 </tr>
 </tbody>
 </table>
 </small><p><small></small></p>
+</section>
+<section id="key-risks-and-mitigation-strategies-for-gemini-cli" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="key-risks-and-mitigation-strategies-for-gemini-cli"><span class="header-section-number">4</span> Key Risks and Mitigation Strategies for Gemini CLI</h2>
+<p>Gemini CLI and GitHub CLI are powerful — but with great power comes the responsibility to secure credentials, minimize permissions, and update regularly.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>🔑 Risk</th>
+<th>✅ Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Credential Exposure</strong></td>
+<td>Use fine-grained tokens, avoid sharing on multi-user systems</td>
+</tr>
+<tr class="even">
+<td><strong>Accidental Actions</strong></td>
+<td>double-check commands, avoid risky scripts</td>
+</tr>
+<tr class="odd">
+<td><strong>Too Many Permissions</strong></td>
+<td>Apply least privilege, audit tokens regularly</td>
+</tr>
+<tr class="even">
+<td><strong>Updates</strong></td>
+<td>Keep CLI tools up to date</td>
+</tr>
+<tr class="odd">
+<td><strong>Data Privacy</strong></td>
+<td>Avoid sharing sensitive data, use local models for sensitive tasks</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
