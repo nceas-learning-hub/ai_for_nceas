@@ -6,7 +6,7 @@ format:
 ---
 
 
-## AI for NCEAS
+## AI for Ecologists
 
 The [National Center for Ecological Analysis and Synthesis (NCEAS)](https://www.nceas.ucsb.edu/), a research affiliate of UCSB,  is now celebrating its 30th year.  As part of this celebration, NCEAS is focusing on a theme of "AI for the Planet," and as members of the [NCEAS Learning Hub](https://www.nceas.ucsb.edu/learning-hub) we have designed this set of informal interactive workshop sessions in support of that theme.  In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing.  We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer.  These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.
 
@@ -39,7 +39,7 @@ These written materials are the result of a continuous and collaborative effort 
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
-**Citation:** Casey O'Hara and Li Kui (2025), AI for NCEAS. URL <https://nceas-learning-hub.github.io/ai_for_nceas>.
+**Citation:** Casey O'Hara and Li Kui (2025), AI for Ecologists. URL <https://nceas-learning-hub.github.io/ai_for_nceas>.
 
 **Additional contributors:** tbd
 
