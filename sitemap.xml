@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/slides/ai_and_apis/slides.html</loc>
-    <lastmod>2025-09-24T22:24:16.937Z</lastmod>
-  </url>
-  <url>
     <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s01_ai_coding_support.html</loc>
-    <lastmod>2025-09-24T22:24:16.933Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s02_ai_analysis_in_llm.html</loc>
-    <lastmod>2025-09-24T22:24:16.933Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s05_ai_CLI.html</loc>
-    <lastmod>2025-09-24T22:24:16.933Z</lastmod>
+    <lastmod>2026-01-01T17:45:39.409Z</lastmod>
   </url>
   <url>
     <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s03_ai_and_apis.html</loc>
-    <lastmod>2025-09-24T22:24:16.933Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s04_ai_lit_review.html</loc>
-    <lastmod>2025-09-24T22:24:16.933Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/index.html</loc>
-    <lastmod>2025-09-24T22:24:16.932Z</lastmod>
+    <lastmod>2026-01-01T17:45:39.409Z</lastmod>
   </url>
   <url>
     <loc>https://nceas-learning-hub.github.io/ai_for_nceas/slides/ai_coding_support/slides.html</loc>
-    <lastmod>2025-09-24T22:24:16.940Z</lastmod>
+    <lastmod>2026-01-01T17:45:39.416Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/index.html</loc>
+    <lastmod>2026-01-01T17:45:39.409Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s05_ai_CLI.html</loc>
+    <lastmod>2026-01-01T17:45:39.409Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s02_ai_analysis_in_llm.html</loc>
+    <lastmod>2026-01-01T17:45:39.409Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/slides/ai_and_apis/slides.html</loc>
+    <lastmod>2026-01-01T17:45:39.413Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nceas-learning-hub.github.io/ai_for_nceas/s04_ai_lit_review.html</loc>
+    <lastmod>2026-01-01T17:45:39.409Z</lastmod>
   </url>
 </urlset>

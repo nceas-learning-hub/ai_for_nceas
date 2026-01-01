@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "slides/ai_and_apis/slides.html#title-slide",
-    "href": "slides/ai_and_apis/slides.html#title-slide",
-    "title": "AI for NCEAS",
-    "section": "",
-    "text": "AI and APIs\nAn introduction to accessing and using the ChatGPT API"
-  },
-  {
     "objectID": "s01_ai_coding_support.html",
     "href": "s01_ai_coding_support.html",
     "title": "AI for Coding Support",
@@ -21,7 +14,7 @@
     "href": "s01_ai_coding_support.html#active-coding-support-with-github-copilot",
     "title": "AI for Coding Support",
     "section": "1 Active coding support with GitHub Copilot",
-    "text": "1 Active coding support with GitHub Copilot\nGitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is effectively “pair programming” where you and a partner (in this case, an AI partner) code together in real time. It is available as a plugin for IDEs such as Visual Studio Code and RStudio. Copilot is a large language model (LLM) related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions in real time based on the context of your coding task. In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot effectively to assist with coding tasks.\nIf you have an education GitHub account (e.g., an .edu email address that is associated with your GitHub account), you should be able to get free access to Copilot Pro. Otherwise you can access a free but limited version of Copilot, which should be adequate for this session. See more Copilot requirements here.\n\n\n\n\n\n\nNote\n\n\n\nHere we will focus on using AI code completion tools in R and RStudio, since it is a popular language and IDE for ecologists, but the same methods work for other languages and IDEs. VS Code is a Microsoft product, as is Copilot (and GitHub for that matter), so its integration is even better than RStudio.\n\n\n\n1.1 Configuring RStudio to work with GitHub Copilot\nFull Screen\n\n\n\n1.2 Using Copilot to assist with coding tasks\nYou need a fundamental understanding of coding to be able to use Copilot effectively. It can make intelligent guesses as to your intentions, but doesn’t necessarily know where your files are, or what you intend to do with the data. So it is helpful to guide Copilot in the right direction using comments, sentences, and “pseudocode” before you start any actual coding. The more information you provide through your Markdown text and code-chunk comments, the better Copilot will be able to help you.\n\n\n\n\n\n\nTipPseudocode\n\n\n\nPseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points. There are more formalized versions of pseudocode, and less formalized (see “vibecoding”) but here we take a middle road, and we will stick with just plain English sentences to communicate our intentions. Some tips:\n\nSpecify whether you want to use the tidyverse metapackage or base R functions (or another language, e.g., Python!).\nIf you know the names of certain functions, it is helpful to use those in your pseudocode, to help Copilot incorporate those into its code completions.\nUse comments to signal to Copilot what you’d like to do at each step.\n\n\n\n\n\n\n\n\n\nExerciseExercise 1\n\n\n\n\n\n\nCreate a code chunk, read in some data, do some data wrangling, and then make a plot with the resulting data. Use comments in your code chunk to signal to Copilot what you’d like to do at each step. Here are the steps we will do, using a tidyverse workflow:\n\nload the palmerpenguins package and load the penguins data\ndrop any incomplete observations (any NA values)\nfilter to just keep the Chinstrap and Adelie species\ngenerate a scatter plot of bill length vs. bill depth for each species\nthen, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species. Print a summary of the t test results.\n\n(Copy the above text and paste into a Quarto document, or rephrase it in your own words, then create a code chunk and let Copilot suggest some code!)\n\n\n\n\n\n\nAnswerAnswer\n\n\n\n\n\n\nHere’s what it looked like when I let Copilot help me write the code - I accepted each line by pressing “tab”. This might change entirely if I ran the exercise again.\n\nHow different does it look from the code you wrote?\nHow does it differ from how you might code it on your own?\n\n\n\nWarning: package 'ggplot2' was built under R version 4.3.3\n\n\nWarning: package 'tidyr' was built under R version 4.3.3\n\n\nWarning: package 'readr' was built under R version 4.3.3\n\n\nWarning: package 'purrr' was built under R version 4.3.3\n\n\nWarning: package 'stringr' was built under R version 4.3.3\n\n\nWarning: package 'lubridate' was built under R version 4.3.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nWarning: package 'palmerpenguins' was built under R version 4.3.3\n\n\n\n\n\n\n\n\n\n\n    Welch Two Sample t-test\n\ndata:  bill_length_mm by species\nt = -21.712, df = 108.17, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means between group Adelie and group Chinstrap is not equal to 0\n95 percent confidence interval:\n -10.92365  -9.09605\nsample estimates:\n   mean in group Adelie mean in group Chinstrap \n               38.82397                48.83382 \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nestimate\nestimate1\nestimate2\nstatistic\np.value\nparameter\nconf.low\nconf.high\nmethod\nalternative\n\n\n\n\n-10.00985\n38.82397\n48.83382\n-21.7125\n0\n108.1722\n-10.92365\n-9.09605\nWelch Two Sample t-test\ntwo.sided\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExerciseExercise 2\n\n\n\n\n\n\nLet’s try the same exercise but this time let’s only use base R functions:\n\nload the palmerpenguins package and load the penguins data\ndrop incomplete observations\nfilter to just keep the Chinstrap and Adelie species\ngenerate a scatter plot of bill length vs. bill depth for each species\nthen, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species. Print a summary of the t test results.\n\n(Below the previous code chunk, in a Markdown section, copy and paste the above text, or simply write a sentence along the lines of “Repeat the previous analysis using only base R functions and plotting.” Then create a new code chunk and let Copilot suggest code for you.)\n\n\n\n\n\n\nAnswerAnswer\n\n\n\n\n\n\nHere is what Copilot came up with for me. Note, it knew from above that I wanted to use base R functions this time instead of tidyverse functions!\n\n\n\n\n\n\n\n\n\n            Length Class  Mode     \nstatistic   1      -none- numeric  \nparameter   1      -none- numeric  \np.value     1      -none- numeric  \nconf.int    2      -none- numeric  \nestimate    2      -none- numeric  \nnull.value  1      -none- numeric  \nstderr      1      -none- numeric  \nalternative 1      -none- character\nmethod      1      -none- character\ndata.name   1      -none- character\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWarningCopilot limitations!\n\n\n\nCopilot cannot read your mind, and it may make incorrect assumptions about what you want to do with your data and analysis. It is important to understand the code that Copilot is generating for you, and to check it for errors!\n\nCopilot can only add code or text; it cannot subtract or edit buggy or incorrect code or text without specific prompting from the user.\nYou can always reject Copilot’s suggestions and write your own code, or accept its suggestions as a starting point then edit them as you see fit before moving on.\nYou get the last word (no matter how hard Copilot tries!), and you as the coder are responsible for the final product.\n\n\n\n\n\n1.3 Using Copilot for more complex coding tasks\nCopilot can also help you write functions and loops, among other things.\n\n1.3.1 Copilot to write a function\n\n\n\n\n\n\nExerciseExercise 3\n\n\n\n\n\n\nLet’s write a function that takes a dataframe of data and for two given columns, calculates the slope, intercept, and p value for a linear regression model. Let’s call it calc_lm(). Some pseudocode to get you started:\n\nidentify and pull out the y (outcome) and x (predictor) variables as columns in the data frame\nperform a linear regression on y ~ x\nreturn the slope, intercept, and p value in a dataframe.\n\n(Feel free to copy the above text and paste into a Markdown section of your Quarto document, then let Copilot make its suggestions)\n\n\n\n\n\n\nAnswerAnswer\n\n\n\n\n\n\nHere’s what Copilot suggested for me, line by line, as I was writing this lesson. After finishing the function, I started writing a comment to test, it assumed I wanted to use data that I had mentioned earlier in the script, i.e., penguins_filtered.\n# function to calculate slope, intercept, and p value for a linear regression model\ncalc_lm &lt;- function(data, y, x) {\n  # identify and pull out the y (outcome) and x (predictor) variables as columns in the data frame\n  y &lt;- data[[y]]\n  x &lt;- data[[x]]\n  \n  # perform a linear regression on y ~ x\n  lm_model &lt;- lm(y ~ x, data = data)\n  \n  # return the slope, intercept, and p value in a dataframe\n  data.frame(slope = coef(lm_model)[2],\n             intercept = coef(lm_model)[1],\n             p_value = summary(lm_model)$coefficients[2, 4])\n}\n### test on the penguins data\ncalc_lm(penguins_filtered, \"bill_length_mm\", \"bill_depth_mm\")\nDoes Copilot’s suggestion work for you? If not take a moment to fix it and make it work. For me, it created a perfectly good function the first time. Some observations on the code presented here:\n\nI would have avoided overwriting the local value of x and y in the function, as it could be confusing.\nNote that the p value it selects from the linear model is that of the slope, not the intercept. That is probably what we wanted, but would be a good idea to make sure that meets our expectations!\nI might also prefer to have the output in a different format, perhaps using broom::tidy().\n\n\n\n\n\n\n\n\n\n\n\n1.3.2 Copilot to write a loop\n\n\n\n\n\n\nExerciseExercise 4\n\n\n\n\n\n\nNow let’s get Copilot to help use the previous function to iterate over the various species by sex. Using for-loops, this will involve nested loops (one for species, one for sex), so let’s see if Copilot can figure that out! Pseudocode:\n\nFor each species, and each sex, apply the function above to the penguins data, and add the species and sex to the resulting dataframe.\nStore the results in a list of dataframes\nThen combine the results into a single dataframe.\n\n(Again, copy the text above and paste into a Markdown section, open a new code chunk and let Copilot make suggestions. It may struggle with this, so if it gets stuck, help it by writing some code or comments)\n\n\n\n\n\n\nWarning\n\n\n\nI almost certainly wouldn’t have actually used a for loop here in the first place - better options would be a group_by() %&gt;% summarize() workflow or purrr::map2 - but we’re just trying to see what Copilot can do with a more complex coding task!\n\n\n\n\n\n\n\n\nAnswerAnswer\n\n\n\n\n\n\nHere’s what Copilot suggested, based on the pseudocode and previous code chunks. However, this was a little more complex and required some guidance, hand holding, and bug-fixing.\n# create an empty list to store the results\n1results &lt;- list()\n2i &lt;- 1\n\n# iterate over the species\nfor (species in unique(penguins_filtered$species)) {\n  # iterate over the sex\n3  for(sex in unique(penguins_filtered$sex)) {\n    # apply the function above to the penguins data\n4    result &lt;- calc_lm(penguins_filtered[penguins_filtered$species == species & penguins_filtered$sex == sex, ], \"bill_length_mm\", \"bill_depth_mm\")\n    # add the species and sex to the resulting dataframe\n    result$species &lt;- species\n5    result$sex &lt;- sex\n    # store the results in the list\n6    results[[i]] &lt;- result\n7    i &lt;- i + 1\n  }\n}\n\n# combine the results into a single dataframe\nresults_df &lt;- do.call(rbind, results)\n  \n\n1\n\nCopilot didn’t pre-allocate space for the list based on the number of expected entries. Not a dealbreaker for a small project, but generally a good idea.\n\n2\n\nAfter Copilot started the loop, it didn’t include an indexing variable, and hadn’t considered that the “species” index would be character, not numeric, so would be challenging to use as an indexing variable after the fact. I manually added in an index i to keep track of the list index.\n\n3\n\nCopilot struggled with this nested loop format - so I had to manually start typing this line; but then Copilot was able to finish.\n\n4\n\nAgain, Copilot struggled here - it wrote the function call halfway through the filtered step; when I wrote the penguins_filtered$sex == sex part, it was able to finish the line. However, it made some errors finishing the line as well!\n\n5\n\nOnce again, Copilot wasn’t sure how to add the sex info to the resulting dataframe, so I had to manually start writing.\n\n6\n\nHere, Copilot used a single bracket for indexing, which is incorrect for a list in R. I had to manually change this to double brackets.\n\n7\n\nCopilot didn’t include an incrementing index variable, so I had to manually add this.\n\n\nIn summary, Copilot was helpful in getting the ball rolling here, but needed lots of manual help. Additionally, it made some choices I probably would have made differently - e.g., I probably would have filtered the penguins_filtered dataframe before the calc_lm call, and probably would have used dplyr::mutate to add the species and sex columns to the result. Finally, I probably would have used bind_rows() instead of do.call(rbind, results) to combine the results, but that’s just what I’m used to.\n\n\n\n\n\n\n\n\n\n\n\n1.4 Copilot for coding: summary\nCopilot can be very helpful at speeding up your coding, especially for simple or well-defined tasks. One potential pitfall is that using Copilot in this way has a certain amount of path dependency. Once a bit of code is written in the script, Copilot takes that as given - it can’t modify or erase existing code, it can only keep going forward by adding.\nIn the next section, we’ll look at how to use ChatGPT to help with coding in a more interactive/iterative fashion, which can avoid path dependency but may introduce other complexities.\n\n\n\n\n\n\nTipSummary: Copilot tips\n\n\n\n\nBefore starting your analysis, prime Copilot by writing out an overview of your analysis, including packages, functions, and statistical tests you want to do.\nWhile writing code, if Copilot gets stuck, or treads down an unproductive path, you have several options:\n\nwrite out a comment or additional pseudocode to guide Copilot in the right direction.\naccept Copilot’s suggestion (if it’s on the right track) and manually fix it before continuing.\nreject Copilot’s suggestion (if it’s way off base) and write your own code, to signal what you really want\n\nRun the code to make sure it works as expected, and check for errors. You are responsible for the final result.\nRemember, you can turn Copilot off entirely, or set it to autocomplete only when requested:\n\nTools –&gt; Global Options –&gt; Copilot –&gt; Show Copilot code suggestions: Manually (Ctrl-Backslash)).",
+    "text": "1 Active coding support with GitHub Copilot\nGitHub Copilot is an AI-powered code completion tool that helps you write code faster and with fewer errors. It is effectively “pair programming” where you and a partner (in this case, an AI partner) code together in real time. It is available as a plugin for IDEs such as Visual Studio Code and RStudio. Copilot is a large language model (LLM) related to ChatGPT, trained on GitHub and other codebases, and it can generate code completions in real time based on the context of your coding task. In this lesson, we will configure RStudio to work with GitHub Copilot and practice techniques to use Copilot effectively to assist with coding tasks.\nIf you have an education GitHub account (e.g., an .edu email address that is associated with your GitHub account), you should be able to get free access to Copilot Pro. Otherwise you can access a free but limited version of Copilot, which should be adequate for this session. See more Copilot requirements here.\n\n\n\n\n\n\nNote\n\n\n\nHere we will focus on using AI code completion tools in R and RStudio, since it is a popular language and IDE for ecologists, but the same methods work for other languages and IDEs. VS Code is a Microsoft product, as is Copilot (and GitHub for that matter), so its integration is even better than RStudio.\n\n\n\n1.1 Configuring RStudio to work with GitHub Copilot\nFull Screen\n\n\n\n1.2 Using Copilot to assist with coding tasks\nYou need a fundamental understanding of coding to be able to use Copilot effectively. It can make intelligent guesses as to your intentions, but doesn’t necessarily know where your files are, or what you intend to do with the data. So it is helpful to guide Copilot in the right direction using comments, sentences, and “pseudocode” before you start any actual coding. The more information you provide through your Markdown text and code-chunk comments, the better Copilot will be able to help you.\n\n\n\n\n\n\nTipPseudocode\n\n\n\nPseudocode is a way of planning out an analysis by writing out the sequence of steps you expect to take, in plain language, perhaps as bullet points. There are more formalized versions of pseudocode, and less formalized (see “vibecoding”) but here we take a middle road, and we will stick with just plain English sentences to communicate our intentions. Some tips:\n\nSpecify whether you want to use the tidyverse metapackage or base R functions (or another language, e.g., Python!).\nIf you know the names of certain functions, it is helpful to use those in your pseudocode, to help Copilot incorporate those into its code completions.\nUse comments to signal to Copilot what you’d like to do at each step.\n\n\n\n\n\n\n\n\n\nExerciseExercise 1\n\n\n\n\n\n\nCreate a code chunk, read in some data, do some data wrangling, and then make a plot with the resulting data. Use comments in your code chunk to signal to Copilot what you’d like to do at each step. Here are the steps we will do, using a tidyverse workflow:\n\nload the palmerpenguins package and load the penguins data\ndrop any incomplete observations (any NA values)\nfilter to just keep the Chinstrap and Adelie species\ngenerate a scatter plot of bill length vs. bill depth for each species\nthen, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species. Print a summary of the t test results.\n\n(Copy the above text and paste into a Quarto document, or rephrase it in your own words, then create a code chunk and let Copilot suggest some code!)\n\n\n\n\n\n\nAnswerAnswer\n\n\n\n\n\n\nHere’s what it looked like when I let Copilot help me write the code - I accepted each line by pressing “tab”. This might change entirely if I ran the exercise again.\n\nHow different does it look from the code you wrote?\nHow does it differ from how you might code it on your own?\n\n\n\nWarning: package 'tidyr' was built under R version 4.3.3\n\n\nWarning: package 'readr' was built under R version 4.3.3\n\n\nWarning: package 'purrr' was built under R version 4.3.3\n\n\nWarning: package 'dplyr' was built under R version 4.3.3\n\n\nWarning: package 'lubridate' was built under R version 4.3.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.2\n✔ ggplot2   4.0.0     ✔ tibble    3.3.0\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nWarning: package 'palmerpenguins' was built under R version 4.3.3\n\n\n\n\n\n\n\n\n\n\n    Welch Two Sample t-test\n\ndata:  bill_length_mm by species\nt = -21.712, df = 108.17, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means between group Adelie and group Chinstrap is not equal to 0\n95 percent confidence interval:\n -10.92365  -9.09605\nsample estimates:\n   mean in group Adelie mean in group Chinstrap \n               38.82397                48.83382 \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nestimate\nestimate1\nestimate2\nstatistic\np.value\nparameter\nconf.low\nconf.high\nmethod\nalternative\n\n\n\n\n-10.00985\n38.82397\n48.83382\n-21.7125\n0\n108.1722\n-10.92365\n-9.09605\nWelch Two Sample t-test\ntwo.sided\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExerciseExercise 2\n\n\n\n\n\n\nLet’s try the same exercise but this time let’s only use base R functions:\n\nload the palmerpenguins package and load the penguins data\ndrop incomplete observations\nfilter to just keep the Chinstrap and Adelie species\ngenerate a scatter plot of bill length vs. bill depth for each species\nthen, for the two species, run a t-test to determine whether the bill lengths are statistically different between the two species. Print a summary of the t test results.\n\n(Below the previous code chunk, in a Markdown section, copy and paste the above text, or simply write a sentence along the lines of “Repeat the previous analysis using only base R functions and plotting.” Then create a new code chunk and let Copilot suggest code for you.)\n\n\n\n\n\n\nAnswerAnswer\n\n\n\n\n\n\nHere is what Copilot came up with for me. Note, it knew from above that I wanted to use base R functions this time instead of tidyverse functions!\n\n\n\n\n\n\n\n\n\n            Length Class  Mode     \nstatistic   1      -none- numeric  \nparameter   1      -none- numeric  \np.value     1      -none- numeric  \nconf.int    2      -none- numeric  \nestimate    2      -none- numeric  \nnull.value  1      -none- numeric  \nstderr      1      -none- numeric  \nalternative 1      -none- character\nmethod      1      -none- character\ndata.name   1      -none- character\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWarningCopilot limitations!\n\n\n\nCopilot cannot read your mind, and it may make incorrect assumptions about what you want to do with your data and analysis. It is important to understand the code that Copilot is generating for you, and to check it for errors!\n\nCopilot can only add code or text; it cannot subtract or edit buggy or incorrect code or text without specific prompting from the user.\nYou can always reject Copilot’s suggestions and write your own code, or accept its suggestions as a starting point then edit them as you see fit before moving on.\nYou get the last word (no matter how hard Copilot tries!), and you as the coder are responsible for the final product.\n\n\n\n\n\n1.3 Using Copilot for more complex coding tasks\nCopilot can also help you write functions and loops, among other things.\n\n1.3.1 Copilot to write a function\n\n\n\n\n\n\nExerciseExercise 3\n\n\n\n\n\n\nLet’s write a function that takes a dataframe of data and for two given columns, calculates the slope, intercept, and p value for a linear regression model. Let’s call it calc_lm(). Some pseudocode to get you started:\n\nidentify and pull out the y (outcome) and x (predictor) variables as columns in the data frame\nperform a linear regression on y ~ x\nreturn the slope, intercept, and p value in a dataframe.\n\n(Feel free to copy the above text and paste into a Markdown section of your Quarto document, then let Copilot make its suggestions)\n\n\n\n\n\n\nAnswerAnswer\n\n\n\n\n\n\nHere’s what Copilot suggested for me, line by line, as I was writing this lesson. After finishing the function, I started writing a comment to test, it assumed I wanted to use data that I had mentioned earlier in the script, i.e., penguins_filtered.\n# function to calculate slope, intercept, and p value for a linear regression model\ncalc_lm &lt;- function(data, y, x) {\n  # identify and pull out the y (outcome) and x (predictor) variables as columns in the data frame\n  y &lt;- data[[y]]\n  x &lt;- data[[x]]\n  \n  # perform a linear regression on y ~ x\n  lm_model &lt;- lm(y ~ x, data = data)\n  \n  # return the slope, intercept, and p value in a dataframe\n  data.frame(slope = coef(lm_model)[2],\n             intercept = coef(lm_model)[1],\n             p_value = summary(lm_model)$coefficients[2, 4])\n}\n### test on the penguins data\ncalc_lm(penguins_filtered, \"bill_length_mm\", \"bill_depth_mm\")\nDoes Copilot’s suggestion work for you? If not take a moment to fix it and make it work. For me, it created a perfectly good function the first time. Some observations on the code presented here:\n\nI would have avoided overwriting the local value of x and y in the function, as it could be confusing.\nNote that the p value it selects from the linear model is that of the slope, not the intercept. That is probably what we wanted, but would be a good idea to make sure that meets our expectations!\nI might also prefer to have the output in a different format, perhaps using broom::tidy().\n\n\n\n\n\n\n\n\n\n\n\n1.3.2 Copilot to write a loop\n\n\n\n\n\n\nExerciseExercise 4\n\n\n\n\n\n\nNow let’s get Copilot to help use the previous function to iterate over the various species by sex. Using for-loops, this will involve nested loops (one for species, one for sex), so let’s see if Copilot can figure that out! Pseudocode:\n\nFor each species, and each sex, apply the function above to the penguins data, and add the species and sex to the resulting dataframe.\nStore the results in a list of dataframes\nThen combine the results into a single dataframe.\n\n(Again, copy the text above and paste into a Markdown section, open a new code chunk and let Copilot make suggestions. It may struggle with this, so if it gets stuck, help it by writing some code or comments)\n\n\n\n\n\n\nWarning\n\n\n\nI almost certainly wouldn’t have actually used a for loop here in the first place - better options would be a group_by() %&gt;% summarize() workflow or purrr::map2 - but we’re just trying to see what Copilot can do with a more complex coding task!\n\n\n\n\n\n\n\n\nAnswerAnswer\n\n\n\n\n\n\nHere’s what Copilot suggested, based on the pseudocode and previous code chunks. However, this was a little more complex and required some guidance, hand holding, and bug-fixing.\n# create an empty list to store the results\n1results &lt;- list()\n2i &lt;- 1\n\n# iterate over the species\nfor (species in unique(penguins_filtered$species)) {\n  # iterate over the sex\n3  for(sex in unique(penguins_filtered$sex)) {\n    # apply the function above to the penguins data\n4    result &lt;- calc_lm(penguins_filtered[penguins_filtered$species == species & penguins_filtered$sex == sex, ], \"bill_length_mm\", \"bill_depth_mm\")\n    # add the species and sex to the resulting dataframe\n    result$species &lt;- species\n5    result$sex &lt;- sex\n    # store the results in the list\n6    results[[i]] &lt;- result\n7    i &lt;- i + 1\n  }\n}\n\n# combine the results into a single dataframe\nresults_df &lt;- do.call(rbind, results)\n  \n\n1\n\nCopilot didn’t pre-allocate space for the list based on the number of expected entries. Not a dealbreaker for a small project, but generally a good idea.\n\n2\n\nAfter Copilot started the loop, it didn’t include an indexing variable, and hadn’t considered that the “species” index would be character, not numeric, so would be challenging to use as an indexing variable after the fact. I manually added in an index i to keep track of the list index.\n\n3\n\nCopilot struggled with this nested loop format - so I had to manually start typing this line; but then Copilot was able to finish.\n\n4\n\nAgain, Copilot struggled here - it wrote the function call halfway through the filtered step; when I wrote the penguins_filtered$sex == sex part, it was able to finish the line. However, it made some errors finishing the line as well!\n\n5\n\nOnce again, Copilot wasn’t sure how to add the sex info to the resulting dataframe, so I had to manually start writing.\n\n6\n\nHere, Copilot used a single bracket for indexing, which is incorrect for a list in R. I had to manually change this to double brackets.\n\n7\n\nCopilot didn’t include an incrementing index variable, so I had to manually add this.\n\n\nIn summary, Copilot was helpful in getting the ball rolling here, but needed lots of manual help. Additionally, it made some choices I probably would have made differently - e.g., I probably would have filtered the penguins_filtered dataframe before the calc_lm call, and probably would have used dplyr::mutate to add the species and sex columns to the result. Finally, I probably would have used bind_rows() instead of do.call(rbind, results) to combine the results, but that’s just what I’m used to.\n\n\n\n\n\n\n\n\n\n\n\n1.4 Copilot for coding: summary\nCopilot can be very helpful at speeding up your coding, especially for simple or well-defined tasks. One potential pitfall is that using Copilot in this way has a certain amount of path dependency. Once a bit of code is written in the script, Copilot takes that as given - it can’t modify or erase existing code, it can only keep going forward by adding.\nIn the next section, we’ll look at how to use ChatGPT to help with coding in a more interactive/iterative fashion, which can avoid path dependency but may introduce other complexities.\n\n\n\n\n\n\nTipSummary: Copilot tips\n\n\n\n\nBefore starting your analysis, prime Copilot by writing out an overview of your analysis, including packages, functions, and statistical tests you want to do.\nWhile writing code, if Copilot gets stuck, or treads down an unproductive path, you have several options:\n\nwrite out a comment or additional pseudocode to guide Copilot in the right direction.\naccept Copilot’s suggestion (if it’s on the right track) and manually fix it before continuing.\nreject Copilot’s suggestion (if it’s way off base) and write your own code, to signal what you really want\n\nRun the code to make sure it works as expected, and check for errors. You are responsible for the final result.\nRemember, you can turn Copilot off entirely, or set it to autocomplete only when requested:\n\nTools –&gt; Global Options –&gt; Copilot –&gt; Show Copilot code suggestions: Manually (Ctrl-Backslash)).",
     "crumbs": [
       "AI for Coding Support"
     ]
@@ -54,106 +47,6 @@
     "text": "4 Further considerations\nWhat about hallucinations and errors?\n\nLLMs and generative AI are known to “hallucinate” and make up incorrect information from time to time. In coding, this may be less of an issue, since you can run the code to test it and verify that the results match expectations.\n\nHowever, if you are asking an LLM to code something that you don’t fully understand, you may not recognize errors or incorrect results. It might be risky to ask an LLM to write code for you that you wouldn’t be able to write yourself if given the time.\nLLMs are essentially trying to provide the most likely completion to a given prompt, i.e., the least surprising answer. For creative writing tasks, this can result in pretty mediocre and predictable prose. But for a highly structured task like coding, surprise is not the goal! An LLM trained on a massive code base will have a pretty good idea of the most common - and least surprising - ways to approach a typical coding problem.\n\nWhat about ethics?\n\nLLMs and generative AI are trained on large datasets, often including content scraped from artists and writers (and coders) without their consent. This raises ethical concerns about the use of generative AI for creative tasks, for plagiarism and exploitation of writers’ work and for the potential for putting artists out of work. For coding tasks this may be less of an issue, as much of the codebase is open source, e.g., public repos on Github or Q&A on Stack Overflow, though even open source material is often licensed with rules for attribution that may be violated by AI-generated code.\nWhile an LLM doesn’t ingest the data or information you put into your prompts (once it is trained, it can’t learn new things), it is still important to consider security and privacy risks. Including sensitive or private information in a prompt may result in some of that sensitive information being exposed in the resulting code. If you are coding an analysis that requires privacy or security, the LLM may not properly understand those privacy or security concerns and could generate code with security liabilities.\n\nWill this be problematic for the future of coding?\n\nDefinitely! With such tools readily at hand, then students won’t learn how to properly code - they will just have to rely on LLMs to do everything for them. Additionally, if a senior analyst can use an LLM to write code, they won’t need to hire junior analysts, thus breaking the pipeline for entry level coding jobs.\nCertainly not! With such tools readily at hand, the barrier to entry for coding is lowered. Consider that we’ve progressed from punch cards to binary to assembly language to FORTRAN to COBOL to C to R to Python to RStudio to Jupyter notebooks to LLMs. Each step has made coding more human readable and comprehensible, and yet we still have demand for coders. Instead of coding in R or Python (or binary), we’ll soon be coding in English (or Spanish, Chinese, etc). Coding will no longer be a barrier to statistical analysis, so junior and senior analysts can focus on the science!",
     "crumbs": [
       "AI for Coding Support"
-    ]
-  },
-  {
-    "objectID": "s02_ai_analysis_in_llm.html",
-    "href": "s02_ai_analysis_in_llm.html",
-    "title": "Data Inspection and Analysis using LLMs",
-    "section": "",
-    "text": "TipLearning Objectives\n\n\n\nBy the end of this session, participants will be able to use ChatGPT effectively to inspect, explore, and generate insights from datasets, and to accelerate common analytical workflows through prompt engineering.\n\nDataset Inspection\n\nexamine missing values\ncalculate summary statistics\ntransform data\n\nStatistical Analysis\n\ngenerate time series plots\nidentify potential analytical directions\ncreate report-ready narratives using natural language generation\nexport code for reproducibility",
-    "crumbs": [
-      "Data Inspection and Analysis using LLMs"
-    ]
-  },
-  {
-    "objectID": "s02_ai_analysis_in_llm.html#who-and-why-to-use-chatgpt-for-data-analysis",
-    "href": "s02_ai_analysis_in_llm.html#who-and-why-to-use-chatgpt-for-data-analysis",
-    "title": "Data Inspection and Analysis using LLMs",
-    "section": "1 Who and why to use ChatGPT for data analysis?",
-    "text": "1 Who and why to use ChatGPT for data analysis?\n\nIf you’re not a programmer or statistician, ChatGPT can help you understand the overall story of your dataset by breaking down key patterns, trends, and issues in plain language.\nIf you’re working on a data synthesis project and need to filter through multiple datasets, ChatGPT can assist in rapidly exploring each dataset—using visualizations and summaries—to help you decide which ones are most relevant for your goals.\nIf you want to apply statistical methods but don’t recall all the details, ChatGPT can suggest appropriate techniques based on your data and research questions, and generate ready-to-use code for implementation in Python or R.\nIf you need to produce a quick data report, ChatGPT can significantly speed up the process by generating summary statistics, visualizations, and clear written narratives tailored for stakeholders or publication.",
-    "crumbs": [
-      "Data Inspection and Analysis using LLMs"
-    ]
-  },
-  {
-    "objectID": "s02_ai_analysis_in_llm.html#dataset-inspection",
-    "href": "s02_ai_analysis_in_llm.html#dataset-inspection",
-    "title": "Data Inspection and Analysis using LLMs",
-    "section": "2 Dataset Inspection",
-    "text": "2 Dataset Inspection\n\nUploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically.\nLooking for a dataset to practice with? Try the SBCLTER annual fish survey. For free version of the ChatGPT, try dataset that is smaller than 8 KB, such as Subset version of the annual fish survey.\nIn each section below, the example prompts are provided. You can copy and paste it into ChatGPT, or type your own prompts.\n\n\n\n\n\n\n\nTipChatGPT prompt\n\n\n\n\nTell me about this dataset, and what types of data does it contain?\nWhich columns are affected by the missing values and how many missing values are in each column.\nProvide summary statistics (mean, median, std, min, max) for count and size column, and unique values for the site, and year columns.\nConvert this data table to wide format using sp_code as header and count as value",
-    "crumbs": [
-      "Data Inspection and Analysis using LLMs"
-    ]
-  },
-  {
-    "objectID": "s02_ai_analysis_in_llm.html#statistical-analysis",
-    "href": "s02_ai_analysis_in_llm.html#statistical-analysis",
-    "title": "Data Inspection and Analysis using LLMs",
-    "section": "3 Statistical Analysis",
-    "text": "3 Statistical Analysis\n\n\n\n\n\n\nTipChatGPT prompt\n\n\n\na. Time series plot\n\nCreate a time series plot of the total species count, with year on the x-axis and count on the y-axis. Use different colors for each site.\nCreate a time series plot of the top 5 most abundant species, with year on the x-axis and count on the y-axis. Use different colors for each site.\n\nb. Identify Potential Analytical Directions\n\nI want to understand whether species has an increasing trend over time\nI like to do a glm() to see the species trend over time, which family should I use? how about the link function?\n\nc. Create Report-Ready Narratives\n\nI like this analysis and want to document in the report. Please describe statistical analysis for the glm() model and the corresponding results\n\nd. Export Code for Reproducibility\n\nPlease give me the R scripts for the glm() analysis\n\n\n\n\n\n\n\n\n\nNoteImportant Notes\n\n\n\n\nChatGPT is not a substitute for human expertise, but it serves as a powerful assistant that can enhance and accelerate your analytical workflow.\nData analysis done within ChatGPT is not reproducible. If you discover valuable insights, always ask ChatGPT to generate the underlying code so you can document and reproduce the process independently.\nUsing a customized GPT model is recommended for data analysis, as it can handle larger datasets and provide more context-aware responses. Therefore, access to the paid version of ChatGPT (such as ChatGPT Plus or Team) is preferred for this exercise.\nIf you’re comparing the speed of conducting analysis in ChatGPT versus R (with existing code), R is generally more reliable and consistently faster. ChatGPT’s performance can vary depending on the time of day, server load, and the specific GPT model you’re using.\n\n\nAs of April 2025, here are the estimated CSV table size by GPT Model\n\n\n\n\n\n\n\n\n\nModel\nToken Limit\nApprox. Rows × Columns (Typical CSV)\nNotes\n\n\n\n\nGPT-3.5\n4,096\n~200 rows × 10 columns\nOnly good for small previews or subsets\n\n\nGPT-4 (8k)\n8,192\n~400 rows × 10 columns\nModerate analysis with simple datasets\n\n\nGPT-4-turbo (128k)\n128,000\n~6,000–10,000 rows × 10–20 columns\nSupports large datasets and full analysis\n\n\n\n\nEach cell ≈ 5–10 tokens (e.g., a short string or number).",
-    "crumbs": [
-      "Data Inspection and Analysis using LLMs"
-    ]
-  },
-  {
-    "objectID": "s05_ai_CLI.html",
-    "href": "s05_ai_CLI.html",
-    "title": "AI at the Command Line",
-    "section": "",
-    "text": "TipLearning Objectives\n\n\n\n\nUnderstand what the MCP is and what Gemini CLI can do\nApply prompts to read, analyze, and modify files using the Gemini agent\nCreate and push content to GitHub with the help of the AI agent",
-    "crumbs": [
-      "AI at the Command Line"
-    ]
-  },
-  {
-    "objectID": "s05_ai_CLI.html#what-is-mcp",
-    "href": "s05_ai_CLI.html#what-is-mcp",
-    "title": "AI at the Command Line",
-    "section": "1 What is MCP?",
-    "text": "1 What is MCP?\nMCP (Model Context Protocol) is a standard for connecting AI models (like Gemini) with the outside world. It provides a safe and consistent way for AI agents to access:\n\nLocal files on your computer\n\nExternal tools (like GitHub, Google Workspace, Slack)\n\nAPIs or data services\n\nThink of MCP as a bridge: It defines how an AI model communicates with tools and resources so that interactions are reliable and reproducible.\n Image credit: Descope\n\n\n\n\n\n\nTipWhy MCP Matters\n\n\n\n\nEnsures structured communication between AI and external systems\n\nImproves safety by controlling what the model can and cannot access\n\nMakes it easier to integrate AI into workflows like coding, research, and publishing",
-    "crumbs": [
-      "AI at the Command Line"
-    ]
-  },
-  {
-    "objectID": "s05_ai_CLI.html#from-mcp-to-gemini-cli",
-    "href": "s05_ai_CLI.html#from-mcp-to-gemini-cli",
-    "title": "AI at the Command Line",
-    "section": "2 From MCP to Gemini CLI",
-    "text": "2 From MCP to Gemini CLI\nNow that you understand what MCP (Model Context Protocol) is, let’s see how it works in practice in addition to google workspace.\nThe Gemini CLI is one of the first practical tools that implements MCP. It allows you to:\n\nUse Google’s Gemini AI models directly in your terminal\n\nAccess your local files\nAsking questions about code or data summary\n\nGenerating code snippets or documentation\n\nEditing or refactoring code via prompt\n\nGitHub integration: cloning, committing, pushing, issuing\n\n\n\n\n\n\n\nExerciseExercise 2 - Publishing Code with Gemini CLI\n\n\n\n\n\n\n\n⚙️ Installation & Setup\n\nFollow the detailed installation instruction on Gemini CLI GitHub page.\n\n📂 Working with Local Files\n\nGenerate a R script for downloading NOAA weather data\nEdit the script with prompts\n\n🌐 GitHub Integration\n\nCreate a GitHub repository\nGenerate or improve a README\nCommit changes with Gemini’s assistance\n\n\n\n\n\n\n\n\n\n\n\n\nTip🛠 Troubleshooting\n\n\n\n\n🔑 Authentication\n\nWhen you first launch Gemini CLI, you’ll be redirected to a webpage for authentication.\n\nFree tier limits: 60 requests/min and 1,000 requests/day. If you exceed this, generate a Gemini API key for more allowance.\n\nRunning Gemini CLI inside VS Code? You will be prompted to authorize VS Code to connect with Gemini CLI.\n\n\n\n\n🌐 GitHub Integration\n\nIf GitHub CLI (gh) is not installed, Gemini CLI will prompt you to install it. It is recommended to install it outside of Gemini CLI terminal.\n\nThe first run requires authenticating with your GitHub account. Example GitHub authentication screen below. The authentication token is obtained: GitHub settings → Developer settings → Personal access tokens\n\n\n\n\n\n✅ Verifying Changes\n\nThe tracked changes can be viewed in VS Code (Gemini CLI Companion extension) - or GitHub Desktop.\nOr, in the terminal, run git diff to see what changes were made.",
-    "crumbs": [
-      "AI at the Command Line"
-    ]
-  },
-  {
-    "objectID": "s05_ai_CLI.html#section",
-    "href": "s05_ai_CLI.html#section",
-    "title": "AI at the Command Line",
-    "section": "",
-    "text": "✅ Verifying Changes\n\nThe tracked changes can be viewed in VS Code (Gemini CLI Companion extension) - or GitHub Desktop.\nOr, in the terminal, run git diff to see what changes were made.",
-    "crumbs": [
-      "AI at the Command Line"
-    ]
-  },
-  {
-    "objectID": "s05_ai_CLI.html#cli-tools-comparison",
-    "href": "s05_ai_CLI.html#cli-tools-comparison",
-    "title": "AI at the Command Line",
-    "section": "3 CLI Tools Comparison",
-    "text": "3 CLI Tools Comparison\nAI command-line tools give researchers different ways to bring AI into their workflows.\nHere is a comparison of some of the most widely used ones:\n\n\n\n\nTool\nHosted vs Local\nBest Use Cases\n\n\n\n\nGemini CLI\nCloud (Google)\nBest for individual experimentation because a substantial free tier, and it is lightweight\n\n\nCodex CLI\nCloud (OpenAI)\nIdeal for coding tasks (GPT-5), debugging, and automation\n\n\nClaude Code\nCloud (Anthropic)\nBest for handling large documents, summarization, and long-context reasoning\n\n\nOllama\nLocal (runs on your machine)\nPerfect for privacy-first workflows, running offline models, and experimenting with open-source LLMs",
-    "crumbs": [
-      "AI at the Command Line"
-    ]
-  },
-  {
-    "objectID": "s05_ai_CLI.html#key-risks-and-mitigation-strategies-for-gemini-cli",
-    "href": "s05_ai_CLI.html#key-risks-and-mitigation-strategies-for-gemini-cli",
-    "title": "AI at the Command Line",
-    "section": "4 Key Risks and Mitigation Strategies for Gemini CLI",
-    "text": "4 Key Risks and Mitigation Strategies for Gemini CLI\nGemini CLI and GitHub CLI are powerful — but with great power comes the responsibility to secure credentials, minimize permissions, and update regularly.\n\n\n\n\n\n\n\n🔑 Risk\n✅ Mitigation\n\n\n\n\nCredential Exposure\nUse fine-grained tokens, avoid sharing on multi-user systems\n\n\nAccidental Actions\ndouble-check commands, avoid risky scripts\n\n\nToo Many Permissions\nApply least privilege, audit tokens regularly\n\n\nUpdates\nKeep CLI tools up to date\n\n\nData Privacy\nAvoid sharing sensitive data, use local models for sensitive tasks",
-    "crumbs": [
-      "AI at the Command Line"
     ]
   },
   {
@@ -237,6 +130,177 @@
     ]
   },
   {
+    "objectID": "slides/ai_coding_support/slides.html#title-slide",
+    "href": "slides/ai_coding_support/slides.html#title-slide",
+    "title": "AI for Ecologists",
+    "section": "",
+    "text": "AI for coding support\nAn introduction to using AI tools to boost your coding practice"
+  },
+  {
+    "objectID": "slides/ai_coding_support/slides.html#r-rstudio",
+    "href": "slides/ai_coding_support/slides.html#r-rstudio",
+    "title": "AI for Ecologists",
+    "section": "",
+    "text": "Configure RStudio to work with Copilot\n\n\nIn RStudio: Tools \\(\\Rightarrow\\) Global Options. Look for “Copilot” at the bottom of the sidebar*:\n\n\n\n\n\n* Copilot requires RStudio version 2023.09.0 or later!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About the sessions",
+    "section": "",
+    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
+    "objectID": "index.html#ai-for-ecologists",
+    "href": "index.html#ai-for-ecologists",
+    "title": "About the sessions",
+    "section": "",
+    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
+    "objectID": "index.html#nceas-expertise",
+    "href": "index.html#nceas-expertise",
+    "title": "About the sessions",
+    "section": "2 NCEAS Expertise",
+    "text": "2 NCEAS Expertise\nNCEAS is a leading expert on interdisciplinary data science and works collaboratively to answer the world’s largest and most complex questions. The NCEAS approach leverages existing data and employs a team science philosophy to squeeze out all potential insights and solutions efficiently - this is called synthesis science.\nNCEAS has 30 years of success with this model among working groups and environmental professionals. In conjunction with the NCEAS Learning Hub, we are excited to pass along skills, workflows, and mindsets to help the NCEAS community better understand the implications of AI for the Planet.\n\n\n\n\n\n\n\nTipLearning Objectives\n\n\n\n\nPractice strategies for using AI tools effectively and responsibly in coding, analysis, and research.\nExplore the ethical implications of using AI in research and how to navigate them.\nFeel comfortable with using various AI tools in your own work.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
+    "objectID": "index.html#code-of-conduct",
+    "href": "index.html#code-of-conduct",
+    "title": "About the sessions",
+    "section": "3 Code of Conduct",
+    "text": "3 Code of Conduct\nBy participating in this activity you agree to abide by the NCEAS Code of Conduct.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
+    "objectID": "index.html#about-this-book",
+    "href": "index.html#about-this-book",
+    "title": "About the sessions",
+    "section": "4 About this book",
+    "text": "4 About this book\nThese written materials are the result of a continuous and collaborative effort at NCEAS to help researchers make their work more transparent and reproducible. This work began in the early 2000’s, and reflects the expertise and diligence of many, many individuals. The primary authors are listed in the citation below, with additional contributors recognized for their role in developing previous iterations of these or similar materials.\nThis work is licensed under a Creative Commons Attribution 4.0 International License.\nCitation: Casey O’Hara and Li Kui (2025), AI for Ecologists. URL https://nceas-learning-hub.github.io/ai_for_nceas.\nAdditional contributors: tbd\nThis is a Quarto book. To learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "About the sessions"
+    ]
+  },
+  {
+    "objectID": "s05_ai_CLI.html",
+    "href": "s05_ai_CLI.html",
+    "title": "AI at the Command Line",
+    "section": "",
+    "text": "TipLearning Objectives\n\n\n\n\nUnderstand what the MCP is and what Gemini CLI can do\nApply prompts to read, analyze, and modify files using the Gemini agent\nCreate and push content to GitHub with the help of the AI agent",
+    "crumbs": [
+      "AI at the Command Line"
+    ]
+  },
+  {
+    "objectID": "s05_ai_CLI.html#what-is-mcp",
+    "href": "s05_ai_CLI.html#what-is-mcp",
+    "title": "AI at the Command Line",
+    "section": "1 What is MCP?",
+    "text": "1 What is MCP?\nMCP (Model Context Protocol) is a standard for connecting AI models (like Gemini) with the outside world. It provides a safe and consistent way for AI agents to access:\n\nLocal files on your computer\n\nExternal tools (like GitHub, Google Workspace, Slack)\n\nAPIs or data services\n\nThink of MCP as a bridge: It defines how an AI model communicates with tools and resources so that interactions are reliable and reproducible.\n Image credit: Descope\n\n\n\n\n\n\nTipWhy MCP Matters\n\n\n\n\nEnsures structured communication between AI and external systems\n\nImproves safety by controlling what the model can and cannot access\n\nMakes it easier to integrate AI into workflows like coding, research, and publishing",
+    "crumbs": [
+      "AI at the Command Line"
+    ]
+  },
+  {
+    "objectID": "s05_ai_CLI.html#from-mcp-to-gemini-cli",
+    "href": "s05_ai_CLI.html#from-mcp-to-gemini-cli",
+    "title": "AI at the Command Line",
+    "section": "2 From MCP to Gemini CLI",
+    "text": "2 From MCP to Gemini CLI\nNow that you understand what MCP (Model Context Protocol) is, let’s see how it works in practice in addition to google workspace.\nThe Gemini CLI is one of the first practical tools that implements MCP. It allows you to:\n\nUse Google’s Gemini AI models directly in your terminal\n\nAccess your local files\nAsking questions about code or data summary\n\nGenerating code snippets or documentation\n\nEditing or refactoring code via prompt\n\nGitHub integration: cloning, committing, pushing, issuing\n\n\n\n\n\n\n\nExerciseExercise 2 - Publishing Code with Gemini CLI\n\n\n\n\n\n\n\n⚙️ Installation & Setup\n\nFollow the detailed installation instruction on Gemini CLI GitHub page.\n\n📂 Working with Local Files\n\nGenerate a R script for downloading NOAA weather data\nEdit the script with prompts\n\n🌐 GitHub Integration\n\nCreate a GitHub repository\nGenerate or improve a README\nCommit changes with Gemini’s assistance\n\n\n\n\n\n\n\n\n\n\n\n\nTip🛠 Troubleshooting\n\n\n\n\n🔑 Authentication\n\nWhen you first launch Gemini CLI, you’ll be redirected to a webpage for authentication.\n\nFree tier limits: 60 requests/min and 1,000 requests/day. If you exceed this, generate a Gemini API key for more allowance.\n\nRunning Gemini CLI inside VS Code? You will be prompted to authorize VS Code to connect with Gemini CLI.\n\n\n\n\n🌐 GitHub Integration\n\nIf GitHub CLI (gh) is not installed, Gemini CLI will prompt you to install it. It is recommended to install it outside of Gemini CLI terminal.\n\nThe first run requires authenticating with your GitHub account. Example GitHub authentication screen below. The authentication token is obtained: GitHub settings → Developer settings → Personal access tokens\n\n\n\n\n\n✅ Verifying Changes\n\nThe tracked changes can be viewed in VS Code (Gemini CLI Companion extension) - or GitHub Desktop.\nOr, in the terminal, run git diff to see what changes were made.",
+    "crumbs": [
+      "AI at the Command Line"
+    ]
+  },
+  {
+    "objectID": "s05_ai_CLI.html#section",
+    "href": "s05_ai_CLI.html#section",
+    "title": "AI at the Command Line",
+    "section": "",
+    "text": "✅ Verifying Changes\n\nThe tracked changes can be viewed in VS Code (Gemini CLI Companion extension) - or GitHub Desktop.\nOr, in the terminal, run git diff to see what changes were made.",
+    "crumbs": [
+      "AI at the Command Line"
+    ]
+  },
+  {
+    "objectID": "s05_ai_CLI.html#cli-tools-comparison",
+    "href": "s05_ai_CLI.html#cli-tools-comparison",
+    "title": "AI at the Command Line",
+    "section": "3 CLI Tools Comparison",
+    "text": "3 CLI Tools Comparison\nAI command-line tools give researchers different ways to bring AI into their workflows.\nHere is a comparison of some of the most widely used ones:\n\n\n\n\nTool\nHosted vs Local\nBest Use Cases\n\n\n\n\nGemini CLI\nCloud (Google)\nBest for individual experimentation because a substantial free tier, and it is lightweight\n\n\nCodex CLI\nCloud (OpenAI)\nIdeal for coding tasks (GPT-5), debugging, and automation\n\n\nClaude Code\nCloud (Anthropic)\nBest for handling large documents, summarization, and long-context reasoning\n\n\nOllama\nLocal (runs on your machine)\nPerfect for privacy-first workflows, running offline models, and experimenting with open-source LLMs",
+    "crumbs": [
+      "AI at the Command Line"
+    ]
+  },
+  {
+    "objectID": "s05_ai_CLI.html#key-risks-and-mitigation-strategies-for-gemini-cli",
+    "href": "s05_ai_CLI.html#key-risks-and-mitigation-strategies-for-gemini-cli",
+    "title": "AI at the Command Line",
+    "section": "4 Key Risks and Mitigation Strategies for Gemini CLI",
+    "text": "4 Key Risks and Mitigation Strategies for Gemini CLI\nGemini CLI and GitHub CLI are powerful — but with great power comes the responsibility to secure credentials, minimize permissions, and update regularly.\n\n\n\n\n\n\n\n🔑 Risk\n✅ Mitigation\n\n\n\n\nCredential Exposure\nUse fine-grained tokens, avoid sharing on multi-user systems\n\n\nAccidental Actions\ndouble-check commands, avoid risky scripts\n\n\nToo Many Permissions\nApply least privilege, audit tokens regularly\n\n\nUpdates\nKeep CLI tools up to date\n\n\nData Privacy\nAvoid sharing sensitive data, use local models for sensitive tasks",
+    "crumbs": [
+      "AI at the Command Line"
+    ]
+  },
+  {
+    "objectID": "s02_ai_analysis_in_llm.html",
+    "href": "s02_ai_analysis_in_llm.html",
+    "title": "Data Inspection and Analysis using LLMs",
+    "section": "",
+    "text": "TipLearning Objectives\n\n\n\nBy the end of this session, participants will be able to use ChatGPT effectively to inspect, explore, and generate insights from datasets, and to accelerate common analytical workflows through prompt engineering.\n\nDataset Inspection\n\nexamine missing values\ncalculate summary statistics\ntransform data\n\nStatistical Analysis\n\ngenerate time series plots\nidentify potential analytical directions\ncreate report-ready narratives using natural language generation\nexport code for reproducibility",
+    "crumbs": [
+      "Data Inspection and Analysis using LLMs"
+    ]
+  },
+  {
+    "objectID": "s02_ai_analysis_in_llm.html#who-and-why-to-use-chatgpt-for-data-analysis",
+    "href": "s02_ai_analysis_in_llm.html#who-and-why-to-use-chatgpt-for-data-analysis",
+    "title": "Data Inspection and Analysis using LLMs",
+    "section": "1 Who and why to use ChatGPT for data analysis?",
+    "text": "1 Who and why to use ChatGPT for data analysis?\n\nIf you’re not a programmer or statistician, ChatGPT can help you understand the overall story of your dataset by breaking down key patterns, trends, and issues in plain language.\nIf you’re working on a data synthesis project and need to filter through multiple datasets, ChatGPT can assist in rapidly exploring each dataset—using visualizations and summaries—to help you decide which ones are most relevant for your goals.\nIf you want to apply statistical methods but don’t recall all the details, ChatGPT can suggest appropriate techniques based on your data and research questions, and generate ready-to-use code for implementation in Python or R.\nIf you need to produce a quick data report, ChatGPT can significantly speed up the process by generating summary statistics, visualizations, and clear written narratives tailored for stakeholders or publication.",
+    "crumbs": [
+      "Data Inspection and Analysis using LLMs"
+    ]
+  },
+  {
+    "objectID": "s02_ai_analysis_in_llm.html#dataset-inspection",
+    "href": "s02_ai_analysis_in_llm.html#dataset-inspection",
+    "title": "Data Inspection and Analysis using LLMs",
+    "section": "2 Dataset Inspection",
+    "text": "2 Dataset Inspection\n\nUploading tabular data directly from your computer is recommended, as it ensures ChatGPT has access to the exact dataset you intend to analyze. Sharing a link may not always work reliably, especially if the data is behind access restrictions or changes dynamically.\nLooking for a dataset to practice with? Try the SBCLTER annual fish survey. For free version of the ChatGPT, try dataset that is smaller than 8 KB, such as Subset version of the annual fish survey.\nIn each section below, the example prompts are provided. You can copy and paste it into ChatGPT, or type your own prompts.\n\n\n\n\n\n\n\nTipChatGPT prompt\n\n\n\n\nTell me about this dataset, and what types of data does it contain?\nWhich columns are affected by the missing values and how many missing values are in each column.\nProvide summary statistics (mean, median, std, min, max) for count and size column, and unique values for the site, and year columns.\nConvert this data table to wide format using sp_code as header and count as value",
+    "crumbs": [
+      "Data Inspection and Analysis using LLMs"
+    ]
+  },
+  {
+    "objectID": "s02_ai_analysis_in_llm.html#statistical-analysis",
+    "href": "s02_ai_analysis_in_llm.html#statistical-analysis",
+    "title": "Data Inspection and Analysis using LLMs",
+    "section": "3 Statistical Analysis",
+    "text": "3 Statistical Analysis\n\n\n\n\n\n\nTipChatGPT prompt\n\n\n\na. Time series plot\n\nCreate a time series plot of the total species count, with year on the x-axis and count on the y-axis. Use different colors for each site.\nCreate a time series plot of the top 5 most abundant species, with year on the x-axis and count on the y-axis. Use different colors for each site.\n\nb. Identify Potential Analytical Directions\n\nI want to understand whether species has an increasing trend over time\nI like to do a glm() to see the species trend over time, which family should I use? how about the link function?\n\nc. Create Report-Ready Narratives\n\nI like this analysis and want to document in the report. Please describe statistical analysis for the glm() model and the corresponding results\n\nd. Export Code for Reproducibility\n\nPlease give me the R scripts for the glm() analysis\n\n\n\n\n\n\n\n\n\nNoteImportant Notes\n\n\n\n\nChatGPT is not a substitute for human expertise, but it serves as a powerful assistant that can enhance and accelerate your analytical workflow.\nData analysis done within ChatGPT is not reproducible. If you discover valuable insights, always ask ChatGPT to generate the underlying code so you can document and reproduce the process independently.\nUsing a customized GPT model is recommended for data analysis, as it can handle larger datasets and provide more context-aware responses. Therefore, access to the paid version of ChatGPT (such as ChatGPT Plus or Team) is preferred for this exercise.\nIf you’re comparing the speed of conducting analysis in ChatGPT versus R (with existing code), R is generally more reliable and consistently faster. ChatGPT’s performance can vary depending on the time of day, server load, and the specific GPT model you’re using.\n\n\nAs of April 2025, here are the estimated CSV table size by GPT Model\n\n\n\n\n\n\n\n\n\nModel\nToken Limit\nApprox. Rows × Columns (Typical CSV)\nNotes\n\n\n\n\nGPT-3.5\n4,096\n~200 rows × 10 columns\nOnly good for small previews or subsets\n\n\nGPT-4 (8k)\n8,192\n~400 rows × 10 columns\nModerate analysis with simple datasets\n\n\nGPT-4-turbo (128k)\n128,000\n~6,000–10,000 rows × 10–20 columns\nSupports large datasets and full analysis\n\n\n\n\nEach cell ≈ 5–10 tokens (e.g., a short string or number).",
+    "crumbs": [
+      "Data Inspection and Analysis using LLMs"
+    ]
+  },
+  {
+    "objectID": "slides/ai_and_apis/slides.html#title-slide",
+    "href": "slides/ai_and_apis/slides.html#title-slide",
+    "title": "AI for Ecologists",
+    "section": "",
+    "text": "AI and APIs\nAn introduction to accessing and using the ChatGPT API"
+  },
+  {
     "objectID": "s04_ai_lit_review.html",
     "href": "s04_ai_lit_review.html",
     "title": "AI-assisted Literature Review",
@@ -285,69 +349,5 @@
     "crumbs": [
       "AI-assisted Literature Review"
     ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About the sessions",
-    "section": "",
-    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "index.html#ai-for-nceas",
-    "href": "index.html#ai-for-nceas",
-    "title": "About the sessions",
-    "section": "",
-    "text": "The National Center for Ecological Analysis and Synthesis (NCEAS), a research affiliate of UCSB, is now celebrating its 30th year. As part of this celebration, NCEAS is focusing on a theme of “AI for the Planet,” and as members of the NCEAS Learning Hub we have designed this set of informal interactive workshop sessions in support of that theme. In these sessions, we will explore uses of generative artificial intelligence (genAI or simply AI) such as ChatGPT and GitHub Copilot to help support NCEAS residents and others in applying AI tools to research, analysis, and writing. We are by no means experts in the design and application of AI, we are just curious and excited (perhaps a bit apprehensive) about the possibilities these new tools offer. These sessions may eventually become formal modules available for various NCEAS Learning Hub courses, but for now we just want to encourage the NCEAS community to explore the benefits and pitfalls these tools offer.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "index.html#nceas-expertise",
-    "href": "index.html#nceas-expertise",
-    "title": "About the sessions",
-    "section": "2 NCEAS Expertise",
-    "text": "2 NCEAS Expertise\nNCEAS is a leading expert on interdisciplinary data science and works collaboratively to answer the world’s largest and most complex questions. The NCEAS approach leverages existing data and employs a team science philosophy to squeeze out all potential insights and solutions efficiently - this is called synthesis science.\nNCEAS has 30 years of success with this model among working groups and environmental professionals. In conjunction with the NCEAS Learning Hub, we are excited to pass along skills, workflows, and mindsets to help the NCEAS community better understand the implications of AI for the Planet.\n\n\n\n\n\n\n\nTipLearning Objectives\n\n\n\n\nPractice strategies for using AI tools effectively and responsibly in coding, analysis, and research.\nExplore the ethical implications of using AI in research and how to navigate them.\nFeel comfortable with using various AI tools in your own work.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "index.html#code-of-conduct",
-    "href": "index.html#code-of-conduct",
-    "title": "About the sessions",
-    "section": "3 Code of Conduct",
-    "text": "3 Code of Conduct\nBy participating in this activity you agree to abide by the NCEAS Code of Conduct.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "index.html#about-this-book",
-    "href": "index.html#about-this-book",
-    "title": "About the sessions",
-    "section": "4 About this book",
-    "text": "4 About this book\nThese written materials are the result of a continuous and collaborative effort at NCEAS to help researchers make their work more transparent and reproducible. This work began in the early 2000’s, and reflects the expertise and diligence of many, many individuals. The primary authors are listed in the citation below, with additional contributors recognized for their role in developing previous iterations of these or similar materials.\nThis work is licensed under a Creative Commons Attribution 4.0 International License.\nCitation: Casey O’Hara and Li Kui (2025), AI for NCEAS. URL https://nceas-learning-hub.github.io/ai_for_nceas.\nAdditional contributors: tbd\nThis is a Quarto book. To learn more about Quarto books visit https://quarto.org/docs/books.",
-    "crumbs": [
-      "About the sessions"
-    ]
-  },
-  {
-    "objectID": "slides/ai_coding_support/slides.html#title-slide",
-    "href": "slides/ai_coding_support/slides.html#title-slide",
-    "title": "AI for NCEAS",
-    "section": "",
-    "text": "AI for coding support\nAn introduction to using AI tools to boost your coding practice"
-  },
-  {
-    "objectID": "slides/ai_coding_support/slides.html#r-rstudio",
-    "href": "slides/ai_coding_support/slides.html#r-rstudio",
-    "title": "AI for NCEAS",
-    "section": "",
-    "text": "Configure RStudio to work with Copilot\n\n\nIn RStudio: Tools \\(\\Rightarrow\\) Global Options. Look for “Copilot” at the bottom of the sidebar*:\n\n\n\n\n\n* Copilot requires RStudio version 2023.09.0 or later!"
   }
 ]
